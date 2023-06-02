@@ -3,7 +3,6 @@ import os
 import numpy as np
 import random
 import pandas as pd
-from haversine import haversine
 # makes the random numbers predictable
 
 
@@ -89,9 +88,3 @@ class ReDirectSTD(object):
         self.console.close()
         if self.f is not None:
             self.f.close()
-
-
-def calculate_distance(df1, df2):
-    df2['distance'] = df2.apply(lambda row: haversine((df1['latitude'][0], df1['longitude'][0]),
-                                                      (row['latitude'], row['longitude'])), axis=1)
-    return df2['distance']

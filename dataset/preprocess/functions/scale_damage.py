@@ -12,14 +12,6 @@ def scale_damage(df):
     # feature=df[['dmgarea','dmgmoney','exintgtm','target']]
 
     #Standardization
-    def z_score(data):
-        mean = np.mean(data)  # 평균 계산
-        std = np.std(data)    # 표준편차 계산
-
-        z_scores = (data - mean) / std  # Z 점수 계산
-
-        return z_scores
-    
     df['dmgarea'] = z_score(df['dmgarea'])
     df['dmgmoney'] = z_score(df['dmgmoney'])
     df['exintgtm'] = z_score(df['exintgtm'])
