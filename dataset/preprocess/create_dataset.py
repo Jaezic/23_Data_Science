@@ -75,11 +75,19 @@ def main(args):
     FS_df['height'] = heights
     FS_df['scale_damage'] = damge_df['scale_damage']
 
+
     # Feature Selection
     columns_to_drop = ['Unnamed: 0', 'dmgarea', 'dmgmoney', 'exintgtm', 'extingdt', 'ocurdo',
                        'ocurdt', 'ocuremd', 'ocurgm', 'ocurjibun', 'ocurri', 'ocursgg', 'ocuryoil', 'ownersec']
     FS_df = FS_df.drop(columns_to_drop, axis=1)
 
+    # scale_damage column to last column
+    column = FS_df.columns.tolist()
+    column.pop(column.index('scale_damage'))
+    column.append('scale_damage')
+    FS_df = FS_df[column]
+
+    # Drop NaNs
     FS_df = FS_df.dropna(axis=0, how='any')
 
     FS_df.to_csv('./dataset/FireDataset.csv', index=False)
