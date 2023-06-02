@@ -7,10 +7,11 @@ from models.model import build_model
 from tools.evaluate import evaluate
 from tools.utils import ReDirectSTD, set_seed, time_str
 from tools.visualization import visual
-set_seed(605)  # Set random seed
 
 
 def main(args):
+    set_seed(args.seed)  # Set random seed
+
     # Logging setup
     log_dir = './logs'
     if not os.path.exists(log_dir):

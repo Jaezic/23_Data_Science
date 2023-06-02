@@ -2,13 +2,16 @@ import datetime
 import os
 import numpy as np
 import random
-
+import pandas as pd
+from haversine import haversine
 # makes the random numbers predictable
+
+
 def set_seed(rand_seed):
     os.environ['PYTHONHASHSEED'] = str(rand_seed)
     np.random.seed(rand_seed)
     random.seed(rand_seed)
-    
+
 
 def time_str(fmt=None):
     if fmt is None:
@@ -16,6 +19,7 @@ def time_str(fmt=None):
 
     #     time.strftime(format[, t])
     return datetime.datetime.today().strftime(fmt)
+
 
 class ReDirectSTD(object):
     """
@@ -85,3 +89,9 @@ class ReDirectSTD(object):
         self.console.close()
         if self.f is not None:
             self.f.close()
+
+
+def calculate_distance(df1, df2):
+    df2['distance'] = df2.apply(lambda row: haversine((df1['latitude'][0], df1['longitude'][0]),
+                                                      (row['latitude'], row['longitude'])), axis=1)
+    return df2['distance']
