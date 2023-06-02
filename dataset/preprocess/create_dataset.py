@@ -7,6 +7,7 @@ from functions.distance import calculate_distance
 from functions.scale_damage import scale_damage
 import math
 
+
 def main(args):
     # Read CSV
     FS_df = pd.read_csv(args.FireStatistic_root)
@@ -57,6 +58,8 @@ def main(args):
 
     minindex = distance.argmin(axis=1)
     heights = MH_ll_df['높이(m)'][minindex].values
+
+    # NaN Handling
     heights[is_all_nan] = np.nan
 
     within_5km[is_all_nan] = np.nan
@@ -72,6 +75,10 @@ def main(args):
     FS_df['height'] = heights
     FS_df['scale_damage'] = damge_df['scale_damage']
 
+    # Feature Selection
+    columns_to_drop = ['Unnamed: 0', 'dmgarea', 'dmgmoney', 'exintgtm', 'extingdt', 'ocurdo',
+                       'ocurdt', 'ocuremd', 'ocurgm', 'ocurjibun', 'ocurri', 'ocursgg', 'ocuryoil', 'ownersec']
+    FS_df = FS_df.drop(columns_to_drop, axis=1)
     FS_df.to_csv('./dataset/FireDataset.csv', index=False)
 
 
