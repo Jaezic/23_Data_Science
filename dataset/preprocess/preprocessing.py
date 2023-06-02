@@ -1,14 +1,17 @@
 import argparse
 
 import pandas as pd
+from sklearn.calibration import LabelEncoder
 
 
 def main(args):
     df = pd.read_csv(args.FireStatistic_root, na_filter=True, keep_default_na=False, na_values=[''])
-    print(df.info())
-    print(df.head())
-    print(df.describe())
-    print(df.isna().sum())
+
+    le=LabelEncoder()
+    df['diravg'] = le.fit_transform(df['diravg'])
+    df['dirmax'] = le.fit_transform(df['dirmax'])
+    df['ocurcause'] = le.fit_transform(df['ocurcause'])
+    df.to_csv(args.FireStatistic_root, index=False)
 
 
 if __name__ == '__main__':
