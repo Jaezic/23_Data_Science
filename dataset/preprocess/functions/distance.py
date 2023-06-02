@@ -30,7 +30,7 @@ def calculate_distance(df1, df2):
 
     df2_lat = df2['latitude'].to_numpy()
     df2_lon = df2['longitude'].to_numpy()
-
+    
     df1_lat = df1_lat.reshape(-1, 1)
     df1_lon = df1_lon.reshape(-1, 1)
     df2_lat = df2_lat.reshape(1, -1)
