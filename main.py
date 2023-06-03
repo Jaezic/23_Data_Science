@@ -32,18 +32,30 @@ def main(args):
     # Train and evaluate
     if args.eval == 'kfold':
         kfold = dataset.get_kfold()
+        metrics_list = []
         for i, (train_index, test_index) in enumerate(kfold):
             print(f'Fold {i}')
-            train_dataset = Dataset(dataset.x[train_index], dataset.y[train_index])
-            test_dataset = Dataset(dataset.x[test_index], dataset.y[test_index])
+            train_dataset = Dataset(
+                dataset.x[train_index], dataset.y[train_index])
+            test_dataset = Dataset(
+                dataset.x[test_index], dataset.y[test_index])
 
-            pipeline(args, model, train_dataset, test_dataset)
+            metrics = pipeline(args, model, train_dataset, test_dataset)
+            metrics_list.append(metrics)
+
+        print('Average metrics:')
+        print(' Accuracy: {:.4f}, Precision: {:.4f}, Recall: {:.4f}, F1: {:.4f}'.format(
+            sum([m.accuracy for m in metrics_list]) / len(metrics_list),
+            sum([m.precision for m in metrics_list]) / len(metrics_list),
+            sum([m.recall for m in metrics_list]) / len(metrics_list),
+            sum([m.f1 for m in metrics_list]) / len(metrics_list)
+        ))
+
     elif args.eval == 'holdout':
         train_dataset = dataset.get_train()
         test_dataset = dataset.get_test()
 
-        pipeline(args, model, train_dataset, test_dataset)
-
+        metrics = pipeline(args, model, train_dataset, test_dataset)
 
 
 def pipeline(args, model, train_dataset, test_dataset):
@@ -53,7 +65,9 @@ def pipeline(args, model, train_dataset, test_dataset):
 
     #visual(dataset, y)
 
-    evaluate(model, test_dataset.y, y)
+    metrics = evaluate(args, model, test_dataset.y, y)
+
+    return metrics
 
 
 if __name__ == '__main__':

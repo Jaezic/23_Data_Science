@@ -11,7 +11,7 @@ def preprocessing(df):
     # Label Encoding
     le = LabelEncoder()
     df['diravg'] = le.fit_transform(df['diravg'])
-    df['dirmax'] = le.fit_transform(df['dirmax'])
+    #df['dirmax'] = le.fit_transform(df['dirmax'])
     df['ocurcause'] = le.fit_transform(df['ocurcause'])
 
     # Binning (scale_damage)
@@ -39,3 +39,6 @@ def feature_Engineering(df):
     cnt = df['ocurcause'].value_counts()
     df['ocurcause'] = df['ocurcause'].apply(
         lambda x: '기타' if cnt[x] < 37 else x)
+
+    # Feature Drop, [humidmin, humidcurr, windmax, dirmax, riskmax, riskavg]
+    df.drop(['humidmin','humidcurr', 'windmax', 'dirmax', 'riskmax', 'riskavg'], axis=1, inplace=True)

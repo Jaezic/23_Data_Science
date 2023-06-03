@@ -41,7 +41,5 @@ class FireDataset(Dataset):
         return Dataset(self.x_test, self.y_test)
     
     def get_kfold(self):
-        print(self.args)
-        print(self.args.n_split)
-        kfold = KFold(n_split=10, shuffle=True, random_state=self.args.seed)
+        kfold = KFold(n_splits=self.args.n_split, shuffle=True, random_state=self.args.seed)
         return kfold.split(self.x, self.y)

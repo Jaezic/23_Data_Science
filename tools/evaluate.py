@@ -5,20 +5,34 @@ import matplotlib.pyplot as plt
 # Classification Evaluation
 
 
-def evaluate(model, predict, y):
+def evaluate(args, model, predict, y):
     # print(f'Evaluation on test set, \n',
     #       'Score: {:.4f}, '.format(
     #     model.score(train_dataset.x, train_dataset.y)))
 
+    metrics = Metrics(predict, y)
     print(f'Evaluation on test set, \n',
           'Accuracy: {:.4f}, Recall: {:.4f}, Precision: {:.4f}, F1 Score: {:.4f}'.format(
-              accuracy_score(predict, y),
-              recall_score(predict, y, average='macro'),
-              precision_score(predict, y, average='macro'),
-              f1_score(predict, y, average='macro')))
+              metrics.accuracy,
+              metrics.recall,
+              metrics.precision,
+              metrics.f1))
 
     # Visualization Confusion Matrix
     confusion = confusion_matrix(predict, y)
     print('Confusion Matrix: \n', confusion)
-    sns.heatmap(confusion, annot=True, fmt='d')
-    plt.show()
+    if args.visual:
+        sns.heatmap(confusion, annot=True, fmt='d')
+        plt.show()
+
+    return metrics
+
+
+class Metrics:
+    def __init__(self, predict, y):
+        self.predict = predict
+        self.y = y
+        self.accuracy = accuracy_score(predict, y)
+        self.recall = recall_score(predict, y, average='macro')
+        self.precision = precision_score(predict, y, average='macro')
+        self.f1 = f1_score(predict, y, average='macro')
