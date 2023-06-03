@@ -1,0 +1,12 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('seed', 64),
+             ('redirector', True)])
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.2345, Recall: 0.2353, Precision: 0.2340, F1 Score: 0.2344
+Confusion Matrix: 
+ [[125  76  71  71  50]
+ [ 71  77 104  84  67]
+ [ 85  91  96  67  82]
+ [ 76  80  90  83  90]
+ [ 68  67  87  77  95]]

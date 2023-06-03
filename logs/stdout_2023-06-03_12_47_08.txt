@@ -1,0 +1,6 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('seed', 64),
+             ('redirector', True)])
+------------------------------------------------------------
+Evaluation on test set, 
+ Score: 0.0881, MSE: 1.8228

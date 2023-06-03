@@ -26,26 +26,29 @@ def main(args):
     # Dataset setup
     dataset = FireDataset(args)
 
+    train_dataset = dataset.get_train()
+    test_dataset = dataset.get_test()
+
     # Model setup
     model = build_model(args)
 
     # Training setup
-    trainer(args, model, dataset)
+    trainer(args, model, train_dataset)
 
     # Evaluation setup
-    validate(args, model, dataset)
+    validate(args, model, test_dataset)
 
 
 def trainer(args, model, dataset):
     model.fit(dataset.x, dataset.y)
 
 
-def validate(args, model, dataset):
-    y = model.predict(dataset.x)
+def validate(args, model, test_dataset):
+    y = model.predict(test_dataset.x)
 
-    visual(dataset, y)
+    #visual(dataset, y)
 
-    evaluate(model, dataset, y)
+    evaluate(model, test_dataset.y, y)
 
 
 if __name__ == '__main__':
