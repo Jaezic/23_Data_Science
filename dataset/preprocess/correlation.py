@@ -2,7 +2,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-data=pd.read_csv('./data/FireDataset.csv')
+data=pd.read_csv('./dataset/FireDataset.csv')
 X=data.iloc[:,0:17]
 y= data.iloc[:,-1]
 

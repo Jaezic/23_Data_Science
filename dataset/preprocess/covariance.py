@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-data=pd.read_csv('./data/FireDataset.csv')
+data=pd.read_csv('./dataset/FireDataset.csv')
 df=pd.DataFrame(data)
 covMatrix = pd.DataFrame.cov(df)
 print (covMatrix)
