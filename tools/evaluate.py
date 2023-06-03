@@ -3,12 +3,13 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Classification Evaluation
+
+
 def evaluate(model, predict, y):
     # print(f'Evaluation on test set, \n',
     #       'Score: {:.4f}, '.format(
     #     model.score(train_dataset.x, train_dataset.y)))
 
-    ClassificationReport = classification_report(predict, y)
     print(f'Evaluation on test set, \n',
           'Accuracy: {:.4f}, Recall: {:.4f}, Precision: {:.4f}, F1 Score: {:.4f}'.format(
               accuracy_score(predict, y),
@@ -21,4 +22,3 @@ def evaluate(model, predict, y):
     print('Confusion Matrix: \n', confusion)
     sns.heatmap(confusion, annot=True, fmt='d')
     plt.show()
-

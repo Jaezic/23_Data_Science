@@ -4,6 +4,6 @@ from sklearn.tree import DecisionTreeClassifier
 
 
 def build_model(args):
-    model = DecisionTreeClassifier()
+    model = DecisionTreeClassifier(random_state=args.seed)
 
     return model

@@ -19,6 +19,7 @@ def preprocessing(df):
         n_bins=5, encode='ordinal', strategy='quantile')
     df['scale_damage'] = discretizer.fit_transform(
         df['scale_damage'].values.reshape(-1, 1))
+    
 
 
 def feature_Engineering(df):

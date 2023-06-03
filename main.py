@@ -2,7 +2,7 @@ from collections import OrderedDict
 import os
 import pprint
 from config import argument_parser
-from dataset.Dataset import FireDataset
+from dataset.Dataset import Dataset, FireDataset
 from models.model import build_model
 from tools.evaluate import evaluate
 from tools.utils import ReDirectSTD, set_seed, time_str
@@ -26,24 +26,29 @@ def main(args):
     # Dataset setup
     dataset = FireDataset(args)
 
-    train_dataset = dataset.get_train()
-    test_dataset = dataset.get_test()
-
     # Model setup
     model = build_model(args)
 
-    # Training setup
-    trainer(args, model, train_dataset)
+    # Train and evaluate
+    if args.eval == 'kfold':
+        kfold = dataset.get_kfold()
+        for i, (train_index, test_index) in enumerate(kfold):
+            print(f'Fold {i}')
+            train_dataset = Dataset(dataset.x[train_index], dataset.y[train_index])
+            test_dataset = Dataset(dataset.x[test_index], dataset.y[test_index])
 
-    # Evaluation setup
-    validate(args, model, test_dataset)
+            pipeline(args, model, train_dataset, test_dataset)
+    elif args.eval == 'holdout':
+        train_dataset = dataset.get_train()
+        test_dataset = dataset.get_test()
+
+        pipeline(args, model, train_dataset, test_dataset)
 
 
-def trainer(args, model, dataset):
-    model.fit(dataset.x, dataset.y)
 
+def pipeline(args, model, train_dataset, test_dataset):
+    model.fit(train_dataset.x, train_dataset.y)
 
-def validate(args, model, test_dataset):
     y = model.predict(test_dataset.x)
 
     #visual(dataset, y)
