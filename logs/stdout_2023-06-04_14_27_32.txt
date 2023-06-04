@@ -6,7 +6,7 @@ OrderedDict([('data_path', './dataset/FireDataset.csv'),
              ('visual', False),
              ('model', 'voting'),
              ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
-             ('tune', 'random'),
+             ('tune', 'grid'),
              ('n_iter', 10),
              ('cv', 10),
              ('pca', False),
@@ -18,27 +18,17 @@ Dataset size: 10150
 Features name : ['diravg', 'humidrel', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_5km', 'within_10km', 'within_30km', 'within_5km_fact', 'within_10km_fact', 'within_30km_fact', 'height']
 Target name : ['scale_damage']
 ------------------------------------------------------------
-Loaded Hyperparameters
-{'max_depth': 2, 'min_samples_leaf': 1, 'min_samples_split': 2}
-DecisionTreeClassifier(max_depth=2, random_state=64)
+DecisionTreeClassifier(random_state=64)
 ------------------------------------------------------------
-Not Found Hyperparameters File
 KNeighborsClassifier()
 ------------------------------------------------------------
-Not Found Hyperparameters File
 RandomForestClassifier(random_state=64)
 ------------------------------------------------------------
-Not Found Hyperparameters File
 AdaBoostClassifier(random_state=64)
 ------------------------------------------------------------
-Not Found Hyperparameters File
 GradientBoostingClassifier(random_state=64)
 ------------------------------------------------------------
-Loaded Hyperparameters
-{'voting': 'hard'}
-VotingClassifier(estimators=[('dt',
-                              DecisionTreeClassifier(max_depth=2,
-                                                     random_state=64)),
+VotingClassifier(estimators=[('dt', DecisionTreeClassifier(random_state=64)),
                              ('knn', KNeighborsClassifier()),
                              ('rf', RandomForestClassifier(random_state=64)),
                              ('ab', AdaBoostClassifier(random_state=64)),
@@ -48,8 +38,8 @@ VotingClassifier(estimators=[('dt',
 Tunning - Loaded Hyperparameters Range
 {'voting': ['soft', 'hard']}
 ------------------------------------------------------------
-RandomizedSearchCV
+GridSearchCV
 Best Parameter
   {'voting': 'hard'}
- Best Score : 0.3989162561576355
+ Best Score : 0.3955665024630542
 Tunning - Saved Hyperparameters [./models/config]

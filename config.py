@@ -15,7 +15,7 @@ def argument_parser():
     parser.add_argument("--visual", action='store_true', default=False)
 
     # 'dt'(decision tree), 'lr'(logistic regression), 'knn'(k-nearest neighbors), 'rf'(random forest), 'ab'(AdaBoost), 'gb'(gradient boosting), 'voting' (voting classifier)
-    parser.add_argument("--model", type=str, default='voting')
+    parser.add_argument("--model", type=str, default='dt')
 
     # Voting model list
     parser.add_argument("--voting_list", type=str, nargs='+',
@@ -23,7 +23,7 @@ def argument_parser():
 
     # Hyperparameters tuning
     # 'grid'(grid search), 'random'(random search), None
-    parser.add_argument("--tune", type=str, default='random')
+    parser.add_argument("--tune", type=str, default=None)
     parser.add_argument("--n_iter", type=int, default=10)
     parser.add_argument("--cv", type=int, default=10)
 

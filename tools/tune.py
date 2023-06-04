@@ -7,7 +7,8 @@ def tune(args, model, train_dataset):
     if args.tune == 'grid':
         search = GridSearchCV(model, params, cv=args.cv)
     elif args.tune == 'random':
-        search = RandomizedSearchCV(model, params, cv=args.cv, n_iter=args.n_iter, random_state=args.seed)
+        search = RandomizedSearchCV(
+            model, params, cv=args.cv, n_iter=args.n_iter, random_state=args.seed)
     else:
         raise ValueError('Unknown hyperparameters tuning method.')
 
@@ -22,7 +23,7 @@ def tune(args, model, train_dataset):
 
 def load_param_range(args):
     try:
-        with open(os.path.join(args.param_path, args.model+'_range'), 'r') as f:
+        with open(os.path.join(args.param_path, args.model+'_range.txt'), 'r') as f:
             params = dict(eval(f.read()))
             print('Tunning - Loaded Hyperparameters Range')
             print(params)
@@ -36,9 +37,9 @@ def load_param_range(args):
 
 def save_param(args, dict):
     try:
-        with open(os.path.join(args.param_path, args.model+'_tune'), 'w') as f:
+        with open(os.path.join(args.param_path, args.model+'_tune.txt'), 'w') as f:
             f.write(str(dict))
             print(
-                'Tunning - Saved Hyperparameters [' + args.param_path +']')
+                'Tunning - Saved Hyperparameters [' + args.param_path + ']')
     except SyntaxError:
         print('Tunning - Syntax Error Hyperparameters Range File')

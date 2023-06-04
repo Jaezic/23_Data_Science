@@ -40,10 +40,8 @@ def build_model(args):
 
 
 def load_param(args):
-    if args.tune != None:
-        return {}
     try:
-        with open(os.path.join(args.param_path, args.model+'_tune'), 'r') as f:
+        with open(os.path.join(args.param_path, args.model+'_tune.txt'), 'r') as f:
             parmas = dict(eval(f.read()))
             print('Loaded Hyperparameters')
             print(parmas)
