@@ -1,3 +1,4 @@
+from sklearn.cluster import KMeans
 from sklearn.ensemble import AdaBoostClassifier, BaggingClassifier, GradientBoostingClassifier, RandomForestClassifier, VotingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
@@ -23,7 +24,10 @@ def build_model(args):
     elif args.model == 'gb':
         model = GradientBoostingClassifier(random_state=args.seed, **p)
     elif args.model == 'bag':
-        model = BaggingClassifier(base_estimator=DecisionTreeClassifier(max_depth=1), random_state=args.seed, **p)
+        model = BaggingClassifier(base_estimator=DecisionTreeClassifier(
+            max_depth=1), random_state=args.seed, **p)
+    elif args.model == 'kmeans':
+        model = KMeans(n_clusters=args.num_class, random_state=args.seed)
     elif args.model == 'voting':
         models = []
         if args.voting_list == None or len(args.voting_list) == 0:
@@ -42,6 +46,8 @@ def build_model(args):
 
 
 def load_param(args):
+    if args.param_load == False:
+        return {}
     try:
         with open(os.path.join(args.param_path, args.model+'_tune.txt'), 'r') as f:
             parmas = dict(eval(f.read()))

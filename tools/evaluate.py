@@ -25,6 +25,20 @@ def evaluate(args, model, predict, y):
         sns.heatmap(confusion, annot=True, fmt='d')
         plt.show()
 
+    # Classification Report
+    print('Classification Report: \n', classification_report(predict, y))
+
+    # ROC Curve
+    if args.visual:
+        for i in range(args.num_class):
+            fpr, tpr, thresholds = roc_curve(predict, y, pos_label=i, )
+
+            plt.plot(fpr, tpr)
+            plt.xlabel('False Positive Rate')
+            plt.ylabel('True Positive Rate')
+            plt.title('ROC Curve positive label '+str(i))
+            plt.show()
+
     return metrics
 
 

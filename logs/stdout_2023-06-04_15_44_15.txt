@@ -5,9 +5,11 @@ OrderedDict([('data_path', './dataset/FireDataset.csv'),
              ('redirector', True),
              ('visual', False),
              ('model', 'voting'),
-             ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
-             ('tune', 'random'),
-             ('cv', 10),
+             ('param_load', False),
+             ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb', 'kmeans']),
+             ('tune', None),
+             ('n_iter', 10),
+             ('cv', 5),
              ('pca', False),
              ('n_components', 0.95),
              ('n_split', 10),
@@ -27,11 +29,14 @@ AdaBoostClassifier(random_state=64)
 ------------------------------------------------------------
 GradientBoostingClassifier(random_state=64)
 ------------------------------------------------------------
-Not Found Hyperparameters File
+KMeans(n_clusters=3, random_state=64)
+------------------------------------------------------------
 VotingClassifier(estimators=[('dt', DecisionTreeClassifier(random_state=64)),
                              ('knn', KNeighborsClassifier()),
                              ('rf', RandomForestClassifier(random_state=64)),
                              ('ab', AdaBoostClassifier(random_state=64)),
                              ('gb',
-                              GradientBoostingClassifier(random_state=64))])
+                              GradientBoostingClassifier(random_state=64)),
+                             ('kmeans', KMeans(n_clusters=3, random_state=64))])
 ------------------------------------------------------------
+Fold 0

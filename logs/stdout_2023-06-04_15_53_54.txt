@@ -1,0 +1,115 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('param_path', './models/config'),
+             ('seed', 64),
+             ('eval', 'kfold'),
+             ('redirector', True),
+             ('visual', True),
+             ('model', 'knn'),
+             ('param_load', False),
+             ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
+             ('tune', None),
+             ('n_iter', 10),
+             ('cv', 5),
+             ('pca', False),
+             ('n_components', 0.95),
+             ('n_split', 5),
+             ('num_class', 3)])
+------------------------------------------------------------
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_5km', 'within_10km', 'within_30km', 'within_5km_fact', 'within_10km_fact', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+KNeighborsClassifier()
+------------------------------------------------------------
+Fold 0
+Evaluation on test set, 
+ Accuracy: 0.3813, Recall: 0.3836, Precision: 0.3850, F1 Score: 0.3784
+Confusion Matrix: 
+ [[324 211 113]
+ [282 242 175]
+ [254 221 208]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.38      0.50      0.43       648
+         1.0       0.36      0.35      0.35       699
+         2.0       0.42      0.30      0.35       683
+
+    accuracy                           0.38      2030
+   macro avg       0.39      0.38      0.38      2030
+weighted avg       0.38      0.38      0.38      2030
+
+Fold 1
+Evaluation on test set, 
+ Accuracy: 0.3852, Recall: 0.3823, Precision: 0.3832, F1 Score: 0.3784
+Confusion Matrix: 
+ [[355 207 140]
+ [283 244 152]
+ [231 235 183]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.41      0.51      0.45       702
+         1.0       0.36      0.36      0.36       679
+         2.0       0.39      0.28      0.33       649
+
+    accuracy                           0.39      2030
+   macro avg       0.38      0.38      0.38      2030
+weighted avg       0.38      0.39      0.38      2030
+
+Fold 2
+Evaluation on test set, 
+ Accuracy: 0.4010, Recall: 0.3956, Precision: 0.3953, F1 Score: 0.3913
+Confusion Matrix: 
+ [[383 194 138]
+ [280 254 159]
+ [234 211 177]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.43      0.54      0.48       715
+         1.0       0.39      0.37      0.38       693
+         2.0       0.37      0.28      0.32       622
+
+    accuracy                           0.40      2030
+   macro avg       0.40      0.40      0.39      2030
+weighted avg       0.40      0.40      0.39      2030
+
+Fold 3
+Evaluation on test set, 
+ Accuracy: 0.3768, Recall: 0.3786, Precision: 0.3799, F1 Score: 0.3739
+Confusion Matrix: 
+ [[318 207 130]
+ [276 242 167]
+ [259 226 205]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.37      0.49      0.42       655
+         1.0       0.36      0.35      0.36       685
+         2.0       0.41      0.30      0.34       690
+
+    accuracy                           0.38      2030
+   macro avg       0.38      0.38      0.37      2030
+weighted avg       0.38      0.38      0.37      2030
+
+Fold 4
+Evaluation on test set, 
+ Accuracy: 0.3911, Recall: 0.3952, Precision: 0.4027, F1 Score: 0.3886
+Confusion Matrix: 
+ [[323 228 112]
+ [248 254 125]
+ [287 236 217]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.38      0.49      0.42       663
+         1.0       0.35      0.41      0.38       627
+         2.0       0.48      0.29      0.36       740
+
+    accuracy                           0.39      2030
+   macro avg       0.40      0.40      0.39      2030
+weighted avg       0.41      0.39      0.39      2030
+
+Average metrics:
+ Accuracy: 0.3871, Precision: 0.3892, Recall: 0.3871, F1: 0.3821

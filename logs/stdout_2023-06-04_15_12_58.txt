@@ -4,9 +4,9 @@ OrderedDict([('data_path', './dataset/FireDataset.csv'),
              ('eval', 'kfold'),
              ('redirector', True),
              ('visual', False),
-             ('model', 'lr'),
+             ('model', 'rf'),
              ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
-             ('tune', 'random'),
+             ('tune', 'grid'),
              ('n_iter', 10),
              ('cv', 5),
              ('pca', False),
@@ -19,5 +19,13 @@ Features name : ['diravg', 'humidrel', 'rainamount', 'raindays', 'tempavg', 'win
 Target name : ['scale_damage']
 ------------------------------------------------------------
 Not Found Hyperparameters File
-LogisticRegression(random_state=64)
+RandomForestClassifier(random_state=64)
 ------------------------------------------------------------
+Tunning - Loaded Hyperparameters Range
+{'n_estimators': [200, 500], 'max_features': ['auto', 'sqrt', 'log2'], 'max_depth': [4, 5, 6, 7, 8], 'criterion': ['gini', 'entropy']}
+------------------------------------------------------------
+GridSearchCV
+Best Parameter
+  {'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'n_estimators': 500}
+ Best Score : 0.39487684729064043
+Tunning - Saved Hyperparameters [./models/config]
