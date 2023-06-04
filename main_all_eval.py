@@ -9,7 +9,7 @@ from dataset.Dataset import Dataset, FireDataset
 from models.model import build_model
 from tools.evaluate import evaluate
 from tools.smote import smote
-from tools.tune import tune
+from tools.tune import tune_pipeline
 from tools.utils import ReDirectSTD, set_seed, time_str
 from tools.visualization import visual
 import pandas as pd
@@ -41,7 +41,7 @@ def main(args):
     # Train and evaluate
     if args.tune != None:
         dataset = dataset.get_all()
-        tune(args, model, dataset)
+        tune_pipeline(args, model, dataset)
 
     elif args.eval == 'holdout':
         train_dataset = dataset.get_train()
@@ -99,6 +99,37 @@ def pipeline(args, model, train_dataset, test_dataset):
 if __name__ == '__main__':
     parser = argument_parser()
     args = parser.parse_args()
-    acc, pre, rec, f1 = main(args)
+    # df = pd.DataFrame(columns=['model', 'pca', 'standard', 'accuracy', 'precision', 'recall', 'f1'])
+    # for model in ['dt', 'knn', 'rf', 'ab', 'gb', 'kmeans', 'bag', 'voting' ]:
+    #     for pca in [True, False]:
+    #         for standard in [True, False]:
+    #             args.model = model
+    #             args.pca = pca
+    #             args.standard = standard
+    #             if args.pca == True and args.standard == False:
+    #                 continue
+    #             print('Model: {}, PCA: {}, Standard: {}, SMOTE: {}, Tune: {}'.format(args.model, args.pca, args.standard, args.smote, args.tune))
+    #             acc, pre, rec, f1 = main(args)
+    #             df_row = pd.DataFrame({'model': [args.model], 'pca': [args.pca], 'standard': [args.standard], 'accuracy': [acc], 'precision': [pre], 'recall': [rec], 'f1': [f1]})
+    #             df = pd.concat([df, df_row], axis=0)
+    #             print(df)
+    # df.to_csv('result.csv', index=False)
     
+    df = pd.DataFrame(columns=['model', 'pca', 'standard', 'tune','accuracy', 'precision', 'recall', 'f1'])
     
+    for model in ['dt', 'knn', 'rf', 'ab', 'gb', 'kmeans', 'bag', 'voting']:
+        for pca in [True, False]:
+            for standard in [True, False]:
+                for tune in ['grid', None]:
+                    args.model = model
+                    args.pca = pca
+                    args.standard = standard
+                    args.tune = tune
+                    if args.pca == True and args.standard == False:
+                        continue
+                    print('Model: {}, PCA: {}, Standard: {}, SMOTE: {}, Tune: {}'.format(args.model, args.pca, args.standard, args.smote, args.tune))
+                    acc, pre, rec, f1 = main(args)
+                    df_row = pd.DataFrame({'model': [args.model], 'pca': [args.pca], 'standard': [args.standard], 'tune': [args.tune], 'accuracy': [acc], 'precision': [pre], 'recall': [rec], 'f1': [f1]})
+                    df = pd.concat([df, df_row], axis=0)
+                    print(df)
+    df.to_csv('result.csv', index=False)

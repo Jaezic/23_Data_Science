@@ -1,7 +1,7 @@
 import os
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 
-def tune(args, model, train_dataset):
+def tune_pipeline(args, model, train_dataset):
     params = load_param_range(args)
     if args.tune == 'grid':
         search = GridSearchCV(model, params, cv=args.cv)
