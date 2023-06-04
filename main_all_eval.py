@@ -17,17 +17,6 @@ import pandas as pd
 def main(args):
     set_seed(args.seed)  # Set random seed
 
-    # Logging setup
-    log_dir = './logs'
-    if not os.path.exists(log_dir):
-        os.mkdir(log_dir)
-    stdout_file = os.path.join(log_dir, f'stdout_{time_str()}.txt')
-    if args.redirector:
-        print('ReDirector stdout')
-        ReDirectSTD(stdout_file, 'stdout', False)
-    pprint.pprint(OrderedDict(args.__dict__))
-    print('-' * 60)
-
     # Dataset setup
     dataset = FireDataset(args)
     print(f'Dataset size: {dataset.len()}')
@@ -42,6 +31,7 @@ def main(args):
     if args.tune != None:
         dataset = dataset.get_all()
         tune_pipeline(args, model, dataset)
+        return 0, 0, 0, 0
 
     elif args.eval == 'holdout':
         train_dataset = dataset.get_train()
@@ -99,27 +89,23 @@ def pipeline(args, model, train_dataset, test_dataset):
 if __name__ == '__main__':
     parser = argument_parser()
     args = parser.parse_args()
-    # df = pd.DataFrame(columns=['model', 'pca', 'standard', 'accuracy', 'precision', 'recall', 'f1'])
-    # for model in ['dt', 'knn', 'rf', 'ab', 'gb', 'kmeans', 'bag', 'voting' ]:
-    #     for pca in [True, False]:
-    #         for standard in [True, False]:
-    #             args.model = model
-    #             args.pca = pca
-    #             args.standard = standard
-    #             if args.pca == True and args.standard == False:
-    #                 continue
-    #             print('Model: {}, PCA: {}, Standard: {}, SMOTE: {}, Tune: {}'.format(args.model, args.pca, args.standard, args.smote, args.tune))
-    #             acc, pre, rec, f1 = main(args)
-    #             df_row = pd.DataFrame({'model': [args.model], 'pca': [args.pca], 'standard': [args.standard], 'accuracy': [acc], 'precision': [pre], 'recall': [rec], 'f1': [f1]})
-    #             df = pd.concat([df, df_row], axis=0)
-    #             print(df)
-    # df.to_csv('result.csv', index=False)
+    
+    # Logging setup
+    log_dir = './logs'
+    if not os.path.exists(log_dir):
+        os.mkdir(log_dir)
+    stdout_file = os.path.join(log_dir, f'stdout_{time_str()}.txt')
+    if args.redirector:
+        print('ReDirector stdout')
+        ReDirectSTD(stdout_file, 'stdout', False)
+    pprint.pprint(OrderedDict(args.__dict__))
+    print('-' * 60) 
     
     df = pd.DataFrame(columns=['model', 'pca', 'standard', 'tune','accuracy', 'precision', 'recall', 'f1'])
     
-    for model in ['dt', 'knn', 'rf', 'ab', 'gb', 'kmeans', 'bag', 'voting']:
-        for pca in [True, False]:
-            for standard in [True, False]:
+    for model in ['df', 'knn', 'rf', 'ab', 'gb', 'kmeans', 'bag', 'voting']:
+        for pca in [False, True]:
+            for standard in [False, True]:
                 for tune in ['grid', None]:
                     args.model = model
                     args.pca = pca
@@ -127,9 +113,14 @@ if __name__ == '__main__':
                     args.tune = tune
                     if args.pca == True and args.standard == False:
                         continue
-                    print('Model: {}, PCA: {}, Standard: {}, SMOTE: {}, Tune: {}'.format(args.model, args.pca, args.standard, args.smote, args.tune))
+                    if args.tune == 'grid':
+                        args.param_load = False
+                    else:
+                        args.param_load = True
+                    print('Model: {}, PCA: {}, Standard: {}, SMOTE: {}, Tune: {}, Param_load: {}'.format(args.model, args.pca, args.standard, args.smote, args.tune, args.param_load))
                     acc, pre, rec, f1 = main(args)
-                    df_row = pd.DataFrame({'model': [args.model], 'pca': [args.pca], 'standard': [args.standard], 'tune': [args.tune], 'accuracy': [acc], 'precision': [pre], 'recall': [rec], 'f1': [f1]})
-                    df = pd.concat([df, df_row], axis=0)
-                    print(df)
+                    if args.tune == None:
+                        df_row = pd.DataFrame({'model': [args.model], 'pca': [args.pca], 'standard': [args.standard], 'accuracy': [acc], 'precision': [pre], 'recall': [rec], 'f1': [f1]})
+                        df = pd.concat([df, df_row], axis=0)
+                        print(df)
     df.to_csv('result.csv', index=False)
