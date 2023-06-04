@@ -18,7 +18,25 @@ class Dataset():
 
     def get(self):
         return self.x, self.y
-
+    
+    def PCA_pipeline(self, args, train_dataset, test_dataset):
+        original_dim = train_dataset.x.shape[1]
+        
+        # Standardization
+        scaler = StandardScaler()
+        scaler.fit(train_dataset.x)
+        train_dataset.x = scaler.transform(train_dataset.x)
+        if test_dataset != None:
+            test_dataset.x = scaler.transform(test_dataset.x)
+        
+        # PCA
+        pca = PCA(n_components=args.n_components)
+        pca.fit(train_dataset.x)
+        train_dataset.x = pca.transform(train_dataset.x)
+        if test_dataset != None:
+            test_dataset.x = pca.transform(test_dataset.x)
+        pca_dim = train_dataset.x.shape[1]
+        print(f'<< PCA: {original_dim} -> {pca_dim} >>')
 
 class FireDataset(Dataset):
     def __init__(self, args):
@@ -52,20 +70,5 @@ class FireDataset(Dataset):
         return kfold.split(self.x, self.y)
 
 
-def PCA_pipeline(args, train_dataset, test_dataset):
-    original_dim = train_dataset.x.shape[1]
-    
-    # Standardization
-    scaler = StandardScaler()
-    scaler.fit(train_dataset.x)
-    train_dataset.x = scaler.transform(train_dataset.x)
-    test_dataset.x = scaler.transform(test_dataset.x)
-    
-    # PCA
-    pca = PCA(n_components=args.n_components)
-    pca.fit(train_dataset.x)
-    train_dataset.x = pca.transform(train_dataset.x)
-    test_dataset.x = pca.transform(test_dataset.x)
-    pca_dim = train_dataset.x.shape[1]
-    print(f'<< PCA: {original_dim} -> {pca_dim} >>')
+
     

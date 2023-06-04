@@ -1,7 +1,6 @@
 import os
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
 
-
 def tune(args, model, train_dataset):
     params = load_param_range(args)
     if args.tune == 'grid':
@@ -12,6 +11,8 @@ def tune(args, model, train_dataset):
     else:
         raise ValueError('Unknown hyperparameters tuning method.')
 
+    if args.pca:
+        train_dataset.PCA_pipeline(args, train_dataset, None)
     search.fit(train_dataset.x, train_dataset.y)
 
     # print SearchCV name

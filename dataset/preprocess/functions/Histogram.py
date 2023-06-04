@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 
 
-df = pd.read_csv("../data/FireDataset.csv")
+df = pd.read_csv("./dataset/preprocessed.csv")
 
 
 columns_to_standardize = df.columns

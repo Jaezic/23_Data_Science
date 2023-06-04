@@ -5,7 +5,7 @@ import pprint
 from sklearn.decomposition import PCA
 from sklearn.model_selection import GridSearchCV
 from config import argument_parser
-from dataset.Dataset import Dataset, FireDataset, PCA_pipeline
+from dataset.Dataset import Dataset, FireDataset
 from models.model import build_model
 from tools.evaluate import evaluate
 from tools.smote import smote
@@ -71,8 +71,11 @@ def main(args):
 
     
 def pipeline(args, model, train_dataset, test_dataset):
+    if args.pca and args.standard == False:
+        raise ValueError('PCA must be used with standardization')
+        
     if args.pca:
-        PCA_pipeline(args, train_dataset, test_dataset)
+        FireDataset.PCA_pipeline(args, train_dataset, test_dataset)
 
     if args.smote:
         train_dataset.x, train_dataset.y = smote(args,train_dataset.x, train_dataset.y)
