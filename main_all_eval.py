@@ -118,7 +118,11 @@ if __name__ == '__main__':
                     else:
                         args.param_load = True
                     print('Model: {}, PCA: {}, Standard: {}, SMOTE: {}, Tune: {}, Param_load: {}'.format(args.model, args.pca, args.standard, args.smote, args.tune, args.param_load))
-                    acc, pre, rec, f1 = main(args)
+                    try:
+                        acc, pre, rec, f1 = main(args)
+                    except:
+                        print('Error')
+                        continue
                     if args.tune == None:
                         df_row = pd.DataFrame({'model': [args.model], 'pca': [args.pca], 'standard': [args.standard], 'accuracy': [acc], 'precision': [pre], 'recall': [rec], 'f1': [f1]})
                         df = pd.concat([df, df_row], axis=0)
