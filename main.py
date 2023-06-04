@@ -75,7 +75,7 @@ def pipeline(args, model, train_dataset, test_dataset):
         raise ValueError('PCA must be used with standardization')
         
     if args.pca:
-        FireDataset.PCA_pipeline(args, train_dataset, test_dataset)
+        train_dataset.PCA_pipeline(args, train_dataset, test_dataset)
 
     if args.smote:
         train_dataset.x, train_dataset.y = smote(args,train_dataset.x, train_dataset.y)
