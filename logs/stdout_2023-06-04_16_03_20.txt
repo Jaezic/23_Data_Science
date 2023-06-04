@@ -1,0 +1,40 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('param_path', './models/config'),
+             ('seed', 64),
+             ('eval', 'holdout'),
+             ('redirector', True),
+             ('visual', True),
+             ('model', 'knn'),
+             ('param_load', False),
+             ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
+             ('tune', None),
+             ('n_iter', 10),
+             ('cv', 5),
+             ('pca', False),
+             ('n_components', 0.95),
+             ('n_split', 5),
+             ('num_class', 3)])
+------------------------------------------------------------
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_5km', 'within_10km', 'within_30km', 'within_5km_fact', 'within_10km_fact', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+KNeighborsClassifier()
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.3813, Recall: 0.3836, Precision: 0.3850, F1 Score: 0.3784
+Confusion Matrix: 
+ [[324 211 113]
+ [282 242 175]
+ [254 221 208]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.38      0.50      0.43       648
+         1.0       0.36      0.35      0.35       699
+         2.0       0.42      0.30      0.35       683
+
+    accuracy                           0.38      2030
+   macro avg       0.39      0.38      0.38      2030
+weighted avg       0.38      0.38      0.38      2030
+
