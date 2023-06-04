@@ -1,0 +1,118 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('param_path', './models/config'),
+             ('seed', 64),
+             ('eval', 'kfold'),
+             ('redirector', True),
+             ('visual', False),
+             ('model', 'dt'),
+             ('voting', True),
+             ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
+             ('tune', None),
+             ('cv', 10),
+             ('pca', False),
+             ('n_components', 0.95),
+             ('n_split', 10),
+             ('target_number', 3)])
+------------------------------------------------------------
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_5km', 'within_10km', 'within_30km', 'within_5km_fact', 'within_10km_fact', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+Loaded Hyperparameters
+{'max_depth': 2, 'min_samples_leaf': 1, 'min_samples_split': 2}
+DecisionTreeClassifier(max_depth=2, random_state=64)
+------------------------------------------------------------
+Not Found Hyperparameters File
+KNeighborsClassifier()
+------------------------------------------------------------
+Not Found Hyperparameters File
+RandomForestClassifier(random_state=64)
+------------------------------------------------------------
+Not Found Hyperparameters File
+AdaBoostClassifier(random_state=64)
+------------------------------------------------------------
+Not Found Hyperparameters File
+GradientBoostingClassifier(random_state=64)
+------------------------------------------------------------
+Not Found Hyperparameters File
+VotingClassifier(estimators=[('dt',
+                              DecisionTreeClassifier(max_depth=2,
+                                                     random_state=64)),
+                             ('knn', KNeighborsClassifier()),
+                             ('rf', RandomForestClassifier(random_state=64)),
+                             ('ab', AdaBoostClassifier(random_state=64)),
+                             ('gb',
+                              GradientBoostingClassifier(random_state=64))])
+------------------------------------------------------------
+Fold 0
+Evaluation on test set, 
+ Accuracy: 0.4276, Recall: 0.4284, Precision: 0.4276, F1 Score: 0.4267
+Confusion Matrix: 
+ [[146  82 102]
+ [101 123 123]
+ [ 71 102 165]]
+Fold 1
+Evaluation on test set, 
+ Accuracy: 0.4246, Recall: 0.4253, Precision: 0.4260, F1 Score: 0.4255
+Confusion Matrix: 
+ [[140  98  80]
+ [ 86 138 128]
+ [ 80 112 153]]
+Fold 2
+Evaluation on test set, 
+ Accuracy: 0.4079, Recall: 0.4085, Precision: 0.4106, F1 Score: 0.4081
+Confusion Matrix: 
+ [[130 125  89]
+ [ 88 132 121]
+ [ 72 106 152]]
+Fold 3
+Evaluation on test set, 
+ Accuracy: 0.4542, Recall: 0.4552, Precision: 0.4585, F1 Score: 0.4549
+Confusion Matrix: 
+ [[153 122  83]
+ [ 83 155 100]
+ [ 62 104 153]]
+Fold 4
+Evaluation on test set, 
+ Accuracy: 0.4266, Recall: 0.4288, Precision: 0.4328, F1 Score: 0.4277
+Confusion Matrix: 
+ [[145 120  90]
+ [ 79 140 132]
+ [ 60 101 148]]
+Fold 5
+Evaluation on test set, 
+ Accuracy: 0.4493, Recall: 0.4482, Precision: 0.4517, F1 Score: 0.4493
+Confusion Matrix: 
+ [[185 102  73]
+ [ 89 130 123]
+ [ 52 120 141]]
+Fold 6
+Evaluation on test set, 
+ Accuracy: 0.4217, Recall: 0.4222, Precision: 0.4218, F1 Score: 0.4216
+Confusion Matrix: 
+ [[133 109  89]
+ [100 137 114]
+ [ 75 100 158]]
+Fold 7
+Evaluation on test set, 
+ Accuracy: 0.4207, Recall: 0.4199, Precision: 0.4197, F1 Score: 0.4197
+Confusion Matrix: 
+ [[138  92  94]
+ [ 94 125 115]
+ [ 88 105 164]]
+Fold 8
+Evaluation on test set, 
+ Accuracy: 0.4493, Recall: 0.4441, Precision: 0.4483, F1 Score: 0.4446
+Confusion Matrix: 
+ [[157 113  87]
+ [ 77 108 111]
+ [ 67 104 191]]
+Fold 9
+Evaluation on test set, 
+ Accuracy: 0.4552, Recall: 0.4498, Precision: 0.4486, F1 Score: 0.4488
+Confusion Matrix: 
+ [[130  97  79]
+ [ 93 123 115]
+ [ 80  89 209]]
+Average metrics:
+ Accuracy: 0.4337, Precision: 0.4346, Recall: 0.4330, F1: 0.4327

@@ -1,0 +1,28 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('param_path', './models/config'),
+             ('seed', 64),
+             ('eval', 'kfold'),
+             ('redirector', True),
+             ('visual', False),
+             ('model', 'dt'),
+             ('tune', 'grid'),
+             ('cv', 10),
+             ('pca', False),
+             ('n_components', 0.95),
+             ('n_split', 10),
+             ('target_number', 3)])
+------------------------------------------------------------
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_5km', 'within_10km', 'within_30km', 'within_5km_fact', 'within_10km_fact', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+DecisionTreeClassifier(random_state=64)
+------------------------------------------------------------
+Tunning - Loaded Hyperparameters Range
+{'min_samples_leaf': [1, 2, 3, 4, 5, 6, 7, 8, 9], 'max_depth': [2, 3, 4, 5, 6, None], 'min_samples_split': [2, 3, 4, 5, 6, 7, 8, 9, 10]}
+------------------------------------------------------------
+GridSearchCV
+Best Parameter
+  {'max_depth': 2, 'min_samples_leaf': 1, 'min_samples_split': 2}
+ Best Score : 0.38364532019704434
+Tunning - Saved Hyperparameters [./models/config]

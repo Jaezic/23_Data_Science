@@ -1,4 +1,4 @@
-from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier, RandomForestClassifier
+from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier, RandomForestClassifier, VotingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
@@ -7,7 +7,8 @@ import os
 
 
 def build_model(args):
-    if args.tune == None:
+    p = {}
+    if args.model != 'voting':
         p = load_param(args)
     if args.model == 'dt':
         model = DecisionTreeClassifier(random_state=args.seed, **p)
@@ -21,15 +22,28 @@ def build_model(args):
         model = AdaBoostClassifier(random_state=args.seed, **p)
     elif args.model == 'gb':
         model = GradientBoostingClassifier(random_state=args.seed, **p)
+    elif args.model == 'voting':
+        models = []
+        if args.voting_list == None or len(args.voting_list) == 0:
+            raise ValueError('Empty voting list')
+        for model in args.voting_list:
+            args.model = model
+            models.append((args.model, build_model(args)))
+        args.model = 'voting'
+        p = load_param(args)
+        model = VotingClassifier(estimators=models, **p)
     else:
         raise ValueError(f'Unknown model: {args.model}')
-
+    print(model)
+    print('-' * 60)
     return model
 
 
 def load_param(args):
+    if args.tune != None:
+        return {}
     try:
-        with open(os.path.join(args.param_path,args.model+'_tune'), 'r') as f:
+        with open(os.path.join(args.param_path, args.model+'_tune'), 'r') as f:
             parmas = dict(eval(f.read()))
             print('Loaded Hyperparameters')
             print(parmas)

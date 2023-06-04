@@ -7,7 +7,7 @@ def tune(args, model, train_dataset):
     if args.tune == 'grid':
         search = GridSearchCV(model, params, cv=args.cv)
     elif args.tune == 'random':
-        search = RandomizedSearchCV(model, params, cv=args.cv)
+        search = RandomizedSearchCV(model, params, cv=args.cv, n_iter=args.n_iter, random_state=args.seed)
     else:
         raise ValueError('Unknown hyperparameters tuning method.')
 
@@ -27,11 +27,9 @@ def load_param_range(args):
             print('Tunning - Loaded Hyperparameters Range')
             print(params)
     except FileNotFoundError:
-        print('Tunning - Not Found Hyperparameters Range File')
-        params = {}
+        raise ValueError('Tunning - Not Found Hyperparameters Range File')
     except SyntaxError:
-        print('Tunning - Syntax Error Hyperparameters Range File')
-        params = {}
+        raise ValueError('Tunning - Syntax Error Hyperparameters Range File')
     print('-' * 60)
     return params
 

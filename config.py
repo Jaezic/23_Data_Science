@@ -14,13 +14,18 @@ def argument_parser():
     parser.add_argument("--redirector", action='store_false')
     parser.add_argument("--visual", action='store_true', default=False)
 
-    # 'dt'(decision tree), 'lr'(logistic regression), 'knn'(k-nearest neighbors), 'rf'(random forest), 'ab'(AdaBoost), 'gb'(gradient boosting)
-    parser.add_argument("--model", type=str, default='dt')
+    # 'dt'(decision tree), 'lr'(logistic regression), 'knn'(k-nearest neighbors), 'rf'(random forest), 'ab'(AdaBoost), 'gb'(gradient boosting), 'voting' (voting classifier)
+    parser.add_argument("--model", type=str, default='voting')
+
+    # Voting model list
+    parser.add_argument("--voting_list", type=str, nargs='+',
+                        default=['dt', 'knn', 'rf', 'ab', 'gb'], help='Example: --voting_list dt lr knn rf ab gb')
 
     # Hyperparameters tuning
     # 'grid'(grid search), 'random'(random search), None
-    parser.add_argument("--tune", type=str, default=None)
-    parser.add_argument("--cv", type=int, default=5)
+    parser.add_argument("--tune", type=str, default='random')
+    parser.add_argument("--n_iter", type=int, default=10)
+    parser.add_argument("--cv", type=int, default=10)
 
     # PCA
     parser.add_argument("--pca", action='store_true', default=False)

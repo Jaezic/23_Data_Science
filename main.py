@@ -33,14 +33,13 @@ def main(args):
     print(f'Features name : {dataset.x_name}')
     print(f'Target name : {dataset.y_name}')
     print('-' * 60)
+
     # Model setup
     model = build_model(args)
-    print(model)
-    print('-' * 60)
 
     # Train and evaluate
     if args.tune != None:
-        dataset = dataset.get_all();
+        dataset = dataset.get_all()
         tune(args, model, dataset)
 
     elif args.eval == 'holdout' or args.tune != None:
