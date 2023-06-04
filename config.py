@@ -14,12 +14,12 @@ def argument_parser():
     parser.add_argument("--redirector", action='store_false')
     parser.add_argument("--visual", action='store_true', default=False)
 
-    # dt(decision tree), lr(logistic regression), knn(k-nearest neighbors), rf(random forest), ab(AdaBoost), gb(gradient boosting)
+    # 'dt'(decision tree), 'lr'(logistic regression), 'knn'(k-nearest neighbors), 'rf'(random forest), 'ab'(AdaBoost), 'gb'(gradient boosting)
     parser.add_argument("--model", type=str, default='dt')
 
     # Hyperparameters tuning
-    # grid(grid search), random(random search), None
-    parser.add_argument("--tune", type=str, default='grid')
+    # 'grid'(grid search), 'random'(random search), None
+    parser.add_argument("--tune", type=str, default=None)
     parser.add_argument("--cv", type=int, default=5)
 
     # PCA

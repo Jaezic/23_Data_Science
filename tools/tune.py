@@ -17,6 +17,7 @@ def tune(args, model, train_dataset):
     print(search.__class__.__name__)
     print('Best Parameter\n ', search.best_params_)
     print(' Best Score :', search.best_score_)
+    save_param(args, search.best_params_)
 
 
 def load_param_range(args):
@@ -33,3 +34,13 @@ def load_param_range(args):
         params = {}
     print('-' * 60)
     return params
+
+
+def save_param(args, dict):
+    try:
+        with open(os.path.join(args.param_path, args.model+'_tune'), 'w') as f:
+            f.write(str(dict))
+            print(
+                'Tunning - Saved Hyperparameters [' + args.param_path +']')
+    except SyntaxError:
+        print('Tunning - Syntax Error Hyperparameters Range File')

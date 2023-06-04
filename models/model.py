@@ -7,7 +7,8 @@ import os
 
 
 def build_model(args):
-    p = load_param(args)
+    if args.tune == None:
+        p = load_param(args)
     if args.model == 'dt':
         model = DecisionTreeClassifier(random_state=args.seed, **p)
     elif args.model == 'lr':
