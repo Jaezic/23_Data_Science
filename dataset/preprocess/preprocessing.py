@@ -2,6 +2,7 @@ import argparse
 
 import pandas as pd
 from sklearn.calibration import LabelEncoder
+from sklearn.discriminant_analysis import StandardScaler
 from sklearn.preprocessing import KBinsDiscretizer
 
 
@@ -15,8 +16,9 @@ def preprocessing(args, df):
     df['ocurcause'] = le.fit_transform(df['ocurcause'])
     df['ocurdo'] = le.fit_transform(df['ocurdo'])
     # df.drop(['diravg'], axis=1, inplace=True)
-    df.drop(['ocurcause'], axis=1, inplace=True)
-    df.drop(['ocurdo'], axis=1, inplace=True)
+    #df.drop(['ocurcause','ocurdo'], axis=1, inplace=True)
+    df.drop(['within_5km', 'within_10km', 'within_5km_fact',
+            'within_10km_fact'], axis=1, inplace=True)
 
     # df = df.loc[:,['height', 'within_5km', 'within_10km','within_30km', 'windavg','tempavg','scale_damage']]
     # Binning (scale_damage)
@@ -24,6 +26,13 @@ def preprocessing(args, df):
         n_bins=args.num_class, encode='ordinal', strategy='uniform')
     df['scale_damage'] = discretizer.fit_transform(
         df['scale_damage'].values.reshape(-1, 1))
+
+    # Standardization
+    if args.standard:
+        scaler = StandardScaler()
+        scaler.fit(df.drop(['scale_damage'], axis=1))
+        df[df.drop(['scale_damage'], axis=1).columns] = scaler.transform(
+            df.drop(['scale_damage'], axis=1))
 
     return df
 

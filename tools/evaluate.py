@@ -1,4 +1,4 @@
-from sklearn.metrics import classification_report, confusion_matrix, f1_score, mean_squared_error, accuracy_score, precision_score, recall_score, roc_curve
+from sklearn.metrics import classification_report, confusion_matrix, f1_score, mean_squared_error, accuracy_score, precision_score, recall_score, roc_curve, silhouette_score
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -19,10 +19,10 @@ def evaluate(args, model, predict, y):
               metrics.f1))
 
     # Visualization Confusion Matrix
-    confusion = confusion_matrix(predict, y)
+    confusion = confusion_matrix(predict, y, labels=range(args.num_class), normalize='true')
     print('Confusion Matrix: \n', confusion)
     if args.visual:
-        sns.heatmap(confusion, annot=True, fmt='d')
+        sns.heatmap(confusion, annot=True)
         plt.show()
 
     # Classification Report
@@ -38,7 +38,6 @@ def evaluate(args, model, predict, y):
             plt.ylabel('True Positive Rate')
             plt.title('ROC Curve positive label '+str(i))
             plt.show()
-
     return metrics
 
 

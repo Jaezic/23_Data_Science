@@ -36,7 +36,7 @@ class FireDataset(Dataset):
         self.y_name = ['scale_damage']
 
         self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(
-            self.x, self.y, test_size=0.2, random_state=args.seed)
+            self.x, self.y, test_size=0.2, random_state=args.seed, stratify=self.y, shuffle=True)
     def get_all(self):
         return Dataset(self.x, self.y)
 
