@@ -23,11 +23,10 @@ class FireDataset(Dataset):
         self.args = args
         df = pd.read_csv(args.data_path, na_filter=True,
                          keep_default_na=False, na_values=[''])
-        df = preprocessing(df)
+        df = preprocessing(args, df)
 
         df.to_csv('./dataset/preprocessed.csv', index=False)
         y = df['scale_damage'].values
-        print(y)
         x = df.drop(['scale_damage'], axis=1).values
         super().__init__(x, y)
         

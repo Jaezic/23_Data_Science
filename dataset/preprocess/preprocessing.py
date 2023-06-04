@@ -5,7 +5,7 @@ from sklearn.calibration import LabelEncoder
 from sklearn.preprocessing import KBinsDiscretizer
 
 
-def preprocessing(df):
+def preprocessing(args, df):
     feature_Engineering(df)
 
     # Label Encoding
@@ -21,7 +21,7 @@ def preprocessing(df):
     # df = df.loc[:,['height', 'within_5km', 'within_10km','within_30km', 'windavg','tempavg','scale_damage']]
     # Binning (scale_damage)
     discretizer = KBinsDiscretizer(
-        n_bins=3, encode='ordinal', strategy='quantile')
+        n_bins=args.target_number, encode='ordinal', strategy='quantile')
     df['scale_damage'] = discretizer.fit_transform(
         df['scale_damage'].values.reshape(-1, 1))
     return df

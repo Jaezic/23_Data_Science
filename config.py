@@ -13,7 +13,10 @@ def argument_parser():
     parser.add_argument("--redirector", action='store_false')
     parser.add_argument("--visual", action='store_true', default=False)
 
+    # dt(decision tree), lr(logistic regression), knn(k-nearest neighbors), rf(random forest), ab(AdaBoost), gb(gradient boosting)
+    
+    parser.add_argument("--model", type=str, default='ab')
     # K-fold, split number
     parser.add_argument("--n_split", type=int, default=10)
-
+    parser.add_argument("--target_number", type=int, default=3)
     return parser

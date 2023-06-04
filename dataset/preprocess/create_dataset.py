@@ -35,7 +35,7 @@ def main(args):
     within_10km = np.sum(distance <= 10, axis=1).astype(np.float64)
     within_30km = np.sum(distance <= 30, axis=1).astype(np.float64)
 
-    # # Calculate FireFacility Number Based on Distance
+    # Calculate FireFacility Number Based on Distance
     FF_ll_df = pd.read_csv(args.FireFacility_latlong_root, encoding='cp949')
     FF_ll_df.rename(columns={'위도': 'latitude'}, inplace=True)
     FF_ll_df.rename(columns={'경도': 'longitude'}, inplace=True)
@@ -51,8 +51,8 @@ def main(args):
     MH_ll_df.rename(columns={'위도(N)': 'latitude'}, inplace=True)
     MH_ll_df.rename(columns={'경도(E)': 'longitude'}, inplace=True)
     distance = calculate_distance(FS_ll_df, MH_ll_df)
-    # find nearest mountain height(MH_ll_df['높이(m)']) based on distance variable
 
+    # find nearest mountain height(MH_ll_df['높이(m)']) based on distance variable
     minindex = distance.argmin(axis=1)
     heights = MH_ll_df['높이(m)'][minindex].values
 
@@ -62,10 +62,10 @@ def main(args):
     within_5km[is_all_nan] = np.nan
     within_10km[is_all_nan] = np.nan
     within_30km[is_all_nan] = np.nan
-    
+    FS_df['exintgtm'].replace(' ', np.nan, inplace=True)
 
     # Feature Selection
-    columns_to_drop = ['Unnamed: 0', 'extingdt', 
+    columns_to_drop = ['Unnamed: 0', 'extingdt',
                        'ocurdt', 'ocuremd', 'ocurgm', 'ocurjibun', 'ocurri', 'ocursgg', 'ocuryoil', 'ownersec']
     FS_df = FS_df.drop(columns_to_drop, axis=1)
 
@@ -80,7 +80,6 @@ def main(args):
     FS_df['height'] = heights
 
     # Drop NaNs
-    FS_df['exintgtm'].replace(' ', np.nan, inplace=True)
     FS_df = FS_df.dropna(axis=0, how='any')
 
     # Calculate Scale Damage
@@ -92,7 +91,7 @@ def main(args):
     column.append('scale_damage')
     FS_df = FS_df[column]
 
-
+    # Drop Unnecessary Columns
     FS_df = FS_df.drop(['dmgarea', 'dmgmoney', 'exintgtm'], axis=1)
 
     FS_df.to_csv('./dataset/FireDataset.csv', index=False)
