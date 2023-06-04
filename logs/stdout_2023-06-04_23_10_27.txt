@@ -1,0 +1,56 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('param_path', './models/config'),
+             ('seed', 64),
+             ('eval', 'holdout'),
+             ('redirector', True),
+             ('visual', False),
+             ('model', 'voting'),
+             ('param_load', False),
+             ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
+             ('tune', None),
+             ('n_iter', 10),
+             ('cv', 5),
+             ('pca', False),
+             ('n_components', 0.95),
+             ('smote', False),
+             ('n_split', 5),
+             ('num_class', 3)])
+------------------------------------------------------------
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_5km', 'within_10km', 'within_30km', 'within_5km_fact', 'within_10km_fact', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+DecisionTreeClassifier(random_state=64)
+------------------------------------------------------------
+KNeighborsClassifier()
+------------------------------------------------------------
+RandomForestClassifier(random_state=64)
+------------------------------------------------------------
+AdaBoostClassifier(random_state=64)
+------------------------------------------------------------
+GradientBoostingClassifier(random_state=64)
+------------------------------------------------------------
+VotingClassifier(estimators=[('dt', DecisionTreeClassifier(random_state=64)),
+                             ('knn', KNeighborsClassifier()),
+                             ('rf', RandomForestClassifier(random_state=64)),
+                             ('ab', AdaBoostClassifier(random_state=64)),
+                             ('gb',
+                              GradientBoostingClassifier(random_state=64))])
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.5828, Recall: 0.4075, Precision: 0.5280, F1 Score: 0.3797
+Confusion Matrix: 
+ [[205   5 439]
+ [ 52   4 234]
+ [117   0 974]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.55      0.32      0.40       649
+         1.0       0.44      0.01      0.03       290
+         2.0       0.59      0.89      0.71      1091
+
+    accuracy                           0.58      2030
+   macro avg       0.53      0.41      0.38      2030
+weighted avg       0.56      0.58      0.51      2030
+

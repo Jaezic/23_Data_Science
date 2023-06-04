@@ -3,7 +3,7 @@ import argparse
 import pandas as pd
 from sklearn.calibration import LabelEncoder
 from sklearn.preprocessing import KBinsDiscretizer
-from imblearn.over_sampling import SMOTE
+
 
 def preprocessing(args, df):
     feature_Engineering(df)
@@ -24,10 +24,7 @@ def preprocessing(args, df):
         n_bins=args.num_class, encode='ordinal', strategy='uniform')
     df['scale_damage'] = discretizer.fit_transform(
         df['scale_damage'].values.reshape(-1, 1))
-    
-    # do SMOTE
-    df = smote(df)
-    
+
     return df
 
 
@@ -54,20 +51,3 @@ def feature_Engineering(df):
             'riskmax', 'riskavg'], axis=1, inplace=True)
     df['ocurdo'] = df['ocurdo'].replace('출북', '충북')
     df['ocurdo'] = df['ocurdo'].replace('서부', '전북')
-
-
-def smote(df):
-    X = df.drop('scale_damage', axis=1)
-    y = df['scale_damage']
-
-    # using SMOTE
-    smote = SMOTE()
-    X_resampled, y_resampled = smote.fit_resample(X, y)
-
-    # update dataframe
-    scale_damage_resampled = pd.Series(y_resampled)
-    data_resampled = X_resampled.copy()
-    data_resampled['scale_damage'] = scale_damage_resampled
-    
-    return data_resampled
-

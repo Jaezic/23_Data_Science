@@ -1,0 +1,41 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('param_path', './models/config'),
+             ('seed', 64),
+             ('eval', 'holdout'),
+             ('redirector', True),
+             ('visual', False),
+             ('model', 'dt'),
+             ('param_load', False),
+             ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
+             ('tune', None),
+             ('n_iter', 10),
+             ('cv', 5),
+             ('pca', False),
+             ('n_components', 0.95),
+             ('smote', True),
+             ('n_split', 5),
+             ('num_class', 3)])
+------------------------------------------------------------
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_5km', 'within_10km', 'within_30km', 'within_5km_fact', 'within_10km_fact', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+DecisionTreeClassifier(random_state=64)
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.4502, Recall: 0.3803, Precision: 0.3795, F1 Score: 0.3787
+Confusion Matrix: 
+ [[283 112 254]
+ [ 96  50 144]
+ [333 177 581]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.40      0.44      0.42       649
+         1.0       0.15      0.17      0.16       290
+         2.0       0.59      0.53      0.56      1091
+
+    accuracy                           0.45      2030
+   macro avg       0.38      0.38      0.38      2030
+weighted avg       0.47      0.45      0.46      2030
+

@@ -1,0 +1,1 @@
+{'algorithm': 'SAMME.R', 'learning_rate': 0.99, 'n_estimators': 30}

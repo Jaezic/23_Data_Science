@@ -8,6 +8,7 @@ from config import argument_parser
 from dataset.Dataset import Dataset, FireDataset, PCA_pipeline
 from models.model import build_model
 from tools.evaluate import evaluate
+from tools.smote import smote
 from tools.tune import tune
 from tools.utils import ReDirectSTD, set_seed, time_str
 from tools.visualization import visual
@@ -73,6 +74,8 @@ def pipeline(args, model, train_dataset, test_dataset):
     if args.pca:
         PCA_pipeline(args, train_dataset, test_dataset)
 
+    if args.smote:
+        train_dataset.x, train_dataset.y = smote(train_dataset.x, train_dataset.y)
     model.fit(train_dataset.x, train_dataset.y)
 
     y = model.predict(test_dataset.x)

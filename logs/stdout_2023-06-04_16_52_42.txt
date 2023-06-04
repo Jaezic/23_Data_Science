@@ -1,0 +1,31 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('param_path', './models/config'),
+             ('seed', 64),
+             ('eval', 'holdout'),
+             ('redirector', True),
+             ('visual', True),
+             ('model', 'ab'),
+             ('param_load', False),
+             ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
+             ('tune', 'grid'),
+             ('n_iter', 10),
+             ('cv', 5),
+             ('pca', False),
+             ('n_components', 0.95),
+             ('n_split', 5),
+             ('num_class', 3)])
+------------------------------------------------------------
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_5km', 'within_10km', 'within_30km', 'within_5km_fact', 'within_10km_fact', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+AdaBoostClassifier(random_state=64)
+------------------------------------------------------------
+Tunning - Loaded Hyperparameters Range
+{'n_estimators': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 20, 30], 'algorithm': ['SAMME', 'SAMME.R'], 'learning_rate': [0.97, 0.98, 0.99, 1.0, 1.01, 1.02, 1.03, 1.04]}
+------------------------------------------------------------
+GridSearchCV
+Best Parameter
+  {'algorithm': 'SAMME.R', 'learning_rate': 0.99, 'n_estimators': 30}
+ Best Score : 0.39733990147783255
+Tunning - Saved Hyperparameters [./models/config]
