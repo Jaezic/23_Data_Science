@@ -1,10 +1,14 @@
 from collections import OrderedDict
 import os
 import pprint
+
+from sklearn.decomposition import PCA
+from sklearn.model_selection import GridSearchCV
 from config import argument_parser
-from dataset.Dataset import Dataset, FireDataset
+from dataset.Dataset import Dataset, FireDataset, PCA_pipeline
 from models.model import build_model
 from tools.evaluate import evaluate
+from tools.tune import tune
 from tools.utils import ReDirectSTD, set_seed, time_str
 from tools.visualization import visual
 
@@ -35,7 +39,15 @@ def main(args):
     print('-' * 60)
 
     # Train and evaluate
-    if args.eval == 'kfold':
+    if args.tune != None:
+        dataset = dataset.get_all();
+        tune(args, model, dataset)
+    elif args.eval == 'holdout' or args.tune != None:
+        train_dataset = dataset.get_train()
+        test_dataset = dataset.get_test()
+
+        metrics = pipeline(args, model, train_dataset, test_dataset)
+    elif args.eval == 'kfold':
         kfold = dataset.get_kfold()
         metrics_list = []
         for i, (train_index, test_index) in enumerate(kfold):
@@ -56,14 +68,11 @@ def main(args):
             sum([m.f1 for m in metrics_list]) / len(metrics_list)
         ))
 
-    elif args.eval == 'holdout':
-        train_dataset = dataset.get_train()
-        test_dataset = dataset.get_test()
-
-        metrics = pipeline(args, model, train_dataset, test_dataset)
-
 
 def pipeline(args, model, train_dataset, test_dataset):
+    if args.pca:
+        PCA_pipeline(args, train_dataset, test_dataset)
+
     model.fit(train_dataset.x, train_dataset.y)
 
     y = model.predict(test_dataset.x)
