@@ -1,9 +1,9 @@
 from imblearn.over_sampling import SMOTE
 
-def smote(X,y):
+def smote(args,X,y):
 
     # using SMOTE
-    smote = SMOTE()
+    smote = SMOTE(random_state=args.seed)
     X_resampled, y_resampled = smote.fit_resample(X, y)
 
     # # update dataframe

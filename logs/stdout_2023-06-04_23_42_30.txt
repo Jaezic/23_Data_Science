@@ -1,0 +1,221 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('param_path', './models/config'),
+             ('seed', 64),
+             ('redirector', True),
+             ('visual', False),
+             ('model', 'voting'),
+             ('param_load', False),
+             ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
+             ('tune', None),
+             ('n_iter', 10),
+             ('cv', 5),
+             ('pca', False),
+             ('n_components', 0.95),
+             ('smote', False),
+             ('eval', 'kfold'),
+             ('n_split', 10),
+             ('num_class', 3)])
+------------------------------------------------------------
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+DecisionTreeClassifier(random_state=64)
+------------------------------------------------------------
+KNeighborsClassifier()
+------------------------------------------------------------
+RandomForestClassifier(random_state=64)
+------------------------------------------------------------
+AdaBoostClassifier(random_state=64)
+------------------------------------------------------------
+GradientBoostingClassifier(random_state=64)
+------------------------------------------------------------
+VotingClassifier(estimators=[('dt', DecisionTreeClassifier(random_state=64)),
+                             ('knn', KNeighborsClassifier()),
+                             ('rf', RandomForestClassifier(random_state=64)),
+                             ('ab', AdaBoostClassifier(random_state=64)),
+                             ('gb',
+                              GradientBoostingClassifier(random_state=64))])
+------------------------------------------------------------
+Fold 0
+Evaluation on test set, 
+ Accuracy: 0.5704, Recall: 0.4066, Precision: 0.6167, F1 Score: 0.3787
+Confusion Matrix: 
+ [[0.32121212 0.0030303  0.67575758]
+ [0.22666667 0.02       0.75333333]
+ [0.12149533 0.         0.87850467]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.52      0.32      0.40       330
+         1.0       0.75      0.02      0.04       150
+         2.0       0.58      0.88      0.70       535
+
+    accuracy                           0.57      1015
+   macro avg       0.62      0.41      0.38      1015
+weighted avg       0.59      0.57      0.50      1015
+
+Fold 1
+Evaluation on test set, 
+ Accuracy: 0.6020, Recall: 0.4251, Precision: 0.5958, F1 Score: 0.4053
+Confusion Matrix: 
+ [[0.37617555 0.0031348  0.62068966]
+ [0.14285714 0.02142857 0.83571429]
+ [0.1205036  0.00179856 0.87769784]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.58      0.38      0.46       319
+         1.0       0.60      0.02      0.04       140
+         2.0       0.61      0.88      0.72       556
+
+    accuracy                           0.60      1015
+   macro avg       0.60      0.43      0.41      1015
+weighted avg       0.60      0.60      0.54      1015
+
+Fold 2
+Evaluation on test set, 
+ Accuracy: 0.5754, Recall: 0.4126, Precision: 0.6377, F1 Score: 0.3914
+Confusion Matrix: 
+ [[0.34682081 0.00289017 0.65028902]
+ [0.25925926 0.02962963 0.71111111]
+ [0.13857678 0.         0.86142322]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.52      0.35      0.42       346
+         1.0       0.80      0.03      0.06       135
+         2.0       0.59      0.86      0.70       534
+
+    accuracy                           0.58      1015
+   macro avg       0.64      0.41      0.39      1015
+weighted avg       0.59      0.58      0.52      1015
+
+Fold 3
+Evaluation on test set, 
+ Accuracy: 0.5695, Recall: 0.4102, Precision: 0.4665, F1 Score: 0.3777
+Confusion Matrix: 
+ [[0.33798883 0.00837989 0.65363128]
+ [0.1971831  0.00704225 0.79577465]
+ [0.11456311 0.         0.88543689]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.58      0.34      0.43       358
+         1.0       0.25      0.01      0.01       142
+         2.0       0.57      0.89      0.69       515
+
+    accuracy                           0.57      1015
+   macro avg       0.47      0.41      0.38      1015
+weighted avg       0.53      0.57      0.50      1015
+
+Fold 4
+Evaluation on test set, 
+ Accuracy: 0.5586, Recall: 0.4093, Precision: 0.5481, F1 Score: 0.3760
+Confusion Matrix: 
+ [[0.32957746 0.0056338  0.66478873]
+ [0.14285714 0.01298701 0.84415584]
+ [0.11462451 0.         0.88537549]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.59      0.33      0.42       355
+         1.0       0.50      0.01      0.03       154
+         2.0       0.55      0.89      0.68       506
+
+    accuracy                           0.56      1015
+   macro avg       0.55      0.41      0.38      1015
+weighted avg       0.56      0.56      0.49      1015
+
+Fold 5
+Evaluation on test set, 
+ Accuracy: 0.5980, Recall: 0.4351, Precision: 0.5235, F1 Score: 0.4020
+Confusion Matrix: 
+ [[0.375      0.         0.625     ]
+ [0.24137931 0.00689655 0.75172414]
+ [0.07254902 0.00392157 0.92352941]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.65      0.38      0.48       360
+         1.0       0.33      0.01      0.01       145
+         2.0       0.59      0.92      0.72       510
+
+    accuracy                           0.60      1015
+   macro avg       0.52      0.44      0.40      1015
+weighted avg       0.57      0.60      0.53      1015
+
+Fold 6
+Evaluation on test set, 
+ Accuracy: 0.5764, Recall: 0.4104, Precision: 0.6264, F1 Score: 0.3861
+Confusion Matrix: 
+ [[0.34036145 0.00301205 0.65662651]
+ [0.16666667 0.02083333 0.8125    ]
+ [0.12987013 0.         0.87012987]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.55      0.34      0.42       332
+         1.0       0.75      0.02      0.04       144
+         2.0       0.58      0.87      0.70       539
+
+    accuracy                           0.58      1015
+   macro avg       0.63      0.41      0.39      1015
+weighted avg       0.59      0.58      0.51      1015
+
+Fold 7
+Evaluation on test set, 
+ Accuracy: 0.5626, Recall: 0.3981, Precision: 0.3658, F1 Score: 0.3654
+Confusion Matrix: 
+ [[0.33024691 0.01234568 0.65740741]
+ [0.18181818 0.         0.81818182]
+ [0.13221601 0.00372439 0.86405959]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.52      0.33      0.40       324
+         1.0       0.00      0.00      0.00       154
+         2.0       0.58      0.86      0.69       537
+
+    accuracy                           0.56      1015
+   macro avg       0.37      0.40      0.37      1015
+weighted avg       0.47      0.56      0.50      1015
+
+Fold 8
+Evaluation on test set, 
+ Accuracy: 0.6128, Recall: 0.4284, Precision: 0.5751, F1 Score: 0.4114
+Confusion Matrix: 
+ [[0.39106145 0.         0.60893855]
+ [0.21100917 0.01834862 0.7706422 ]
+ [0.12043796 0.00364964 0.87591241]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.61      0.39      0.48       358
+         1.0       0.50      0.02      0.04       109
+         2.0       0.61      0.88      0.72       548
+
+    accuracy                           0.61      1015
+   macro avg       0.58      0.43      0.41      1015
+weighted avg       0.60      0.61      0.56      1015
+
+Fold 9
+Evaluation on test set, 
+ Accuracy: 0.6089, Recall: 0.4032, Precision: 0.4387, F1 Score: 0.3828
+Confusion Matrix: 
+ [[0.32026144 0.00653595 0.67320261]
+ [0.20833333 0.00833333 0.78333333]
+ [0.11375212 0.00509338 0.8811545 ]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.52      0.32      0.40       306
+         1.0       0.17      0.01      0.02       120
+         2.0       0.63      0.88      0.74       589
+
+    accuracy                           0.61      1015
+   macro avg       0.44      0.40      0.38      1015
+weighted avg       0.54      0.61      0.55      1015
+
+Average metrics:
+ Accuracy: 0.5834, Precision: 0.5394, Recall: 0.4139, F1: 0.3877

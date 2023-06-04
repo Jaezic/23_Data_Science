@@ -51,7 +51,7 @@ def main(args):
     MH_ll_df.rename(columns={'위도(N)': 'latitude'}, inplace=True)
     MH_ll_df.rename(columns={'경도(E)': 'longitude'}, inplace=True)
     distance = calculate_distance(FS_ll_df, MH_ll_df)
-
+    
     # find nearest mountain height(MH_ll_df['높이(m)']) based on distance variable
     minindex = distance.argmin(axis=1)
     heights = MH_ll_df['높이(m)'][minindex].values
@@ -65,7 +65,7 @@ def main(args):
     FS_df['exintgtm'].replace(' ', np.nan, inplace=True)
 
     # Feature Selection
-    columns_to_drop = ['Unnamed: 0', 'extingdt',
+    columns_to_drop = ['Unnamed: 0', 'extingdt', 
                        'ocurdt', 'ocuremd', 'ocurgm', 'ocurjibun', 'ocurri', 'ocursgg', 'ocuryoil', 'ownersec']
     FS_df = FS_df.drop(columns_to_drop, axis=1)
 
@@ -90,6 +90,7 @@ def main(args):
     column.pop(column.index('scale_damage'))
     column.append('scale_damage')
     FS_df = FS_df[column]
+
 
     # Drop Unnecessary Columns
     FS_df = FS_df.drop(['dmgarea', 'dmgmoney', 'exintgtm'], axis=1)
