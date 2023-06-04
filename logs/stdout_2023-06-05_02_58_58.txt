@@ -1,0 +1,41 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('param_path', './models/config'),
+             ('seed', 64),
+             ('redirector', True),
+             ('visual', False),
+             ('model', 'voting'),
+             ('param_load', False),
+             ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
+             ('tune', None),
+             ('n_iter', 10),
+             ('cv', 5),
+             ('pca', False),
+             ('n_components', 0.95),
+             ('smote', False),
+             ('standard', True),
+             ('eval', 'kfold'),
+             ('n_split', 10),
+             ('num_class', 3)])
+------------------------------------------------------------
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+DecisionTreeClassifier(random_state=64)
+------------------------------------------------------------
+KNeighborsClassifier()
+------------------------------------------------------------
+RandomForestClassifier(random_state=64)
+------------------------------------------------------------
+AdaBoostClassifier(random_state=64)
+------------------------------------------------------------
+GradientBoostingClassifier(random_state=64)
+------------------------------------------------------------
+VotingClassifier(estimators=[('dt', DecisionTreeClassifier(random_state=64)),
+                             ('knn', KNeighborsClassifier()),
+                             ('rf', RandomForestClassifier(random_state=64)),
+                             ('ab', AdaBoostClassifier(random_state=64)),
+                             ('gb',
+                              GradientBoostingClassifier(random_state=64))])
+------------------------------------------------------------
+Fold 0

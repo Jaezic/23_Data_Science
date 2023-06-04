@@ -1,4 +1,4 @@
-from sklearn.metrics import classification_report, confusion_matrix, f1_score, mean_squared_error, accuracy_score, precision_score, recall_score, roc_curve, silhouette_score
+from sklearn.metrics import classification_report, confusion_matrix, f1_score, mean_squared_error, accuracy_score, precision_score, recall_score, roc_auc_score, roc_curve, silhouette_score
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -49,3 +49,4 @@ class Metrics:
         self.recall = recall_score(predict, y, average='macro')
         self.precision = precision_score(predict, y, average='macro')
         self.f1 = f1_score(predict, y, average='macro')
+
