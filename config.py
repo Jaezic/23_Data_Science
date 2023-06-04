@@ -10,14 +10,14 @@ def argument_parser():
     parser.add_argument("--param_path", type=str,
                         default="./models/config")
     parser.add_argument("--seed", type=int, default=64)
-    parser.add_argument("--eval", type=str, default='kfold')  # holdout, kfold,
+    parser.add_argument("--eval", type=str, default='holdout')  # holdout, kfold,
     parser.add_argument("--redirector", action='store_false')
-    parser.add_argument("--visual", action='store_true', default=False)
+    parser.add_argument("--visual", action='store_true', default=True)
 
     # 'dt'(decision tree), 'lr'(logistic regression), 'knn'(k-nearest neighbors), 'rf'(random forest),
     # 'ab'(AdaBoost), 'gb'(gradient boosting), 'voting' (voting classifier), 'bag' (bagging classifier)
     # 'kmeans' (k-means clustering)
-    parser.add_argument("--model", type=str, default='voting')
+    parser.add_argument("--model", type=str, default='knn')
     parser.add_argument("--param_load", action='store_true', default=False)
     # Voting model list
     parser.add_argument("--voting_list", type=str, nargs='+',
@@ -34,7 +34,7 @@ def argument_parser():
     parser.add_argument("--n_components", type=float, default=0.95)
 
     # K-fold, split number
-    parser.add_argument("--n_split", type=int, default=10)
-    parser.add_argument("--target_number", type=int, default=3)
+    parser.add_argument("--n_split", type=int, default=5)
+    parser.add_argument("--num_class", type=int, default=3)
 
     return parser

@@ -24,18 +24,35 @@ def evaluate(args, model, predict, y):
     if args.visual:
         sns.heatmap(confusion, annot=True, fmt='d')
         plt.show()
-        
+
     # Classification Report
     print('Classification Report: \n', classification_report(predict, y))
+
+    # ROC Curve
+    if args.visual:
+        for i in range(args.num_class):
+            fpr, tpr, thresholds = roc_curve(predict, y, pos_label=i)
+            plt.plot(fpr, tpr)  
+            plt.xlabel('False Positive Rate')
+            plt.ylabel('True Positive Rate')
+            plt.title('ROC Curve positive label '+str(i))
+            plt.show()
+            
+            # Plot distribution of false positive rate and true positive rate
+            sns.distplot(fpr, bins=20, kde=False, rug=True, label='False Positive Rate')
+            sns.distplot(tpr, bins=20, kde=False, rug=True, label='True Positive Rate')
+            plt.legend()
+            plt.show()
+            
 
     return metrics
 
 
 class Metrics:
     def __init__(self, predict, y):
-        self.predict = predict
-        self.y = y
-        self.accuracy = accuracy_score(predict, y)
-        self.recall = recall_score(predict, y, average='macro')
-        self.precision = precision_score(predict, y, average='macro')
-        self.f1 = f1_score(predict, y, average='macro')
+        self.predict=predict
+        self.y=y
+        self.accuracy=accuracy_score(predict, y)
+        self.recall=recall_score(predict, y, average='macro')
+        self.precision=precision_score(predict, y, average='macro')
+        self.f1=f1_score(predict, y, average='macro')

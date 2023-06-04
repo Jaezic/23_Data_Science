@@ -21,7 +21,7 @@ def preprocessing(args, df):
     # df = df.loc[:,['height', 'within_5km', 'within_10km','within_30km', 'windavg','tempavg','scale_damage']]
     # Binning (scale_damage)
     discretizer = KBinsDiscretizer(
-        n_bins=args.target_number, encode='ordinal', strategy='quantile')
+        n_bins=args.num_class, encode='ordinal', strategy='quantile')
     df['scale_damage'] = discretizer.fit_transform(
         df['scale_damage'].values.reshape(-1, 1))
     return df
@@ -46,6 +46,7 @@ def feature_Engineering(df):
         lambda x: '기타' if cnt[x] < 37 else x)
 
     # Feature Drop, [humidmin, humidcurr, windmax, dirmax, riskmax, riskavg]
-    df.drop(['humidmin','humidcurr', 'windmax', 'dirmax', 'riskmax', 'riskavg'], axis=1, inplace=True)
+    df.drop(['humidmin', 'humidcurr', 'windmax', 'dirmax',
+            'riskmax', 'riskavg'], axis=1, inplace=True)
     df['ocurdo'] = df['ocurdo'].replace('출북', '충북')
     df['ocurdo'] = df['ocurdo'].replace('서부', '전북')

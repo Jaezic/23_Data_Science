@@ -3,10 +3,11 @@ OrderedDict([('data_path', './dataset/FireDataset.csv'),
              ('seed', 64),
              ('eval', 'kfold'),
              ('redirector', True),
-             ('visual', False),
-             ('model', 'lr'),
+             ('visual', True),
+             ('model', 'knn'),
+             ('param_load', False),
              ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
-             ('tune', 'random'),
+             ('tune', None),
              ('n_iter', 10),
              ('cv', 5),
              ('pca', False),
@@ -18,6 +19,23 @@ Dataset size: 10150
 Features name : ['diravg', 'humidrel', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_5km', 'within_10km', 'within_30km', 'within_5km_fact', 'within_10km_fact', 'within_30km_fact', 'height']
 Target name : ['scale_damage']
 ------------------------------------------------------------
-Not Found Hyperparameters File
-LogisticRegression(random_state=64)
+KNeighborsClassifier()
 ------------------------------------------------------------
+Fold 0
+Evaluation on test set, 
+ Accuracy: 0.3803, Recall: 0.3813, Precision: 0.3821, F1 Score: 0.3789
+Confusion Matrix: 
+ [[153 106  71]
+ [134 120  93]
+ [120 105 113]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.38      0.46      0.42       330
+         1.0       0.36      0.35      0.35       347
+         2.0       0.41      0.33      0.37       338
+
+    accuracy                           0.38      1015
+   macro avg       0.38      0.38      0.38      1015
+weighted avg       0.38      0.38      0.38      1015
+

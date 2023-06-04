@@ -27,7 +27,7 @@ def build_model(args):
         model = BaggingClassifier(base_estimator=DecisionTreeClassifier(
             max_depth=1), random_state=args.seed, **p)
     elif args.model == 'kmeans':
-        model = KMeans(n_clusters=args.target_number, random_state=args.seed)
+        model = KMeans(n_clusters=args.num_class, random_state=args.seed)
     elif args.model == 'voting':
         models = []
         if args.voting_list == None or len(args.voting_list) == 0:
