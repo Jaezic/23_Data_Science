@@ -42,7 +42,7 @@ def main(args):
         dataset = dataset.get_all()
         tune(args, model, dataset)
 
-    elif args.eval == 'holdout' or args.tune != None:
+    elif args.eval == 'holdout':
         train_dataset = dataset.get_train()
         test_dataset = dataset.get_test()
 
@@ -68,7 +68,7 @@ def main(args):
             sum([m.f1 for m in metrics_list]) / len(metrics_list)
         ))
 
-
+    
 def pipeline(args, model, train_dataset, test_dataset):
     if args.pca:
         PCA_pipeline(args, train_dataset, test_dataset)

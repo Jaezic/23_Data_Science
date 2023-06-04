@@ -1,4 +1,4 @@
-from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier, RandomForestClassifier, VotingClassifier
+from sklearn.ensemble import AdaBoostClassifier, BaggingClassifier, GradientBoostingClassifier, RandomForestClassifier, VotingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
@@ -22,6 +22,8 @@ def build_model(args):
         model = AdaBoostClassifier(random_state=args.seed, **p)
     elif args.model == 'gb':
         model = GradientBoostingClassifier(random_state=args.seed, **p)
+    elif args.model == 'bag':
+        model = BaggingClassifier(base_estimator=DecisionTreeClassifier(max_depth=1), random_state=args.seed, **p)
     elif args.model == 'voting':
         models = []
         if args.voting_list == None or len(args.voting_list) == 0:

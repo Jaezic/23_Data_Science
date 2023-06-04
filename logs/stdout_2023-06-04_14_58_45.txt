@@ -1,0 +1,31 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('param_path', './models/config'),
+             ('seed', 64),
+             ('eval', 'kfold'),
+             ('redirector', True),
+             ('visual', False),
+             ('model', 'knn'),
+             ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
+             ('tune', 'grid'),
+             ('n_iter', 10),
+             ('cv', 5),
+             ('pca', False),
+             ('n_components', 0.95),
+             ('n_split', 10),
+             ('target_number', 3)])
+------------------------------------------------------------
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_5km', 'within_10km', 'within_30km', 'within_5km_fact', 'within_10km_fact', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+Not Found Hyperparameters File
+KNeighborsClassifier()
+------------------------------------------------------------
+Tunning - Loaded Hyperparameters Range
+{'n_neighbors': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]}
+------------------------------------------------------------
+GridSearchCV
+Best Parameter
+  {'n_neighbors': 7}
+ Best Score : 0.37211822660098515
+Tunning - Saved Hyperparameters [./models/config]

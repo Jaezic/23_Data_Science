@@ -1,0 +1,31 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('param_path', './models/config'),
+             ('seed', 64),
+             ('eval', 'kfold'),
+             ('redirector', True),
+             ('visual', False),
+             ('model', 'lr'),
+             ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
+             ('tune', 'random'),
+             ('n_iter', 10),
+             ('cv', 5),
+             ('pca', False),
+             ('n_components', 0.95),
+             ('n_split', 10),
+             ('target_number', 3)])
+------------------------------------------------------------
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_5km', 'within_10km', 'within_30km', 'within_5km_fact', 'within_10km_fact', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+Not Found Hyperparameters File
+LogisticRegression(random_state=64)
+------------------------------------------------------------
+Tunning - Loaded Hyperparameters Range
+{'penalty': ['l1', 'l2'], 'C': [0.01, 0.05, 0.1, 0.5, 1, 5, 10], 'solver': ['saga'], 'max_iter': [10, 50, 100, 200, 500]}
+------------------------------------------------------------
+RandomizedSearchCV
+Best Parameter
+  {'solver': 'saga', 'penalty': 'l2', 'max_iter': 50, 'C': 0.5}
+ Best Score : 0.3930049261083744
+Tunning - Saved Hyperparameters [./models/config]

@@ -1,0 +1,96 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('param_path', './models/config'),
+             ('seed', 64),
+             ('eval', 'kfold'),
+             ('redirector', True),
+             ('visual', False),
+             ('model', 'lr'),
+             ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
+             ('tune', None),
+             ('n_iter', 10),
+             ('cv', 5),
+             ('pca', False),
+             ('n_components', 0.95),
+             ('n_split', 10),
+             ('target_number', 3)])
+------------------------------------------------------------
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_5km', 'within_10km', 'within_30km', 'within_5km_fact', 'within_10km_fact', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+Loaded Hyperparameters
+{'solver': 'saga', 'penalty': 'l2', 'max_iter': 50, 'C': 0.5}
+LogisticRegression(C=0.5, max_iter=50, random_state=64, solver='saga')
+------------------------------------------------------------
+Fold 0
+Evaluation on test set, 
+ Accuracy: 0.4039, Recall: 0.4058, Precision: 0.4012, F1 Score: 0.3855
+Confusion Matrix: 
+ [[130  63 137]
+ [ 88  66 193]
+ [ 64  60 214]]
+Fold 1
+Evaluation on test set, 
+ Accuracy: 0.4118, Recall: 0.4135, Precision: 0.4112, F1 Score: 0.3986
+Confusion Matrix: 
+ [[135  65 118]
+ [ 80  75 197]
+ [ 68  69 208]]
+Fold 2
+Evaluation on test set, 
+ Accuracy: 0.3823, Recall: 0.3840, Precision: 0.3841, F1 Score: 0.3739
+Confusion Matrix: 
+ [[127  75 142]
+ [ 90  82 169]
+ [ 75  76 179]]
+Fold 3
+Evaluation on test set, 
+ Accuracy: 0.3951, Recall: 0.3996, Precision: 0.3975, F1 Score: 0.3841
+Confusion Matrix: 
+ [[129  89 140]
+ [ 81  80 177]
+ [ 66  61 192]]
+Fold 4
+Evaluation on test set, 
+ Accuracy: 0.3872, Recall: 0.3975, Precision: 0.3925, F1 Score: 0.3720
+Confusion Matrix: 
+ [[129  83 143]
+ [ 75  65 211]
+ [ 57  53 199]]
+Fold 5
+Evaluation on test set, 
+ Accuracy: 0.4335, Recall: 0.4396, Precision: 0.4440, F1 Score: 0.4200
+Confusion Matrix: 
+ [[160  62 138]
+ [ 73  75 194]
+ [ 47  61 205]]
+Fold 6
+Evaluation on test set, 
+ Accuracy: 0.3941, Recall: 0.3979, Precision: 0.3927, F1 Score: 0.3758
+Confusion Matrix: 
+ [[129  56 146]
+ [ 98  64 189]
+ [ 67  59 207]]
+Fold 7
+Evaluation on test set, 
+ Accuracy: 0.4069, Recall: 0.4032, Precision: 0.4076, F1 Score: 0.3968
+Confusion Matrix: 
+ [[126  59 139]
+ [ 83  87 164]
+ [ 67  90 200]]
+Fold 8
+Evaluation on test set, 
+ Accuracy: 0.4355, Recall: 0.4265, Precision: 0.4290, F1 Score: 0.4224
+Confusion Matrix: 
+ [[143  94 120]
+ [ 72  86 138]
+ [ 68  81 213]]
+Fold 9
+Evaluation on test set, 
+ Accuracy: 0.4512, Recall: 0.4422, Precision: 0.4415, F1 Score: 0.4327
+Confusion Matrix: 
+ [[133  63 110]
+ [ 91  86 154]
+ [ 77  62 239]]
+Average metrics:
+ Accuracy: 0.4101, Precision: 0.4101, Recall: 0.4110, F1: 0.3962
