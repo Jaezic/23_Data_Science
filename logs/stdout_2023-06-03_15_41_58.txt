@@ -1,0 +1,20 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('seed', 64),
+             ('eval', 'kfold'),
+             ('redirector', True),
+             ('visual', False),
+             ('n_split', 10)])
+------------------------------------------------------------
+   height  within_5km  within_10km  within_30km  windavg  tempavg  scale_damage
+0   493.5         0.0          1.0          2.0      1.9     23.6     -0.067672
+1   622.1         1.0         10.0        166.0      2.4     29.6     -0.245582
+2   557.5         0.0          0.0          3.0      1.3     29.3     -0.060568
+3   354.7         1.0          5.0         26.0      3.3     25.3     -0.380998
+4   535.5         1.0          1.0          4.0      2.0     22.3     -0.191403
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_5km', 'within_10km', 'within_30km', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+DecisionTreeClassifier(random_state=64)
+------------------------------------------------------------
+Fold 0

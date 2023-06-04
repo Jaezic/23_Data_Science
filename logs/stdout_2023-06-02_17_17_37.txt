@@ -1,6 +1,0 @@
-OrderedDict([('data_path', './dataset/example.csv'),
-             ('seed', 64),
-             ('redirector', True)])
-------------------------------------------------------------
-Evaluation on test set, 
- Score: 0.4060, MSE: 0.0433

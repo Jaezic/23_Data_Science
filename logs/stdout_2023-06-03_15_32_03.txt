@@ -1,0 +1,8 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('seed', 64),
+             ('eval', 'kfold'),
+             ('redirector', True),
+             ('visual', False),
+             ('n_split', 10)])
+------------------------------------------------------------
+Dataset size: 10150

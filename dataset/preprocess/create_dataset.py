@@ -18,9 +18,6 @@ def main(args):
     # FS_address = 지번to도로명주소(FS_df)
     # FS_latlong = 도로명주소to위도경도(FS_address)
 
-    # Calculate Scale Damage
-    damge_df = scale_damage(FS_df)
-
     # Calculate FireStation Number Based on Distance
     FSP_ll_df = pd.read_csv(args.FireStation_latlong_root, encoding='cp949', )
     FSP_ll_df.rename(columns={'위도': 'latitude'}, inplace=True)
@@ -45,9 +42,9 @@ def main(args):
     FF_ll_df = FF_ll_df[(FF_ll_df['시설유형코드'] == 3) | (FF_ll_df['시설유형코드'] == 4)]
     distance = calculate_distance(FS_ll_df, FF_ll_df)
 
-    within_5km += np.sum(distance <= 5, axis=1)
-    within_10km += np.sum(distance <= 10, axis=1)
-    within_30km += np.sum(distance <= 30, axis=1)
+    within_5km_fact = np.sum(distance <= 5, axis=1)
+    within_10km_fact = np.sum(distance <= 10, axis=1)
+    within_30km_fact = np.sum(distance <= 30, axis=1)
 
     # Calculate Mountain Height
     MH_ll_df = pd.read_csv(args.MountainHeight_latlong_root)
@@ -65,30 +62,38 @@ def main(args):
     within_5km[is_all_nan] = np.nan
     within_10km[is_all_nan] = np.nan
     within_30km[is_all_nan] = np.nan
+    
 
-    # print within_5km contains nan
+    # Feature Selection
+    columns_to_drop = ['Unnamed: 0', 'extingdt', 
+                       'ocurdt', 'ocuremd', 'ocurgm', 'ocurjibun', 'ocurri', 'ocursgg', 'ocuryoil', 'ownersec']
+    FS_df = FS_df.drop(columns_to_drop, axis=1)
+
     # Compose FireStation DataFrame
     # (Fire Statistic + Fire Station & Facility's Number Based on Distance + Mountain Height + Scale Damage)
     FS_df['within_5km'] = within_5km
     FS_df['within_10km'] = within_10km
     FS_df['within_30km'] = within_30km
+    FS_df['within_5km_fact'] = within_5km_fact
+    FS_df['within_10km_fact'] = within_10km_fact
+    FS_df['within_30km_fact'] = within_30km_fact
     FS_df['height'] = heights
+
+    # Drop NaNs
+    FS_df['exintgtm'].replace(' ', np.nan, inplace=True)
+    FS_df = FS_df.dropna(axis=0, how='any')
+
+    # Calculate Scale Damage
+    damge_df = scale_damage(FS_df)
+
     FS_df['scale_damage'] = damge_df['scale_damage']
-
-
-    # Feature Selection
-    columns_to_drop = ['Unnamed: 0', 'dmgarea', 'dmgmoney', 'exintgtm', 'extingdt', 'ocurdo',
-                       'ocurdt', 'ocuremd', 'ocurgm', 'ocurjibun', 'ocurri', 'ocursgg', 'ocuryoil', 'ownersec']
-    FS_df = FS_df.drop(columns_to_drop, axis=1)
-
-    # scale_damage column to last column
     column = FS_df.columns.tolist()
     column.pop(column.index('scale_damage'))
     column.append('scale_damage')
     FS_df = FS_df[column]
 
-    # Drop NaNs
-    FS_df = FS_df.dropna(axis=0, how='any')
+
+    FS_df = FS_df.drop(['dmgarea', 'dmgmoney', 'exintgtm'], axis=1)
 
     FS_df.to_csv('./dataset/FireDataset.csv', index=False)
 

@@ -13,13 +13,18 @@ def preprocessing(df):
     df['diravg'] = le.fit_transform(df['diravg'])
     #df['dirmax'] = le.fit_transform(df['dirmax'])
     df['ocurcause'] = le.fit_transform(df['ocurcause'])
+    df['ocurdo'] = le.fit_transform(df['ocurdo'])
+    # df.drop(['diravg'], axis=1, inplace=True)
+    df.drop(['ocurcause'], axis=1, inplace=True)
+    df.drop(['ocurdo'], axis=1, inplace=True)
 
+    # df = df.loc[:,['height', 'within_5km', 'within_10km','within_30km', 'windavg','tempavg','scale_damage']]
     # Binning (scale_damage)
     discretizer = KBinsDiscretizer(
-        n_bins=5, encode='ordinal', strategy='quantile')
+        n_bins=3, encode='ordinal', strategy='quantile')
     df['scale_damage'] = discretizer.fit_transform(
         df['scale_damage'].values.reshape(-1, 1))
-    
+    return df
 
 
 def feature_Engineering(df):
@@ -42,3 +47,5 @@ def feature_Engineering(df):
 
     # Feature Drop, [humidmin, humidcurr, windmax, dirmax, riskmax, riskavg]
     df.drop(['humidmin','humidcurr', 'windmax', 'dirmax', 'riskmax', 'riskavg'], axis=1, inplace=True)
+    df['ocurdo'] = df['ocurdo'].replace('출북', '충북')
+    df['ocurdo'] = df['ocurdo'].replace('서부', '전북')

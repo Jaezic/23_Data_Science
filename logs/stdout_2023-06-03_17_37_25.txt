@@ -1,0 +1,106 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('seed', 64),
+             ('eval', 'kfold'),
+             ('redirector', True),
+             ('visual', False),
+             ('n_split', 10)])
+------------------------------------------------------------
+[2. 2. 2. ... 1. 0. 3.]
+Dataset size: 10150
+Features name : ['within_5km', 'within_10km', 'within_30km']
+Target name : ['scale_damage']
+------------------------------------------------------------
+DecisionTreeClassifier(random_state=64)
+------------------------------------------------------------
+Fold 0
+Evaluation on test set, 
+ Accuracy: 0.2128, Recall: 0.2139, Precision: 0.2035, F1 Score: 0.1909
+Confusion Matrix: 
+ [[56 27  9 56 48]
+ [39 17 10 54 73]
+ [34 22  6 75 79]
+ [32 21 10 71 73]
+ [25 21  3 88 66]]
+Fold 1
+Evaluation on test set, 
+ Accuracy: 0.2502, Recall: 0.2500, Precision: 0.2508, F1 Score: 0.2453
+Confusion Matrix: 
+ [[61 24 25 37 38]
+ [39 32 29 52 61]
+ [24 21 23 56 62]
+ [18 42 35 66 71]
+ [15 31 25 56 72]]
+Fold 2
+Evaluation on test set, 
+ Accuracy: 0.2355, Recall: 0.2381, Precision: 0.2279, F1 Score: 0.2215
+Confusion Matrix: 
+ [[69 24 12 54 46]
+ [28 24 18 72 62]
+ [33 35  9 78 58]
+ [23 30 19 59 50]
+ [16 26 18 74 78]]
+Fold 3
+Evaluation on test set, 
+ Accuracy: 0.2463, Recall: 0.2508, Precision: 0.2523, F1 Score: 0.2315
+Confusion Matrix: 
+ [[62 37 17 58 47]
+ [27 30 13 78 61]
+ [18 28 11 64 85]
+ [15 29 14 77 66]
+ [17 21 11 59 70]]
+Fold 4
+Evaluation on test set, 
+ Accuracy: 0.2463, Recall: 0.2529, Precision: 0.2572, F1 Score: 0.2358
+Confusion Matrix: 
+ [[69 20 12 60 50]
+ [41 36 18 77 48]
+ [34 15 15 78 73]
+ [25 20 10 59 55]
+ [22 31 15 61 71]]
+Fold 5
+Evaluation on test set, 
+ Accuracy: 0.2493, Recall: 0.2484, Precision: 0.2601, F1 Score: 0.2358
+Confusion Matrix: 
+ [[72 33 14 61 41]
+ [33 31 10 81 52]
+ [24 21 14 84 55]
+ [18 25 17 84 55]
+ [15 26 11 86 52]]
+Fold 6
+Evaluation on test set, 
+ Accuracy: 0.2207, Recall: 0.2214, Precision: 0.2288, F1 Score: 0.2080
+Confusion Matrix: 
+ [[48 32 17 48 61]
+ [24 23 12 65 69]
+ [28 29 14 58 81]
+ [12 36 14 68 85]
+ [17 31 14 58 71]]
+Fold 7
+Evaluation on test set, 
+ Accuracy: 0.2502, Recall: 0.2542, Precision: 0.2632, F1 Score: 0.2421
+Confusion Matrix: 
+ [[61 27 12 29 52]
+ [28 37 11 51 85]
+ [29 27 16 52 88]
+ [18 40 15 57 77]
+ [17 40 10 53 83]]
+Fold 8
+Evaluation on test set, 
+ Accuracy: 0.2542, Recall: 0.2480, Precision: 0.2535, F1 Score: 0.2452
+Confusion Matrix: 
+ [[82 22 29 45 42]
+ [33 22 30 65 41]
+ [32 18 26 62 45]
+ [16 23 30 61 63]
+ [20 27 49 65 67]]
+Fold 9
+Evaluation on test set, 
+ Accuracy: 0.2286, Recall: 0.2257, Precision: 0.2320, F1 Score: 0.2273
+Confusion Matrix: 
+ [[55 30 42 37 20]
+ [30 20 43 52 43]
+ [25 39 35 52 40]
+ [23 39 43 68 53]
+ [15 39 60 58 54]]
+Average metrics:
+ Accuracy: 0.2394, Precision: 0.2429, Recall: 0.2403, F1: 0.2283
