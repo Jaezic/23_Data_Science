@@ -24,6 +24,9 @@ def evaluate(args, model, predict, y):
     if args.visual:
         sns.heatmap(confusion, annot=True, fmt='d')
         plt.show()
+        
+    # Classification Report
+    print('Classification Report: \n', classification_report(predict, y))
 
     return metrics
 
