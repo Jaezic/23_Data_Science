@@ -103,7 +103,7 @@ if __name__ == '__main__':
     
     df = pd.DataFrame(columns=['model', 'pca', 'standard', 'tune','accuracy', 'precision', 'recall', 'f1'])
     
-    for model in ['df', 'knn', 'rf', 'ab', 'gb', 'kmeans', 'bag', 'voting']:
+    for model in ['dt', 'knn', 'rf', 'ab', 'gb', 'kmeans', 'bag', 'voting']:
         for pca in [False, True]:
             for standard in [False, True]:
                 for tune in ['grid', None]:
