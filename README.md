@@ -59,7 +59,7 @@ Data Augmentation, whether to use SMOTE.
 - `standard`: bool.  
 Whether to apply StandardScaler to the dataset before training.
 - `eval`: str.  
-Validation technique options are `kfold`, `holdout`.
+Validation technique options are `kfold`, `holdout`, `kfold_stratified`.
 - `n_split`: int.  
 The number you want to divide by in `kfold`.
 - `num_class`: int.  
