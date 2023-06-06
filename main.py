@@ -1,7 +1,10 @@
 from collections import OrderedDict
 import os
 import pprint
+import numpy as np
 
+from sklearn.decomposition import PCA
+from sklearn.model_selection import GridSearchCV
 from config import argument_parser
 from dataset.Dataset import Dataset, FireDataset
 from models.model import build_model
@@ -35,8 +38,11 @@ def main(args):
         test_dataset = dataset.get_test()
 
         metrics = pipeline(args, model, train_dataset, test_dataset)
-    elif args.eval == 'kfold':
-        kfold = dataset.get_kfold()
+    elif 'kfold' in args.eval:
+        if args.eval == 'kfold_stratified':
+            kfold = dataset.get_stratified_kfold()
+        else:
+            kfold = dataset.get_kfold()
         metrics_list = []
         for i, (train_index, test_index) in enumerate(kfold):
             print(f'Fold {i}')
@@ -44,7 +50,7 @@ def main(args):
                 dataset.x[train_index], dataset.y[train_index])
             test_dataset = Dataset(
                 dataset.x[test_index], dataset.y[test_index])
-
+            print(np.unique(test_dataset.y, return_counts=True))
             metrics = pipeline(args, model, train_dataset, test_dataset)
             metrics_list.append(metrics)
 
@@ -64,20 +70,6 @@ def main(args):
 
     
 def pipeline(args, model, train_dataset, test_dataset):
-    """_summary_
-
-    Args:
-        args (_type_): parsed arguments
-        model (_type_): model to be trained
-        train_dataset (_type_): dataset for training
-        test_dataset (_type_): dataset for testing
-
-    Raises:
-        ValueError: pca must be used with standardization
-
-    Returns:
-        _type_: metrics
-    """
     if args.pca and args.standard == False:
         raise ValueError('PCA must be used with standardization')
         

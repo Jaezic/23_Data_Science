@@ -14,7 +14,6 @@ from tools.utils import ReDirectSTD, set_seed, time_str
 from tools.visualization import visual
 import pandas as pd
 
-
 def main(args):
     set_seed(args.seed)  # Set random seed
 
@@ -39,8 +38,11 @@ def main(args):
         test_dataset = dataset.get_test()
 
         metrics = pipeline(args, model, train_dataset, test_dataset)
-    elif args.eval == 'kfold':
-        kfold = dataset.get_kfold()
+    elif 'kfold' in args.eval:
+        if args.eval == 'kfold_stratified':
+            kfold = dataset.get_stratified_kfold()
+        else:
+            kfold = dataset.get_kfold()
         metrics_list = []
         for i, (train_index, test_index) in enumerate(kfold):
             print(f'Fold {i}')
@@ -56,7 +58,7 @@ def main(args):
         pre = sum([m.precision for m in metrics_list]) / len(metrics_list)
         rec = sum([m.recall for m in metrics_list]) / len(metrics_list)
         f1 = sum([m.f1 for m in metrics_list]) / len(metrics_list)
-
+        
         print('Average metrics:')
         print(' Accuracy: {:.4f}, Precision: {:.4f}, Recall: {:.4f}, F1: {:.4f}'.format(
             acc,
@@ -66,31 +68,16 @@ def main(args):
         ))
         return acc, pre, rec, f1
 
-
+    
 def pipeline(args, model, train_dataset, test_dataset):
-    """_summary_
-
-    Args:
-        args (_type_): parsed arguments
-        model (_type_): model to be trained
-        train_dataset (_type_): dataset for training
-        test_dataset (_type_): dataset for testing
-
-    Raises:
-        ValueError: pca must be used with standardization
-
-    Returns:
-        _type_: metrics
-    """
     if args.pca and args.standard == False:
         raise ValueError('PCA must be used with standardization')
-
+        
     if args.pca:
         train_dataset.PCA_pipeline(args, train_dataset, test_dataset)
 
     if args.smote:
-        train_dataset.x, train_dataset.y = smote(
-            args, train_dataset.x, train_dataset.y)
+        train_dataset.x, train_dataset.y = smote(args,train_dataset.x, train_dataset.y)
     model.fit(train_dataset.x, train_dataset.y)
 
     y = model.predict(test_dataset.x)
@@ -105,7 +92,7 @@ def pipeline(args, model, train_dataset, test_dataset):
 if __name__ == '__main__':
     parser = argument_parser()
     args = parser.parse_args()
-
+    
     # Logging setup
     log_dir = './logs'
     if not os.path.exists(log_dir):
@@ -115,15 +102,14 @@ if __name__ == '__main__':
         print('ReDirector stdout')
         ReDirectSTD(stdout_file, 'stdout', False)
     pprint.pprint(OrderedDict(args.__dict__))
-    print('-' * 60)
-
-    df = pd.DataFrame(columns=['model', 'pca', 'standard',
-                      'tune', 'accuracy', 'precision', 'recall', 'f1'])
-
+    print('-' * 60) 
+    
+    df = pd.DataFrame(columns=['model', 'pca', 'standard', 'tune','accuracy', 'precision', 'recall', 'f1'])
+    
     for model in ['dt', 'knn', 'rf', 'ab', 'gb', 'kmeans', 'bag', 'voting']:
         for pca in [False, True]:
             for standard in [False, True]:
-                for tune in ['grid', None]:
+                for tune in [None]:
                     args.model = model
                     args.pca = pca
                     args.standard = standard
@@ -133,17 +119,16 @@ if __name__ == '__main__':
                     if args.tune == 'grid':
                         args.param_load = False
                     else:
-                        args.param_load = True
-                    print('Model: {}, PCA: {}, Standard: {}, SMOTE: {}, Tune: {}, Param_load: {}'.format(
-                        args.model, args.pca, args.standard, args.smote, args.tune, args.param_load))
+                        args.param_load = False
+
+                    print('Model: {}, PCA: {}, Standard: {}, SMOTE: {}, Tune: {}, Param_load: {}'.format(args.model, args.pca, args.standard, args.smote, args.tune, args.param_load))
                     try:
                         acc, pre, rec, f1 = main(args)
-                    except:
-                        print('Error')
+                    except Exception as e:
+                        print(e)
                         continue
                     if args.tune == None:
-                        df_row = pd.DataFrame({'model': [args.model], 'pca': [args.pca], 'standard': [
-                                              args.standard], 'accuracy': [acc], 'precision': [pre], 'recall': [rec], 'f1': [f1]})
+                        df_row = pd.DataFrame({'model': [args.model], 'pca': [args.pca], 'standard': [args.standard], 'accuracy': [acc], 'precision': [pre], 'recall': [rec], 'f1': [f1]})
                         df = pd.concat([df, df_row], axis=0)
                         print(df)
     df.to_csv('result.csv', index=False)
