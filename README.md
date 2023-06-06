@@ -1,5 +1,5 @@
 # Predict Korean Mountain Fire Damage
-*Gachon University - 2023 Data Science Final Projects*
+*Gachon University - 2023 Data Science Final Projects*  
 The goal of this project was to experience the *Big Data End-to-End Process*, which can predict the extent of damage if a fire breaks out in a forest in Korea. 
 ## Models
 - Decision Tree
@@ -113,3 +113,8 @@ $ python main_all_eval.py
 |           
 +---tools      
 ```
+## Experiments
+<p align="center"><img src="./assets/result_1.png"></p>
+<p align="center"><img src="./assets/result_2.png"></p>
+<p align="center"><img src="./assets/result_3.png"></p>
+<p align="center"><img src="./assets/result_4.png"></p>
