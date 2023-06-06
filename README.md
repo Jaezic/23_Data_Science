@@ -1,4 +1,4 @@
-# Predict any Mountain Fire Damage
+# Predict Korean Mountain Fire Damage
 *Gachon University - 2023 Data Science Final Projects*
 
 
