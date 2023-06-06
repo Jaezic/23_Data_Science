@@ -1,4 +1,4 @@
-# 2023 Data Science - Predict any Mountain Fire Damage
+# Predict any Mountain Fire Damage
 *Gachon University - 2023 Data Science Final Projects*
 
 
