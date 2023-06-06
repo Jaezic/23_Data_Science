@@ -2,14 +2,12 @@ from collections import OrderedDict
 import os
 import pprint
 
-from sklearn.decomposition import PCA
-from sklearn.model_selection import GridSearchCV
 from config import argument_parser
 from dataset.Dataset import Dataset, FireDataset
 from models.model import build_model
 from tools.evaluate import evaluate
 from tools.smote import smote
-from tools.tune import tune
+from tools.tune import tune_pipeline
 from tools.utils import ReDirectSTD, set_seed, time_str
 from tools.visualization import visual
 import pandas as pd
@@ -30,7 +28,7 @@ def main(args):
     # Train and evaluate
     if args.tune != None:
         dataset = dataset.get_all()
-        tune(args, model, dataset)
+        tune_pipeline(args, model, dataset)
 
     elif args.eval == 'holdout':
         train_dataset = dataset.get_train()
@@ -69,16 +67,16 @@ def pipeline(args, model, train_dataset, test_dataset):
     """_summary_
 
     Args:
-        args (_type_): _description_
-        model (_type_): _description_
-        train_dataset (_type_): _description_
-        test_dataset (_type_): _description_
+        args (_type_): parsed arguments
+        model (_type_): model to be trained
+        train_dataset (_type_): dataset for training
+        test_dataset (_type_): dataset for testing
 
     Raises:
-        ValueError: _description_
+        ValueError: pca must be used with standardization
 
     Returns:
-        _type_: _description_
+        _type_: metrics
     """
     if args.pca and args.standard == False:
         raise ValueError('PCA must be used with standardization')
