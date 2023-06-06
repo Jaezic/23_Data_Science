@@ -3,7 +3,7 @@ Gachon University - 2023 Data Science Final Projects
 
 
 ## Project Structure
-```bash
+```
 📦23_Data_Science
  ┣ 📂dataset
  ┃ ┣ 📂Fire
