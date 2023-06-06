@@ -3,13 +3,12 @@ Gachon University - 2023 Data Science Final Projects
 
 
 ## Project Structure
-
-> 📦23_Data_Science
-> ┣ 📂dataset
-> ┃ ┣ 📂Fire
-> ┃ ┃ ┣ 📜FireFacility_latlong.csv
-> ┃ ┃ ┣ 📜FireStationPos.csv
-> ┃ ┃ ┣ 📜FireStation_latlong.csv
+📦23_Data_Science
+ ┣ 📂dataset
+ ┃ ┣ 📂Fire
+ ┃ ┃ ┣ 📜FireFacility_latlong.csv
+ ┃ ┃ ┣ 📜FireStationPos.csv
+ ┃ ┃ ┣ 📜FireStation_latlong.csv
  ┃ ┃ ┣ 📜FireStatistic.csv
  ┃ ┃ ┣ 📜FireStatistic_latlong.csv
  ┃ ┃ ┣ 📜inspeciton.ipynb
