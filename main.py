@@ -66,6 +66,20 @@ def main(args):
 
     
 def pipeline(args, model, train_dataset, test_dataset):
+    """_summary_
+
+    Args:
+        args (_type_): _description_
+        model (_type_): _description_
+        train_dataset (_type_): _description_
+        test_dataset (_type_): _description_
+
+    Raises:
+        ValueError: _description_
+
+    Returns:
+        _type_: _description_
+    """
     if args.pca and args.standard == False:
         raise ValueError('PCA must be used with standardization')
         
