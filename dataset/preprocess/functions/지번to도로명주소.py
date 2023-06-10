@@ -13,12 +13,15 @@ def api(text=''):
         Returns:
             tree: xml.etree.ElementTree
     """
+    # API Request URL
     url = 'https://business.juso.go.kr/addrlink/addrLinkApi.do'
     params = {'confmKey': "devU01TX0FVVEgyMDIzMDUyMTEwMzExMTExMzc5MTg=",
               'currentPage': '1', 'countPerPage': '1', 'keyword': text}
 
+    # API Request
     response = requests.get(url, params=params)
 
+    # XML Parsing
     tree = elemTree.fromstring(response.content)
     return tree
 

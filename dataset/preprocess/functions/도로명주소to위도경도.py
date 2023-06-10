@@ -12,6 +12,8 @@ def 도로명주소to위도경도(df):
         Returns:
             df: DataFrame
     """
+    
+    # API Request URL
     url_front = "http://api.vworld.kr/req/address?"
     url_params = "service=address&request=getcoord&version=2.0&crs=epsg:4326&refine=true&simple=false&format=json&type=road"
     url_address = "&address="

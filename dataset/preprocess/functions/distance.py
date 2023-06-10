@@ -3,6 +3,7 @@ import numpy as np
 
 def haversine_numpy(lat1, lon1, lat2, lon2):
     """
+        Source : https://stackoverflow.com/questions/29545704/fast-haversine-approximation-python-pandas
         Calculate the great circle distance between two points
         on the earth (specified in decimal degrees)
         
