@@ -73,7 +73,8 @@ $ python all_eval.py
 23_Data_Science
 |   config.py
 |   main.py
-|   main_all_eval.py
+|   all_eval.py
+|   evaluate.py
 |   requirements.txt
 |   
 +---dataset
