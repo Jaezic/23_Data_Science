@@ -19,15 +19,19 @@ def main(args):
     # FS_latlong = 도로명주소to위도경도(FS_address)
 
     # Calculate FireStation Number Based on Distance
+    
+    # Read CSV
     FSP_ll_df = pd.read_csv(args.FireStation_latlong_root, encoding='cp949', )
     FSP_ll_df.rename(columns={'위도': 'latitude'}, inplace=True)
     FSP_ll_df.rename(columns={'경도': 'longitude'}, inplace=True)
 
+    # Read CSV
     FS_ll_df = pd.read_csv(args.FireStatistic_latlong_root, na_filter=True,
                            keep_default_na=False, na_values=['', ' ', '0'])
     FS_ll_df.rename(columns={'위도': 'latitude'}, inplace=True)
     FS_ll_df.rename(columns={'경도': 'longitude'}, inplace=True)
 
+    # Calculate FireStation Number Based on Distance
     distance = calculate_distance(FS_ll_df, FSP_ll_df)
     is_all_nan = np.all(np.isnan(distance), axis=1)
 
