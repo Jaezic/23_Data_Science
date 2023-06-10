@@ -67,6 +67,12 @@ class FireDataset(Dataset):
         kfold = KFold(n_splits=self.args.n_split, shuffle=True,
                       random_state=self.args.seed)
         return kfold.split(self.x, self.y)
+    
+    def get_statified_kfold(self):
+        kfold = StratifiedKFold(n_splits=self.args.n_split, shuffle=True,
+                      random_state=self.args.seed)
+        return kfold.split(self.x, self.y)
+
 
     def get_stratified_kfold(self):
         kfold = StratifiedKFold(n_splits=self.args.n_split, shuffle=True,

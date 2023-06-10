@@ -1,6 +1,7 @@
 from collections import OrderedDict
 import os
 import pprint
+import numpy as np
 
 from sklearn.decomposition import PCA
 from sklearn.model_selection import GridSearchCV

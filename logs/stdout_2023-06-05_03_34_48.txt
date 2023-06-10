@@ -1018,3 +1018,455 @@ Classification Report:
 weighted avg       0.45      0.54      0.47      1015
 
 Fold 7
+Evaluation on test set, 
+ Accuracy: 0.5458, Recall: 0.3843, Precision: 0.3440, F1 Score: 0.3494
+Confusion Matrix: 
+ [[0.30555556 0.         0.69444444]
+ [0.20779221 0.         0.79220779]
+ [0.15270019 0.         0.84729981]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.46      0.31      0.37       324
+         1.0       0.00      0.00      0.00       154
+         2.0       0.57      0.85      0.68       537
+
+    accuracy                           0.55      1015
+   macro avg       0.34      0.38      0.35      1015
+weighted avg       0.45      0.55      0.48      1015
+
+Fold 8
+Evaluation on test set, 
+ Accuracy: 0.5911, Recall: 0.4076, Precision: 0.3895, F1 Score: 0.3836
+Confusion Matrix: 
+ [[0.36871508 0.         0.63128492]
+ [0.17431193 0.         0.82568807]
+ [0.1459854  0.         0.8540146 ]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.57      0.37      0.45       358
+         1.0       0.00      0.00      0.00       109
+         2.0       0.60      0.85      0.70       548
+
+    accuracy                           0.59      1015
+   macro avg       0.39      0.41      0.38      1015
+weighted avg       0.52      0.59      0.54      1015
+
+Fold 9
+Evaluation on test set, 
+ Accuracy: 0.5901, Recall: 0.3924, Precision: 0.3632, F1 Score: 0.3689
+Confusion Matrix: 
+ [[0.33333333 0.00326797 0.66339869]
+ [0.21666667 0.         0.78333333]
+ [0.15619694 0.         0.84380306]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.46      0.33      0.39       306
+         1.0       0.00      0.00      0.00       120
+         2.0       0.63      0.84      0.72       589
+
+    accuracy                           0.59      1015
+   macro avg       0.36      0.39      0.37      1015
+weighted avg       0.50      0.59      0.53      1015
+
+Average metrics:
+ Accuracy: 0.5630, Precision: 0.4131, Recall: 0.3958, F1: 0.3645
+  model    pca standard tune  accuracy  precision    recall        f1
+0    dt  False    False  NaN  0.569852   0.372183  0.397408  0.363901
+0    dt  False     True  NaN  0.569852   0.372183  0.397408  0.363901
+0    dt   True     True  NaN  0.566798   0.424344  0.390513  0.354200
+0   knn  False    False  NaN  0.553399   0.354900  0.383585  0.348770
+0   knn  False     True  NaN  0.562956   0.413083  0.395826  0.364472
+Model: knn, PCA: True, Standard: True, SMOTE: False, Tune: grid, Param_load: False
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+KNeighborsClassifier()
+------------------------------------------------------------
+Tunning - Loaded Hyperparameters Range
+{'n_neighbors': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]}
+------------------------------------------------------------
+<< PCA: 11 -> 10 >>
+GridSearchCV
+Best Parameter
+  {'n_neighbors': 30}
+ Best Score : 0.5521182266009853
+Tunning - Saved Hyperparameters [./models/config]
+Model: knn, PCA: True, Standard: True, SMOTE: False, Tune: None, Param_load: True
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+Loaded Hyperparameters
+{'n_neighbors': 30}
+KNeighborsClassifier(n_neighbors=30)
+------------------------------------------------------------
+Fold 0
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.5468, Recall: 0.3822, Precision: 0.3452, F1 Score: 0.3459
+Confusion Matrix: 
+ [[0.28484848 0.         0.71515152]
+ [0.21333333 0.         0.78666667]
+ [0.13831776 0.         0.86168224]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.47      0.28      0.35       330
+         1.0       0.00      0.00      0.00       150
+         2.0       0.57      0.86      0.68       535
+
+    accuracy                           0.55      1015
+   macro avg       0.35      0.38      0.35      1015
+weighted avg       0.45      0.55      0.48      1015
+
+Fold 1
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.5793, Recall: 0.4046, Precision: 0.5361, F1 Score: 0.3785
+Confusion Matrix: 
+ [[0.35423197 0.0031348  0.64263323]
+ [0.19285714 0.00714286 0.8       ]
+ [0.14748201 0.         0.85251799]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.51      0.35      0.42       319
+         1.0       0.50      0.01      0.01       140
+         2.0       0.60      0.85      0.70       556
+
+    accuracy                           0.58      1015
+   macro avg       0.54      0.40      0.38      1015
+weighted avg       0.56      0.58      0.52      1015
+
+Fold 2
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.5704, Recall: 0.3997, Precision: 0.3688, F1 Score: 0.3671
+Confusion Matrix: 
+ [[0.3265896  0.         0.6734104 ]
+ [0.25925926 0.         0.74074074]
+ [0.12734082 0.         0.87265918]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.52      0.33      0.40       346
+         1.0       0.00      0.00      0.00       135
+         2.0       0.58      0.87      0.70       534
+
+    accuracy                           0.57      1015
+   macro avg       0.37      0.40      0.37      1015
+weighted avg       0.49      0.57      0.50      1015
+
+Fold 3
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.5586, Recall: 0.4033, Precision: 0.3663, F1 Score: 0.3697
+Confusion Matrix: 
+ [[0.3575419  0.0027933  0.6396648 ]
+ [0.26056338 0.         0.73943662]
+ [0.14757282 0.         0.85242718]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.53      0.36      0.43       358
+         1.0       0.00      0.00      0.00       142
+         2.0       0.57      0.85      0.68       515
+
+    accuracy                           0.56      1015
+   macro avg       0.37      0.40      0.37      1015
+weighted avg       0.48      0.56      0.50      1015
+
+Fold 4
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.5320, Recall: 0.3860, Precision: 0.3497, F1 Score: 0.3471
+Confusion Matrix: 
+ [[0.30422535 0.         0.69577465]
+ [0.18831169 0.         0.81168831]
+ [0.14624506 0.         0.85375494]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.51      0.30      0.38       355
+         1.0       0.00      0.00      0.00       154
+         2.0       0.54      0.85      0.66       506
+
+    accuracy                           0.53      1015
+   macro avg       0.35      0.39      0.35      1015
+weighted avg       0.45      0.53      0.46      1015
+
+Fold 5
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.5606, Recall: 0.4065, Precision: 0.3755, F1 Score: 0.3716
+Confusion Matrix: 
+ [[0.35277778 0.         0.64722222]
+ [0.20689655 0.         0.79310345]
+ [0.13137255 0.00196078 0.86666667]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.57      0.35      0.43       360
+         1.0       0.00      0.00      0.00       145
+         2.0       0.56      0.87      0.68       510
+
+    accuracy                           0.56      1015
+   macro avg       0.38      0.41      0.37      1015
+weighted avg       0.48      0.56      0.50      1015
+
+Fold 6
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.5498, Recall: 0.3809, Precision: 0.3482, F1 Score: 0.3459
+Confusion Matrix: 
+ [[0.28012048 0.         0.71987952]
+ [0.20138889 0.         0.79861111]
+ [0.13543599 0.00185529 0.86270872]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.48      0.28      0.35       332
+         1.0       0.00      0.00      0.00       144
+         2.0       0.57      0.86      0.68       539
+
+    accuracy                           0.55      1015
+   macro avg       0.35      0.38      0.35      1015
+weighted avg       0.46      0.55      0.48      1015
+
+Fold 7
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.5537, Recall: 0.3924, Precision: 0.6846, F1 Score: 0.3603
+Confusion Matrix: 
+ [[0.31790123 0.         0.68209877]
+ [0.20779221 0.00649351 0.78571429]
+ [0.14711359 0.         0.85288641]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.48      0.32      0.38       324
+         1.0       1.00      0.01      0.01       154
+         2.0       0.57      0.85      0.69       537
+
+    accuracy                           0.55      1015
+   macro avg       0.68      0.39      0.36      1015
+weighted avg       0.61      0.55      0.49      1015
+
+Fold 8
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.5911, Recall: 0.4066, Precision: 0.3898, F1 Score: 0.3822
+Confusion Matrix: 
+ [[0.3603352  0.         0.6396648 ]
+ [0.17431193 0.         0.82568807]
+ [0.14051095 0.         0.85948905]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.57      0.36      0.44       358
+         1.0       0.00      0.00      0.00       109
+         2.0       0.60      0.86      0.70       548
+
+    accuracy                           0.59      1015
+   macro avg       0.39      0.41      0.38      1015
+weighted avg       0.52      0.59      0.54      1015
+
+Fold 9
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.5961, Recall: 0.3973, Precision: 0.3699, F1 Score: 0.3743
+Confusion Matrix: 
+ [[0.34313725 0.00326797 0.65359477]
+ [0.2        0.         0.8       ]
+ [0.15110357 0.         0.84889643]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.48      0.34      0.40       306
+         1.0       0.00      0.00      0.00       120
+         2.0       0.63      0.85      0.72       589
+
+    accuracy                           0.60      1015
+   macro avg       0.37      0.40      0.37      1015
+weighted avg       0.51      0.60      0.54      1015
+
+Average metrics:
+ Accuracy: 0.5638, Precision: 0.4134, Recall: 0.3960, F1: 0.3643
+  model    pca standard tune  accuracy  precision    recall        f1
+0    dt  False    False  NaN  0.569852   0.372183  0.397408  0.363901
+0    dt  False     True  NaN  0.569852   0.372183  0.397408  0.363901
+0    dt   True     True  NaN  0.566798   0.424344  0.390513  0.354200
+0   knn  False    False  NaN  0.553399   0.354900  0.383585  0.348770
+0   knn  False     True  NaN  0.562956   0.413083  0.395826  0.364472
+0   knn   True     True  NaN  0.563842   0.413425  0.395968  0.364260
+Model: rf, PCA: False, Standard: False, SMOTE: False, Tune: grid, Param_load: False
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+RandomForestClassifier(random_state=64)
+------------------------------------------------------------
+Tunning - Loaded Hyperparameters Range
+{'n_estimators': [200, 500], 'max_features': ['auto', 'sqrt', 'log2'], 'max_depth': [4, 5, 6, 7, 8], 'criterion': ['gini', 'entropy']}
+------------------------------------------------------------
+Error
+Model: rf, PCA: False, Standard: False, SMOTE: False, Tune: None, Param_load: True
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+Loaded Hyperparameters
+{'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'n_estimators': 500}
+RandomForestClassifier(criterion='entropy', max_depth=4, max_features='auto',
+                       n_estimators=500, random_state=64)
+------------------------------------------------------------
+Fold 0
+Error
+Model: rf, PCA: False, Standard: True, SMOTE: False, Tune: grid, Param_load: False
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+RandomForestClassifier(random_state=64)
+------------------------------------------------------------
+Tunning - Loaded Hyperparameters Range
+{'n_estimators': [200, 500], 'max_features': ['auto', 'sqrt', 'log2'], 'max_depth': [4, 5, 6, 7, 8], 'criterion': ['gini', 'entropy']}
+------------------------------------------------------------
+Error
+Model: rf, PCA: False, Standard: True, SMOTE: False, Tune: None, Param_load: True
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+Loaded Hyperparameters
+{'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'n_estimators': 500}
+RandomForestClassifier(criterion='entropy', max_depth=4, max_features='auto',
+                       n_estimators=500, random_state=64)
+------------------------------------------------------------
+Fold 0
+Error
+Model: rf, PCA: True, Standard: True, SMOTE: False, Tune: grid, Param_load: False
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+RandomForestClassifier(random_state=64)
+------------------------------------------------------------
+Tunning - Loaded Hyperparameters Range
+{'n_estimators': [200, 500], 'max_features': ['auto', 'sqrt', 'log2'], 'max_depth': [4, 5, 6, 7, 8], 'criterion': ['gini', 'entropy']}
+------------------------------------------------------------
+<< PCA: 11 -> 10 >>
+Error
+Model: rf, PCA: True, Standard: True, SMOTE: False, Tune: None, Param_load: True
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+Loaded Hyperparameters
+{'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'n_estimators': 500}
+RandomForestClassifier(criterion='entropy', max_depth=4, max_features='auto',
+                       n_estimators=500, random_state=64)
+------------------------------------------------------------
+Fold 0
+<< PCA: 11 -> 10 >>
+Error
+Model: ab, PCA: False, Standard: False, SMOTE: False, Tune: grid, Param_load: False
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+AdaBoostClassifier(random_state=64)
+------------------------------------------------------------
+Tunning - Loaded Hyperparameters Range
+{'n_estimators': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 20, 30], 'algorithm': ['SAMME', 'SAMME.R'], 'learning_rate': [0.97, 0.98, 0.99, 1.0, 1.01, 1.02, 1.03, 1.04]}
+------------------------------------------------------------
+Error
+Model: ab, PCA: False, Standard: False, SMOTE: False, Tune: None, Param_load: True
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+Loaded Hyperparameters
+{'algorithm': 'SAMME.R', 'learning_rate': 0.99, 'n_estimators': 30}
+AdaBoostClassifier(learning_rate=0.99, n_estimators=30, random_state=64)
+------------------------------------------------------------
+Fold 0
+Evaluation on test set, 
+ Accuracy: 0.5635, Recall: 0.3963, Precision: 0.3629, F1 Score: 0.3611
+Confusion Matrix: 
+ [[0.31212121 0.         0.68787879]
+ [0.21333333 0.         0.78666667]
+ [0.12336449 0.         0.87663551]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.51      0.31      0.39       330
+         1.0       0.00      0.00      0.00       150
+         2.0       0.58      0.88      0.70       535
+
+    accuracy                           0.56      1015
+   macro avg       0.36      0.40      0.36      1015
+weighted avg       0.47      0.56      0.49      1015
+
+Fold 1
+Error
+Model: ab, PCA: False, Standard: True, SMOTE: False, Tune: grid, Param_load: False
+Error
+Model: ab, PCA: False, Standard: True, SMOTE: False, Tune: None, Param_load: True
+Error
+Model: ab, PCA: True, Standard: True, SMOTE: False, Tune: grid, Param_load: False
+Error
+Model: ab, PCA: True, Standard: True, SMOTE: False, Tune: None, Param_load: True
+Error
+Model: gb, PCA: False, Standard: False, SMOTE: False, Tune: grid, Param_load: False
+Error
+Model: gb, PCA: False, Standard: False, SMOTE: False, Tune: None, Param_load: True
+Error
+Model: gb, PCA: False, Standard: True, SMOTE: False, Tune: grid, Param_load: False
+Error
+Model: gb, PCA: False, Standard: True, SMOTE: False, Tune: None, Param_load: True
+Error
+Model: gb, PCA: True, Standard: True, SMOTE: False, Tune: grid, Param_load: False
+Error
+Model: gb, PCA: True, Standard: True, SMOTE: False, Tune: None, Param_load: True
+Error
+Model: kmeans, PCA: False, Standard: False, SMOTE: False, Tune: grid, Param_load: False
+Error
+Model: kmeans, PCA: False, Standard: False, SMOTE: False, Tune: None, Param_load: True
+Error
+Model: kmeans, PCA: False, Standard: True, SMOTE: False, Tune: grid, Param_load: False
+Error
+Model: kmeans, PCA: False, Standard: True, SMOTE: False, Tune: None, Param_load: True
+Error
+Model: kmeans, PCA: True, Standard: True, SMOTE: False, Tune: grid, Param_load: False
+Error
+Model: kmeans, PCA: True, Standard: True, SMOTE: False, Tune: None, Param_load: True
+Error
+Model: bag, PCA: False, Standard: False, SMOTE: False, Tune: grid, Param_load: False
+Error
+Model: bag, PCA: False, Standard: False, SMOTE: False, Tune: None, Param_load: True
+Error
+Model: bag, PCA: False, Standard: True, SMOTE: False, Tune: grid, Param_load: False
+Error
+Model: bag, PCA: False, Standard: True, SMOTE: False, Tune: None, Param_load: True
+Error
+Model: bag, PCA: True, Standard: True, SMOTE: False, Tune: grid, Param_load: False
+Error
+Model: bag, PCA: True, Standard: True, SMOTE: False, Tune: None, Param_load: True
+Error
+Model: voting, PCA: False, Standard: False, SMOTE: False, Tune: grid, Param_load: False
+Error
+Model: voting, PCA: False, Standard: False, SMOTE: False, Tune: None, Param_load: True
+Error
+Model: voting, PCA: False, Standard: True, SMOTE: False, Tune: grid, Param_load: False
+Error
+Model: voting, PCA: False, Standard: True, SMOTE: False, Tune: None, Param_load: True
+Error
+Model: voting, PCA: True, Standard: True, SMOTE: False, Tune: grid, Param_load: False
+Error
+Model: voting, PCA: True, Standard: True, SMOTE: False, Tune: None, Param_load: True
+Error
