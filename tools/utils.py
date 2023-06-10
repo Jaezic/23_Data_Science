@@ -47,7 +47,17 @@ class ReDirectSTD(object):
             ReDirectSTD('stdout.txt', 'stdout', False)
             ReDirectSTD('stderr.txt', 'stderr', False)
     """
-
+    """
+    What is ReDirectSTD?
+    ReDirectSTD is a class that overwrites the sys.stdout or sys.stderr.
+    It is used to save the log of the program to a file.
+    
+    How to use ReDirectSTD?
+    Usage example:
+        ReDirectSTD('stdout.txt', 'stdout', False)
+        
+        Run the program, and the log will be saved to the file 'stdout.txt'.
+    """
     def __init__(self, fpath=None, console='stdout', immediately_visiable=False):
         """
         overwrites the sys.stdout or sys.stderr

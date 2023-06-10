@@ -20,6 +20,8 @@ if __name__ == '__main__':
     if args.redirector:
         print('ReDirector stdout')
         ReDirectSTD(stdout_file, 'stdout', False)
+        
+    # Pretty print the run args
     pprint.pprint(OrderedDict(args.__dict__))
     print('-' * 60) 
     

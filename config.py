@@ -9,6 +9,21 @@ def argument_parser():
         Returns:
             parser: parser
     """
+    """
+    Source : https://docs.python.org/ko/3/library/argparse.html
+    What is argparse?
+        The argparse module makes it easy to write user-friendly command-line interfaces.
+        The program defines what arguments it requires, and argparse will figure out how to parse those out of sys.argv.
+        The argparse module also automatically generates help and usage messages and issues errors when users give the program invalid arguments.
+    
+    What is ArgumentParser?
+        The ArgumentParser object will hold all the information necessary to parse the command line into Python data types.
+        The argparse module includes tools for building command line argument and option processors.
+    
+    What is add_argument()?
+        The add_argument() method is used to specify which command-line options the program is willing to accept.
+        This method is called once for each command-line option that the program is willing to accept.
+    """
     parser = argparse.ArgumentParser(description="Pipeline Options",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
