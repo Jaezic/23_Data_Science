@@ -1,1 +1,1 @@
-{'criterion': 'entropy', 'max_depth': 4, 'max_features': 'auto', 'n_estimators': 500}
+{'criterion': 'gini', 'max_depth': 8, 'max_features': 'auto', 'n_estimators': 500}

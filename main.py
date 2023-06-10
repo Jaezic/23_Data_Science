@@ -9,12 +9,24 @@ from dataset.Dataset import Dataset, FireDataset
 from models.model import build_model
 from tools.evaluate import evaluate
 from tools.smote import smote
-from tools.tune import tune
+from tools.tune import tune_pipeline
 from tools.utils import ReDirectSTD, set_seed, time_str
 from tools.visualization import visual
 import pandas as pd
 
 def main(args):
+    '''
+    Main function
+        Summary:  
+            Set random seed, setup dataset and model, train and evaluate
+        
+        Args:
+            args: arguments from argument_parser()
+        
+        Returns:
+            metrics: metrics of the model
+
+    '''
     set_seed(args.seed)  # Set random seed
 
     # Dataset setup
@@ -26,20 +38,25 @@ def main(args):
 
     # Model setup
     model = build_model(args)
-
-    # Train and evaluate
-    if args.tune != None:
+    
+    if args.tune != None:  # Tune hyperparameters
         dataset = dataset.get_all()
-        tune(args, model, dataset)
+        # Tune and evaluate
+        tune_pipeline(args, model, dataset)
 
-    elif args.eval == 'holdout':
+    elif args.eval == 'holdout': # Holdout
         train_dataset = dataset.get_train()
         test_dataset = dataset.get_test()
 
+        # Train and evaluate
         metrics = pipeline(args, model, train_dataset, test_dataset)
-    elif args.eval == 'kfold':
-        kfold = dataset.get_kfold()
+    elif 'kfold' in args.eval: # K-fold cross validation 
+        if args.eval == 'kfold_stratified':
+            kfold = dataset.get_stratified_kfold()
+        else:
+            kfold = dataset.get_kfold()
         metrics_list = []
+        # K-fold cross validation
         for i, (train_index, test_index) in enumerate(kfold):
             print(f'Fold {i}')
             train_dataset = Dataset(
@@ -47,14 +64,17 @@ def main(args):
             test_dataset = Dataset(
                 dataset.x[test_index], dataset.y[test_index])
 
+            # Train and evaluate
             metrics = pipeline(args, model, train_dataset, test_dataset)
             metrics_list.append(metrics)
 
+        # Calculate average metrics
         acc = sum([m.accuracy for m in metrics_list]) / len(metrics_list)
         pre = sum([m.precision for m in metrics_list]) / len(metrics_list)
         rec = sum([m.recall for m in metrics_list]) / len(metrics_list)
         f1 = sum([m.f1 for m in metrics_list]) / len(metrics_list)
         
+        # Print average metrics
         print('Average metrics:')
         print(' Accuracy: {:.4f}, Precision: {:.4f}, Recall: {:.4f}, F1: {:.4f}'.format(
             acc,
@@ -63,9 +83,24 @@ def main(args):
             f1
         ))
         return acc, pre, rec, f1
+    return 0, 0, 0, 0
 
     
 def pipeline(args, model, train_dataset, test_dataset):
+    '''
+    Pipeline of training and evaluating
+        Summary:
+            PCA, SMOTE, train and evaluate
+        
+        Args:
+            args: arguments from argument_parser()
+            model: model to train
+            train_dataset: training dataset
+            test_dataset: testing dataset
+        
+        Returns:
+            metrics: metrics of the model
+    '''
     if args.pca and args.standard == False:
         raise ValueError('PCA must be used with standardization')
         
@@ -78,27 +113,6 @@ def pipeline(args, model, train_dataset, test_dataset):
 
     y = model.predict(test_dataset.x)
 
-    #visual(dataset, y)
-
     metrics = evaluate(args, model, test_dataset.y, y)
 
     return metrics
-
-
-if __name__ == '__main__':
-    parser = argument_parser()
-    args = parser.parse_args()
-    acc, pre, rec, f1 = main(args)
-    
-    # Logging setup
-    log_dir = './logs'
-    if not os.path.exists(log_dir):
-        os.mkdir(log_dir)
-    stdout_file = os.path.join(log_dir, f'stdout_{time_str()}.txt')
-    if args.redirector:
-        print('ReDirector stdout')
-        ReDirectSTD(stdout_file, 'stdout', False)
-    pprint.pprint(OrderedDict(args.__dict__))
-    print('-' * 60)
-    
-    

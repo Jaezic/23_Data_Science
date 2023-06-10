@@ -6,10 +6,6 @@ import matplotlib.pyplot as plt
 
 
 def evaluate(args, model, predict, y):
-    # print(f'Evaluation on test set, \n',
-    #       'Score: {:.4f}, '.format(
-    #     model.score(train_dataset.x, train_dataset.y)))
-
     metrics = Metrics(predict, y)
     print(f'Evaluation on test set, \n',
           'Accuracy: {:.4f}, Recall: {:.4f}, Precision: {:.4f}, F1 Score: {:.4f}'.format(
@@ -19,25 +15,28 @@ def evaluate(args, model, predict, y):
               metrics.f1))
 
     # Visualization Confusion Matrix
-    confusion = confusion_matrix(predict, y, labels=range(args.num_class), normalize='true')
+    confusion = confusion_matrix(predict, y, normalize='true', labels=range(args.num_class))
     print('Confusion Matrix: \n', confusion)
     if args.visual:
-        sns.heatmap(confusion, annot=True)
+        sns.heatmap(confusion ,annot=True)
+        plt.xlabel('Predicted')
+        plt.ylabel('True')
+        plt.title('Confusion Matrix')
         plt.show()
 
     # Classification Report
     print('Classification Report: \n', classification_report(predict, y))
 
-    # ROC Curve
-    if args.visual:
-        for i in range(args.num_class):
-            fpr, tpr, thresholds = roc_curve(predict, y, pos_label=i, )
+    # # ROC Curve
+    # if args.visual:
+    #     for i in range(args.num_class):
+    #         fpr, tpr, thresholds = roc_curve(predict, y, pos_label=i, )
 
-            plt.plot(fpr, tpr)
-            plt.xlabel('False Positive Rate')
-            plt.ylabel('True Positive Rate')
-            plt.title('ROC Curve positive label '+str(i))
-            plt.show()
+    #         plt.plot(fpr, tpr)
+    #         plt.xlabel('False Positive Rate')
+    #         plt.ylabel('True Positive Rate')
+    #         plt.title('ROC Curve positive label '+str(i))
+    #         plt.show()
     return metrics
 
 

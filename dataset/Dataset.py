@@ -2,7 +2,7 @@ from numpy import array
 import pandas as pd
 from sklearn.decomposition import PCA
 from sklearn.discriminant_analysis import StandardScaler
-from sklearn.model_selection import KFold, train_test_split
+from sklearn.model_selection import KFold, StratifiedKFold, train_test_split
 from dataset.preprocess.preprocessing import preprocessing
 
 
@@ -44,7 +44,6 @@ class FireDataset(Dataset):
         df = pd.read_csv(args.data_path, na_filter=True,
                          keep_default_na=False, na_values=[''])
         df = preprocessing(args, df)
-
         df.to_csv('./dataset/preprocessed.csv', index=False)
         y = df['scale_damage'].values
         x = df.drop(['scale_damage'], axis=1).values
@@ -69,6 +68,10 @@ class FireDataset(Dataset):
                       random_state=self.args.seed)
         return kfold.split(self.x, self.y)
 
+    def get_stratified_kfold(self):
+        kfold = StratifiedKFold(n_splits=self.args.n_split, shuffle=True,
+                      random_state=self.args.seed)
+        return kfold.split(self.x, self.y)
 
 
     

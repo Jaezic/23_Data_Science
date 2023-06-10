@@ -1,0 +1,1059 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('param_path', './models/config'),
+             ('seed', 32),
+             ('redirector', True),
+             ('visual', True),
+             ('model', 'rf'),
+             ('param_load', False),
+             ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
+             ('tune', None),
+             ('n_iter', 10),
+             ('cv', 5),
+             ('pca', False),
+             ('n_components', 0.95),
+             ('smote', False),
+             ('standard', False),
+             ('eval', 'holdout'),
+             ('n_split', 10),
+             ('num_class', 3)])
+------------------------------------------------------------
+Model: dt, PCA: False, Standard: False, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+       diravg  humidrel  ocurcause  ocurdo  rainamount  ...  windavg  within_30km  within_30km_fact  height  scale_damage
+0          13      57.0          6       0         0.5  ...      1.9          2.0                 0   493.5           2.0
+1           8      46.0          2       2         1.5  ...      2.4          7.0               159   622.1           1.0
+2          10      57.0          0       0         0.5  ...      1.3          3.0                 0   557.5           2.0
+3          22      46.0          7      13         1.5  ...      3.3          4.0                22   354.7           0.0
+4           8      40.0          1       0         0.5  ...      2.0          3.0                 1   535.5           1.0
+...       ...       ...        ...     ...         ...  ...      ...          ...               ...     ...           ...
+10145       5      66.0          7       5         1.1  ...      2.3         10.0                41   579.0           0.0
+10146       8      18.0          2       2         0.6  ...      1.0          5.0                80   681.3           1.0
+10147       9      51.0          7       2         0.5  ...      4.0          4.0                47   136.0           0.0
+10148      10      54.0          5       2         0.8  ...      6.7          3.0                35   264.9           0.0
+10149       9      54.0          2       2         0.7  ...      6.7          9.0               204   284.4           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+DecisionTreeClassifier(random_state=32)
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.4512, Recall: 0.3835, Precision: 0.3825, F1 Score: 0.3823
+Confusion Matrix: 
+ [[0.40265487 0.16224189 0.43510324]
+ [0.3057554  0.20143885 0.49280576]
+ [0.29143389 0.16201117 0.54655493]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.41      0.40      0.40       678
+         1.0       0.16      0.20      0.18       278
+         2.0       0.58      0.55      0.56      1074
+
+    accuracy                           0.45      2030
+   macro avg       0.38      0.38      0.38      2030
+weighted avg       0.46      0.45      0.46      2030
+
+cannot unpack non-iterable NoneType object
+Model: dt, PCA: False, Standard: True, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+         diravg  humidrel  ocurcause    ocurdo  ...  within_30km  within_30km_fact    height  scale_damage
+0     -0.187983  1.342604   0.082408 -1.173177  ...    -0.643098         -0.599769  0.461135           2.0
+1     -0.914905  0.679353  -1.972725 -0.822789  ...    -0.132639          0.371370  0.936631           1.0
+2     -0.624136  1.342604  -3.000291 -1.173177  ...    -0.541006         -0.599769  0.697774           2.0
+3      1.120477  0.679353   0.596191  1.104342  ...    -0.438914         -0.465398 -0.052076           0.0
+4     -0.914905  0.317580  -2.486508 -1.173177  ...    -0.541006         -0.593661  0.616429           1.0
+...         ...       ...        ...       ...  ...          ...               ...       ...           ...
+10145 -1.351059  1.885263   0.596191 -0.297208  ...     0.173637         -0.349350  0.777270           0.0
+10146 -0.914905 -1.008921  -1.972725 -0.822789  ...    -0.336823         -0.111146  1.155522           1.0
+10147 -0.769521  0.980831   0.596191 -0.822789  ...    -0.438914         -0.312703 -0.860716           0.0
+10148 -0.624136  1.161717  -0.431375 -0.822789  ...    -0.541006         -0.385996 -0.384111           0.0
+10149 -0.769521  1.161717  -1.972725 -0.822789  ...     0.071545          0.646221 -0.312010           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+DecisionTreeClassifier(random_state=32)
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.4522, Recall: 0.3847, Precision: 0.3836, F1 Score: 0.3835
+Confusion Matrix: 
+ [[0.40707965 0.15781711 0.43510324]
+ [0.30215827 0.20143885 0.49640288]
+ [0.29143389 0.16294227 0.54562384]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.41      0.41      0.41       678
+         1.0       0.17      0.20      0.18       278
+         2.0       0.58      0.55      0.56      1074
+
+    accuracy                           0.45      2030
+   macro avg       0.38      0.38      0.38      2030
+weighted avg       0.46      0.45      0.46      2030
+
+cannot unpack non-iterable NoneType object
+Model: dt, PCA: True, Standard: True, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+         diravg  humidrel  ocurcause    ocurdo  ...  within_30km  within_30km_fact    height  scale_damage
+0     -0.187983  1.342604   0.082408 -1.173177  ...    -0.643098         -0.599769  0.461135           2.0
+1     -0.914905  0.679353  -1.972725 -0.822789  ...    -0.132639          0.371370  0.936631           1.0
+2     -0.624136  1.342604  -3.000291 -1.173177  ...    -0.541006         -0.599769  0.697774           2.0
+3      1.120477  0.679353   0.596191  1.104342  ...    -0.438914         -0.465398 -0.052076           0.0
+4     -0.914905  0.317580  -2.486508 -1.173177  ...    -0.541006         -0.593661  0.616429           1.0
+...         ...       ...        ...       ...  ...          ...               ...       ...           ...
+10145 -1.351059  1.885263   0.596191 -0.297208  ...     0.173637         -0.349350  0.777270           0.0
+10146 -0.914905 -1.008921  -1.972725 -0.822789  ...    -0.336823         -0.111146  1.155522           1.0
+10147 -0.769521  0.980831   0.596191 -0.822789  ...    -0.438914         -0.312703 -0.860716           0.0
+10148 -0.624136  1.161717  -0.431375 -0.822789  ...    -0.541006         -0.385996 -0.384111           0.0
+10149 -0.769521  1.161717  -1.972725 -0.822789  ...     0.071545          0.646221 -0.312010           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+DecisionTreeClassifier(random_state=32)
+------------------------------------------------------------
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.4626, Recall: 0.3889, Precision: 0.3881, F1 Score: 0.3884
+Confusion Matrix: 
+ [[0.39528024 0.14011799 0.46460177]
+ [0.36330935 0.19784173 0.43884892]
+ [0.2886406  0.13780261 0.5735568 ]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.39      0.40      0.39       678
+         1.0       0.18      0.20      0.19       278
+         2.0       0.58      0.57      0.58      1074
+
+    accuracy                           0.46      2030
+   macro avg       0.39      0.39      0.39      2030
+weighted avg       0.47      0.46      0.46      2030
+
+cannot unpack non-iterable NoneType object
+Model: knn, PCA: False, Standard: False, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+       diravg  humidrel  ocurcause  ocurdo  rainamount  ...  windavg  within_30km  within_30km_fact  height  scale_damage
+0          13      57.0          6       0         0.5  ...      1.9          2.0                 0   493.5           2.0
+1           8      46.0          2       2         1.5  ...      2.4          7.0               159   622.1           1.0
+2          10      57.0          0       0         0.5  ...      1.3          3.0                 0   557.5           2.0
+3          22      46.0          7      13         1.5  ...      3.3          4.0                22   354.7           0.0
+4           8      40.0          1       0         0.5  ...      2.0          3.0                 1   535.5           1.0
+...       ...       ...        ...     ...         ...  ...      ...          ...               ...     ...           ...
+10145       5      66.0          7       5         1.1  ...      2.3         10.0                41   579.0           0.0
+10146       8      18.0          2       2         0.6  ...      1.0          5.0                80   681.3           1.0
+10147       9      51.0          7       2         0.5  ...      4.0          4.0                47   136.0           0.0
+10148      10      54.0          5       2         0.8  ...      6.7          3.0                35   264.9           0.0
+10149       9      54.0          2       2         0.7  ...      6.7          9.0               204   284.4           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+KNeighborsClassifier()
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.4862, Recall: 0.3814, Precision: 0.3771, F1 Score: 0.3772
+Confusion Matrix: 
+ [[0.45132743 0.08849558 0.46017699]
+ [0.33093525 0.07913669 0.58992806]
+ [0.29981378 0.08659218 0.61359404]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.42      0.45      0.44       678
+         1.0       0.13      0.08      0.10       278
+         2.0       0.58      0.61      0.60      1074
+
+    accuracy                           0.49      2030
+   macro avg       0.38      0.38      0.38      2030
+weighted avg       0.47      0.49      0.48      2030
+
+cannot unpack non-iterable NoneType object
+Model: knn, PCA: False, Standard: True, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+         diravg  humidrel  ocurcause    ocurdo  ...  within_30km  within_30km_fact    height  scale_damage
+0     -0.187983  1.342604   0.082408 -1.173177  ...    -0.643098         -0.599769  0.461135           2.0
+1     -0.914905  0.679353  -1.972725 -0.822789  ...    -0.132639          0.371370  0.936631           1.0
+2     -0.624136  1.342604  -3.000291 -1.173177  ...    -0.541006         -0.599769  0.697774           2.0
+3      1.120477  0.679353   0.596191  1.104342  ...    -0.438914         -0.465398 -0.052076           0.0
+4     -0.914905  0.317580  -2.486508 -1.173177  ...    -0.541006         -0.593661  0.616429           1.0
+...         ...       ...        ...       ...  ...          ...               ...       ...           ...
+10145 -1.351059  1.885263   0.596191 -0.297208  ...     0.173637         -0.349350  0.777270           0.0
+10146 -0.914905 -1.008921  -1.972725 -0.822789  ...    -0.336823         -0.111146  1.155522           1.0
+10147 -0.769521  0.980831   0.596191 -0.822789  ...    -0.438914         -0.312703 -0.860716           0.0
+10148 -0.624136  1.161717  -0.431375 -0.822789  ...    -0.541006         -0.385996 -0.384111           0.0
+10149 -0.769521  1.161717  -1.972725 -0.822789  ...     0.071545          0.646221 -0.312010           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+KNeighborsClassifier()
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.4911, Recall: 0.3852, Precision: 0.3856, F1 Score: 0.3800
+Confusion Matrix: 
+ [[0.45722714 0.05752212 0.48525074]
+ [0.39208633 0.07913669 0.52877698]
+ [0.31191806 0.0689013  0.61918063]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.41      0.46      0.43       678
+         1.0       0.16      0.08      0.11       278
+         2.0       0.58      0.62      0.60      1074
+
+    accuracy                           0.49      2030
+   macro avg       0.39      0.39      0.38      2030
+weighted avg       0.47      0.49      0.48      2030
+
+cannot unpack non-iterable NoneType object
+Model: knn, PCA: True, Standard: True, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+         diravg  humidrel  ocurcause    ocurdo  ...  within_30km  within_30km_fact    height  scale_damage
+0     -0.187983  1.342604   0.082408 -1.173177  ...    -0.643098         -0.599769  0.461135           2.0
+1     -0.914905  0.679353  -1.972725 -0.822789  ...    -0.132639          0.371370  0.936631           1.0
+2     -0.624136  1.342604  -3.000291 -1.173177  ...    -0.541006         -0.599769  0.697774           2.0
+3      1.120477  0.679353   0.596191  1.104342  ...    -0.438914         -0.465398 -0.052076           0.0
+4     -0.914905  0.317580  -2.486508 -1.173177  ...    -0.541006         -0.593661  0.616429           1.0
+...         ...       ...        ...       ...  ...          ...               ...       ...           ...
+10145 -1.351059  1.885263   0.596191 -0.297208  ...     0.173637         -0.349350  0.777270           0.0
+10146 -0.914905 -1.008921  -1.972725 -0.822789  ...    -0.336823         -0.111146  1.155522           1.0
+10147 -0.769521  0.980831   0.596191 -0.822789  ...    -0.438914         -0.312703 -0.860716           0.0
+10148 -0.624136  1.161717  -0.431375 -0.822789  ...    -0.541006         -0.385996 -0.384111           0.0
+10149 -0.769521  1.161717  -1.972725 -0.822789  ...     0.071545          0.646221 -0.312010           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+KNeighborsClassifier()
+------------------------------------------------------------
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.4867, Recall: 0.3786, Precision: 0.3767, F1 Score: 0.3722
+Confusion Matrix: 
+ [[0.44837758 0.05899705 0.49262537]
+ [0.40647482 0.06834532 0.52517986]
+ [0.31564246 0.06517691 0.61918063]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.40      0.45      0.42       678
+         1.0       0.15      0.07      0.09       278
+         2.0       0.58      0.62      0.60      1074
+
+    accuracy                           0.49      2030
+   macro avg       0.38      0.38      0.37      2030
+weighted avg       0.46      0.49      0.47      2030
+
+cannot unpack non-iterable NoneType object
+Model: rf, PCA: False, Standard: False, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+       diravg  humidrel  ocurcause  ocurdo  rainamount  ...  windavg  within_30km  within_30km_fact  height  scale_damage
+0          13      57.0          6       0         0.5  ...      1.9          2.0                 0   493.5           2.0
+1           8      46.0          2       2         1.5  ...      2.4          7.0               159   622.1           1.0
+2          10      57.0          0       0         0.5  ...      1.3          3.0                 0   557.5           2.0
+3          22      46.0          7      13         1.5  ...      3.3          4.0                22   354.7           0.0
+4           8      40.0          1       0         0.5  ...      2.0          3.0                 1   535.5           1.0
+...       ...       ...        ...     ...         ...  ...      ...          ...               ...     ...           ...
+10145       5      66.0          7       5         1.1  ...      2.3         10.0                41   579.0           0.0
+10146       8      18.0          2       2         0.6  ...      1.0          5.0                80   681.3           1.0
+10147       9      51.0          7       2         0.5  ...      4.0          4.0                47   136.0           0.0
+10148      10      54.0          5       2         0.8  ...      6.7          3.0                35   264.9           0.0
+10149       9      54.0          2       2         0.7  ...      6.7          9.0               204   284.4           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+RandomForestClassifier(random_state=32)
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.5906, Recall: 0.4271, Precision: 0.5629, F1 Score: 0.4082
+Confusion Matrix: 
+ [[0.3820059  0.00884956 0.60914454]
+ [0.23021583 0.0323741  0.73741007]
+ [0.13128492 0.0018622  0.86685289]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.56      0.38      0.45       678
+         1.0       0.53      0.03      0.06       278
+         2.0       0.60      0.87      0.71      1074
+
+    accuracy                           0.59      2030
+   macro avg       0.56      0.43      0.41      2030
+weighted avg       0.58      0.59      0.54      2030
+
+cannot unpack non-iterable NoneType object
+Model: rf, PCA: False, Standard: True, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+         diravg  humidrel  ocurcause    ocurdo  ...  within_30km  within_30km_fact    height  scale_damage
+0     -0.187983  1.342604   0.082408 -1.173177  ...    -0.643098         -0.599769  0.461135           2.0
+1     -0.914905  0.679353  -1.972725 -0.822789  ...    -0.132639          0.371370  0.936631           1.0
+2     -0.624136  1.342604  -3.000291 -1.173177  ...    -0.541006         -0.599769  0.697774           2.0
+3      1.120477  0.679353   0.596191  1.104342  ...    -0.438914         -0.465398 -0.052076           0.0
+4     -0.914905  0.317580  -2.486508 -1.173177  ...    -0.541006         -0.593661  0.616429           1.0
+...         ...       ...        ...       ...  ...          ...               ...       ...           ...
+10145 -1.351059  1.885263   0.596191 -0.297208  ...     0.173637         -0.349350  0.777270           0.0
+10146 -0.914905 -1.008921  -1.972725 -0.822789  ...    -0.336823         -0.111146  1.155522           1.0
+10147 -0.769521  0.980831   0.596191 -0.822789  ...    -0.438914         -0.312703 -0.860716           0.0
+10148 -0.624136  1.161717  -0.431375 -0.822789  ...    -0.541006         -0.385996 -0.384111           0.0
+10149 -0.769521  1.161717  -1.972725 -0.822789  ...     0.071545          0.646221 -0.312010           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+RandomForestClassifier(random_state=32)
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.5892, Recall: 0.4261, Precision: 0.5515, F1 Score: 0.4073
+Confusion Matrix: 
+ [[0.3820059  0.00884956 0.60914454]
+ [0.23741007 0.0323741  0.73021583]
+ [0.13314711 0.0027933  0.86405959]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.55      0.38      0.45       678
+         1.0       0.50      0.03      0.06       278
+         2.0       0.60      0.86      0.71      1074
+
+    accuracy                           0.59      2030
+   macro avg       0.55      0.43      0.41      2030
+weighted avg       0.57      0.59      0.53      2030
+
+cannot unpack non-iterable NoneType object
+Model: rf, PCA: True, Standard: True, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+         diravg  humidrel  ocurcause    ocurdo  ...  within_30km  within_30km_fact    height  scale_damage
+0     -0.187983  1.342604   0.082408 -1.173177  ...    -0.643098         -0.599769  0.461135           2.0
+1     -0.914905  0.679353  -1.972725 -0.822789  ...    -0.132639          0.371370  0.936631           1.0
+2     -0.624136  1.342604  -3.000291 -1.173177  ...    -0.541006         -0.599769  0.697774           2.0
+3      1.120477  0.679353   0.596191  1.104342  ...    -0.438914         -0.465398 -0.052076           0.0
+4     -0.914905  0.317580  -2.486508 -1.173177  ...    -0.541006         -0.593661  0.616429           1.0
+...         ...       ...        ...       ...  ...          ...               ...       ...           ...
+10145 -1.351059  1.885263   0.596191 -0.297208  ...     0.173637         -0.349350  0.777270           0.0
+10146 -0.914905 -1.008921  -1.972725 -0.822789  ...    -0.336823         -0.111146  1.155522           1.0
+10147 -0.769521  0.980831   0.596191 -0.822789  ...    -0.438914         -0.312703 -0.860716           0.0
+10148 -0.624136  1.161717  -0.431375 -0.822789  ...    -0.541006         -0.385996 -0.384111           0.0
+10149 -0.769521  1.161717  -1.972725 -0.822789  ...     0.071545          0.646221 -0.312010           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+RandomForestClassifier(random_state=32)
+------------------------------------------------------------
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.5808, Recall: 0.4135, Precision: 0.5456, F1 Score: 0.3888
+Confusion Matrix: 
+ [[0.35103245 0.00442478 0.64454277]
+ [0.22302158 0.01798561 0.75899281]
+ [0.12662942 0.0018622  0.87150838]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.55      0.35      0.43       678
+         1.0       0.50      0.02      0.03       278
+         2.0       0.59      0.87      0.70      1074
+
+    accuracy                           0.58      2030
+   macro avg       0.55      0.41      0.39      2030
+weighted avg       0.56      0.58      0.52      2030
+
+cannot unpack non-iterable NoneType object
+Model: ab, PCA: False, Standard: False, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+       diravg  humidrel  ocurcause  ocurdo  rainamount  ...  windavg  within_30km  within_30km_fact  height  scale_damage
+0          13      57.0          6       0         0.5  ...      1.9          2.0                 0   493.5           2.0
+1           8      46.0          2       2         1.5  ...      2.4          7.0               159   622.1           1.0
+2          10      57.0          0       0         0.5  ...      1.3          3.0                 0   557.5           2.0
+3          22      46.0          7      13         1.5  ...      3.3          4.0                22   354.7           0.0
+4           8      40.0          1       0         0.5  ...      2.0          3.0                 1   535.5           1.0
+...       ...       ...        ...     ...         ...  ...      ...          ...               ...     ...           ...
+10145       5      66.0          7       5         1.1  ...      2.3         10.0                41   579.0           0.0
+10146       8      18.0          2       2         0.6  ...      1.0          5.0                80   681.3           1.0
+10147       9      51.0          7       2         0.5  ...      4.0          4.0                47   136.0           0.0
+10148      10      54.0          5       2         0.8  ...      6.7          3.0                35   264.9           0.0
+10149       9      54.0          2       2         0.7  ...      6.7          9.0               204   284.4           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+AdaBoostClassifier(random_state=32)
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.5803, Recall: 0.4033, Precision: 0.3879, F1 Score: 0.3694
+Confusion Matrix: 
+ [[0.30678466 0.         0.69321534]
+ [0.15827338 0.         0.84172662]
+ [0.09683426 0.         0.90316574]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.58      0.31      0.40       678
+         1.0       0.00      0.00      0.00       278
+         2.0       0.58      0.90      0.71      1074
+
+    accuracy                           0.58      2030
+   macro avg       0.39      0.40      0.37      2030
+weighted avg       0.50      0.58      0.51      2030
+
+cannot unpack non-iterable NoneType object
+Model: ab, PCA: False, Standard: True, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+         diravg  humidrel  ocurcause    ocurdo  ...  within_30km  within_30km_fact    height  scale_damage
+0     -0.187983  1.342604   0.082408 -1.173177  ...    -0.643098         -0.599769  0.461135           2.0
+1     -0.914905  0.679353  -1.972725 -0.822789  ...    -0.132639          0.371370  0.936631           1.0
+2     -0.624136  1.342604  -3.000291 -1.173177  ...    -0.541006         -0.599769  0.697774           2.0
+3      1.120477  0.679353   0.596191  1.104342  ...    -0.438914         -0.465398 -0.052076           0.0
+4     -0.914905  0.317580  -2.486508 -1.173177  ...    -0.541006         -0.593661  0.616429           1.0
+...         ...       ...        ...       ...  ...          ...               ...       ...           ...
+10145 -1.351059  1.885263   0.596191 -0.297208  ...     0.173637         -0.349350  0.777270           0.0
+10146 -0.914905 -1.008921  -1.972725 -0.822789  ...    -0.336823         -0.111146  1.155522           1.0
+10147 -0.769521  0.980831   0.596191 -0.822789  ...    -0.438914         -0.312703 -0.860716           0.0
+10148 -0.624136  1.161717  -0.431375 -0.822789  ...    -0.541006         -0.385996 -0.384111           0.0
+10149 -0.769521  1.161717  -1.972725 -0.822789  ...     0.071545          0.646221 -0.312010           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+AdaBoostClassifier(random_state=32)
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.5803, Recall: 0.4033, Precision: 0.3879, F1 Score: 0.3694
+Confusion Matrix: 
+ [[0.30678466 0.         0.69321534]
+ [0.15827338 0.         0.84172662]
+ [0.09683426 0.         0.90316574]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.58      0.31      0.40       678
+         1.0       0.00      0.00      0.00       278
+         2.0       0.58      0.90      0.71      1074
+
+    accuracy                           0.58      2030
+   macro avg       0.39      0.40      0.37      2030
+weighted avg       0.50      0.58      0.51      2030
+
+cannot unpack non-iterable NoneType object
+Model: ab, PCA: True, Standard: True, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+         diravg  humidrel  ocurcause    ocurdo  ...  within_30km  within_30km_fact    height  scale_damage
+0     -0.187983  1.342604   0.082408 -1.173177  ...    -0.643098         -0.599769  0.461135           2.0
+1     -0.914905  0.679353  -1.972725 -0.822789  ...    -0.132639          0.371370  0.936631           1.0
+2     -0.624136  1.342604  -3.000291 -1.173177  ...    -0.541006         -0.599769  0.697774           2.0
+3      1.120477  0.679353   0.596191  1.104342  ...    -0.438914         -0.465398 -0.052076           0.0
+4     -0.914905  0.317580  -2.486508 -1.173177  ...    -0.541006         -0.593661  0.616429           1.0
+...         ...       ...        ...       ...  ...          ...               ...       ...           ...
+10145 -1.351059  1.885263   0.596191 -0.297208  ...     0.173637         -0.349350  0.777270           0.0
+10146 -0.914905 -1.008921  -1.972725 -0.822789  ...    -0.336823         -0.111146  1.155522           1.0
+10147 -0.769521  0.980831   0.596191 -0.822789  ...    -0.438914         -0.312703 -0.860716           0.0
+10148 -0.624136  1.161717  -0.431375 -0.822789  ...    -0.541006         -0.385996 -0.384111           0.0
+10149 -0.769521  1.161717  -1.972725 -0.822789  ...     0.071545          0.646221 -0.312010           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+AdaBoostClassifier(random_state=32)
+------------------------------------------------------------
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.5650, Recall: 0.3848, Precision: 0.3810, F1 Score: 0.3445
+Confusion Matrix: 
+ [[0.23451327 0.         0.76548673]
+ [0.1294964  0.         0.8705036 ]
+ [0.0744879  0.00558659 0.91992551]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.58      0.23      0.33       678
+         1.0       0.00      0.00      0.00       278
+         2.0       0.56      0.92      0.70      1074
+
+    accuracy                           0.57      2030
+   macro avg       0.38      0.38      0.34      2030
+weighted avg       0.49      0.57      0.48      2030
+
+cannot unpack non-iterable NoneType object
+Model: gb, PCA: False, Standard: False, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+       diravg  humidrel  ocurcause  ocurdo  rainamount  ...  windavg  within_30km  within_30km_fact  height  scale_damage
+0          13      57.0          6       0         0.5  ...      1.9          2.0                 0   493.5           2.0
+1           8      46.0          2       2         1.5  ...      2.4          7.0               159   622.1           1.0
+2          10      57.0          0       0         0.5  ...      1.3          3.0                 0   557.5           2.0
+3          22      46.0          7      13         1.5  ...      3.3          4.0                22   354.7           0.0
+4           8      40.0          1       0         0.5  ...      2.0          3.0                 1   535.5           1.0
+...       ...       ...        ...     ...         ...  ...      ...          ...               ...     ...           ...
+10145       5      66.0          7       5         1.1  ...      2.3         10.0                41   579.0           0.0
+10146       8      18.0          2       2         0.6  ...      1.0          5.0                80   681.3           1.0
+10147       9      51.0          7       2         0.5  ...      4.0          4.0                47   136.0           0.0
+10148      10      54.0          5       2         0.8  ...      6.7          3.0                35   264.9           0.0
+10149       9      54.0          2       2         0.7  ...      6.7          9.0               204   284.4           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+GradientBoostingClassifier(random_state=32)
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.5808, Recall: 0.4027, Precision: 0.3897, F1 Score: 0.3685
+Confusion Matrix: 
+ [[0.29941003 0.00442478 0.69616519]
+ [0.1618705  0.         0.8381295 ]
+ [0.09031657 0.0009311  0.90875233]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.59      0.30      0.40       678
+         1.0       0.00      0.00      0.00       278
+         2.0       0.58      0.91      0.71      1074
+
+    accuracy                           0.58      2030
+   macro avg       0.39      0.40      0.37      2030
+weighted avg       0.50      0.58      0.51      2030
+
+cannot unpack non-iterable NoneType object
+Model: gb, PCA: False, Standard: True, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+         diravg  humidrel  ocurcause    ocurdo  ...  within_30km  within_30km_fact    height  scale_damage
+0     -0.187983  1.342604   0.082408 -1.173177  ...    -0.643098         -0.599769  0.461135           2.0
+1     -0.914905  0.679353  -1.972725 -0.822789  ...    -0.132639          0.371370  0.936631           1.0
+2     -0.624136  1.342604  -3.000291 -1.173177  ...    -0.541006         -0.599769  0.697774           2.0
+3      1.120477  0.679353   0.596191  1.104342  ...    -0.438914         -0.465398 -0.052076           0.0
+4     -0.914905  0.317580  -2.486508 -1.173177  ...    -0.541006         -0.593661  0.616429           1.0
+...         ...       ...        ...       ...  ...          ...               ...       ...           ...
+10145 -1.351059  1.885263   0.596191 -0.297208  ...     0.173637         -0.349350  0.777270           0.0
+10146 -0.914905 -1.008921  -1.972725 -0.822789  ...    -0.336823         -0.111146  1.155522           1.0
+10147 -0.769521  0.980831   0.596191 -0.822789  ...    -0.438914         -0.312703 -0.860716           0.0
+10148 -0.624136  1.161717  -0.431375 -0.822789  ...    -0.541006         -0.385996 -0.384111           0.0
+10149 -0.769521  1.161717  -1.972725 -0.822789  ...     0.071545          0.646221 -0.312010           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+GradientBoostingClassifier(random_state=32)
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.5808, Recall: 0.4027, Precision: 0.3897, F1 Score: 0.3685
+Confusion Matrix: 
+ [[0.29941003 0.00442478 0.69616519]
+ [0.1618705  0.         0.8381295 ]
+ [0.09031657 0.0009311  0.90875233]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.59      0.30      0.40       678
+         1.0       0.00      0.00      0.00       278
+         2.0       0.58      0.91      0.71      1074
+
+    accuracy                           0.58      2030
+   macro avg       0.39      0.40      0.37      2030
+weighted avg       0.50      0.58      0.51      2030
+
+cannot unpack non-iterable NoneType object
+Model: gb, PCA: True, Standard: True, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+         diravg  humidrel  ocurcause    ocurdo  ...  within_30km  within_30km_fact    height  scale_damage
+0     -0.187983  1.342604   0.082408 -1.173177  ...    -0.643098         -0.599769  0.461135           2.0
+1     -0.914905  0.679353  -1.972725 -0.822789  ...    -0.132639          0.371370  0.936631           1.0
+2     -0.624136  1.342604  -3.000291 -1.173177  ...    -0.541006         -0.599769  0.697774           2.0
+3      1.120477  0.679353   0.596191  1.104342  ...    -0.438914         -0.465398 -0.052076           0.0
+4     -0.914905  0.317580  -2.486508 -1.173177  ...    -0.541006         -0.593661  0.616429           1.0
+...         ...       ...        ...       ...  ...          ...               ...       ...           ...
+10145 -1.351059  1.885263   0.596191 -0.297208  ...     0.173637         -0.349350  0.777270           0.0
+10146 -0.914905 -1.008921  -1.972725 -0.822789  ...    -0.336823         -0.111146  1.155522           1.0
+10147 -0.769521  0.980831   0.596191 -0.822789  ...    -0.438914         -0.312703 -0.860716           0.0
+10148 -0.624136  1.161717  -0.431375 -0.822789  ...    -0.541006         -0.385996 -0.384111           0.0
+10149 -0.769521  1.161717  -1.972725 -0.822789  ...     0.071545          0.646221 -0.312010           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+GradientBoostingClassifier(random_state=32)
+------------------------------------------------------------
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.5744, Recall: 0.3965, Precision: 0.3833, F1 Score: 0.3609
+Confusion Matrix: 
+ [[0.28171091 0.00294985 0.71533923]
+ [0.16546763 0.         0.83453237]
+ [0.08938547 0.0027933  0.90782123]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.57      0.28      0.38       678
+         1.0       0.00      0.00      0.00       278
+         2.0       0.58      0.91      0.70      1074
+
+    accuracy                           0.57      2030
+   macro avg       0.38      0.40      0.36      2030
+weighted avg       0.50      0.57      0.50      2030
+
+cannot unpack non-iterable NoneType object
+Model: kmeans, PCA: False, Standard: False, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+       diravg  humidrel  ocurcause  ocurdo  rainamount  ...  windavg  within_30km  within_30km_fact  height  scale_damage
+0          13      57.0          6       0         0.5  ...      1.9          2.0                 0   493.5           2.0
+1           8      46.0          2       2         1.5  ...      2.4          7.0               159   622.1           1.0
+2          10      57.0          0       0         0.5  ...      1.3          3.0                 0   557.5           2.0
+3          22      46.0          7      13         1.5  ...      3.3          4.0                22   354.7           0.0
+4           8      40.0          1       0         0.5  ...      2.0          3.0                 1   535.5           1.0
+...       ...       ...        ...     ...         ...  ...      ...          ...               ...     ...           ...
+10145       5      66.0          7       5         1.1  ...      2.3         10.0                41   579.0           0.0
+10146       8      18.0          2       2         0.6  ...      1.0          5.0                80   681.3           1.0
+10147       9      51.0          7       2         0.5  ...      4.0          4.0                47   136.0           0.0
+10148      10      54.0          5       2         0.8  ...      6.7          3.0                35   264.9           0.0
+10149       9      54.0          2       2         0.7  ...      6.7          9.0               204   284.4           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+KMeans(n_clusters=3, random_state=32)
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.2064, Recall: 0.3407, Precision: 0.2621, F1 Score: 0.2045
+Confusion Matrix: 
+ [[0.24631268 0.60471976 0.14896755]
+ [0.18705036 0.73021583 0.08273381]
+ [0.23184358 0.72253259 0.04562384]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.36      0.25      0.29       678
+         1.0       0.15      0.73      0.24       278
+         2.0       0.28      0.05      0.08      1074
+
+    accuracy                           0.21      2030
+   macro avg       0.26      0.34      0.20      2030
+weighted avg       0.29      0.21      0.17      2030
+
+cannot unpack non-iterable NoneType object
+Model: kmeans, PCA: False, Standard: True, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+         diravg  humidrel  ocurcause    ocurdo  ...  within_30km  within_30km_fact    height  scale_damage
+0     -0.187983  1.342604   0.082408 -1.173177  ...    -0.643098         -0.599769  0.461135           2.0
+1     -0.914905  0.679353  -1.972725 -0.822789  ...    -0.132639          0.371370  0.936631           1.0
+2     -0.624136  1.342604  -3.000291 -1.173177  ...    -0.541006         -0.599769  0.697774           2.0
+3      1.120477  0.679353   0.596191  1.104342  ...    -0.438914         -0.465398 -0.052076           0.0
+4     -0.914905  0.317580  -2.486508 -1.173177  ...    -0.541006         -0.593661  0.616429           1.0
+...         ...       ...        ...       ...  ...          ...               ...       ...           ...
+10145 -1.351059  1.885263   0.596191 -0.297208  ...     0.173637         -0.349350  0.777270           0.0
+10146 -0.914905 -1.008921  -1.972725 -0.822789  ...    -0.336823         -0.111146  1.155522           1.0
+10147 -0.769521  0.980831   0.596191 -0.822789  ...    -0.438914         -0.312703 -0.860716           0.0
+10148 -0.624136  1.161717  -0.431375 -0.822789  ...    -0.541006         -0.385996 -0.384111           0.0
+10149 -0.769521  1.161717  -1.972725 -0.822789  ...     0.071545          0.646221 -0.312010           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+KMeans(n_clusters=3, random_state=32)
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.2512, Recall: 0.3100, Precision: 0.2428, F1 Score: 0.2231
+Confusion Matrix: 
+ [[0.54719764 0.30530973 0.14749263]
+ [0.58992806 0.34172662 0.06834532]
+ [0.54469274 0.41433892 0.04096834]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.33      0.55      0.41       678
+         1.0       0.13      0.34      0.19       278
+         2.0       0.27      0.04      0.07      1074
+
+    accuracy                           0.25      2030
+   macro avg       0.24      0.31      0.22      2030
+weighted avg       0.27      0.25      0.20      2030
+
+cannot unpack non-iterable NoneType object
+Model: kmeans, PCA: True, Standard: True, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+         diravg  humidrel  ocurcause    ocurdo  ...  within_30km  within_30km_fact    height  scale_damage
+0     -0.187983  1.342604   0.082408 -1.173177  ...    -0.643098         -0.599769  0.461135           2.0
+1     -0.914905  0.679353  -1.972725 -0.822789  ...    -0.132639          0.371370  0.936631           1.0
+2     -0.624136  1.342604  -3.000291 -1.173177  ...    -0.541006         -0.599769  0.697774           2.0
+3      1.120477  0.679353   0.596191  1.104342  ...    -0.438914         -0.465398 -0.052076           0.0
+4     -0.914905  0.317580  -2.486508 -1.173177  ...    -0.541006         -0.593661  0.616429           1.0
+...         ...       ...        ...       ...  ...          ...               ...       ...           ...
+10145 -1.351059  1.885263   0.596191 -0.297208  ...     0.173637         -0.349350  0.777270           0.0
+10146 -0.914905 -1.008921  -1.972725 -0.822789  ...    -0.336823         -0.111146  1.155522           1.0
+10147 -0.769521  0.980831   0.596191 -0.822789  ...    -0.438914         -0.312703 -0.860716           0.0
+10148 -0.624136  1.161717  -0.431375 -0.822789  ...    -0.541006         -0.385996 -0.384111           0.0
+10149 -0.769521  1.161717  -1.972725 -0.822789  ...     0.071545          0.646221 -0.312010           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+KMeans(n_clusters=3, random_state=32)
+------------------------------------------------------------
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.4094, Recall: 0.3415, Precision: 0.3462, F1 Score: 0.3277
+Confusion Matrix: 
+ [[0.54277286 0.14749263 0.30973451]
+ [0.58992806 0.06834532 0.34172662]
+ [0.54562384 0.04096834 0.41340782]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.33      0.54      0.41       678
+         1.0       0.12      0.07      0.09       278
+         2.0       0.59      0.41      0.49      1074
+
+    accuracy                           0.41      2030
+   macro avg       0.35      0.34      0.33      2030
+weighted avg       0.44      0.41      0.41      2030
+
+cannot unpack non-iterable NoneType object
+Model: bag, PCA: False, Standard: False, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+       diravg  humidrel  ocurcause  ocurdo  rainamount  ...  windavg  within_30km  within_30km_fact  height  scale_damage
+0          13      57.0          6       0         0.5  ...      1.9          2.0                 0   493.5           2.0
+1           8      46.0          2       2         1.5  ...      2.4          7.0               159   622.1           1.0
+2          10      57.0          0       0         0.5  ...      1.3          3.0                 0   557.5           2.0
+3          22      46.0          7      13         1.5  ...      3.3          4.0                22   354.7           0.0
+4           8      40.0          1       0         0.5  ...      2.0          3.0                 1   535.5           1.0
+...       ...       ...        ...     ...         ...  ...      ...          ...               ...     ...           ...
+10145       5      66.0          7       5         1.1  ...      2.3         10.0                41   579.0           0.0
+10146       8      18.0          2       2         0.6  ...      1.0          5.0                80   681.3           1.0
+10147       9      51.0          7       2         0.5  ...      4.0          4.0                47   136.0           0.0
+10148      10      54.0          5       2         0.8  ...      6.7          3.0                35   264.9           0.0
+10149       9      54.0          2       2         0.7  ...      6.7          9.0               204   284.4           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+BaggingClassifier(base_estimator=DecisionTreeClassifier(max_depth=1),
+                  random_state=32)
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.5576, Recall: 0.3678, Precision: 0.4047, F1 Score: 0.3083
+Confusion Matrix: 
+ [[0.13421829 0.         0.86578171]
+ [0.04676259 0.         0.95323741]
+ [0.03072626 0.         0.96927374]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.66      0.13      0.22       678
+         1.0       0.00      0.00      0.00       278
+         2.0       0.55      0.97      0.70      1074
+
+    accuracy                           0.56      2030
+   macro avg       0.40      0.37      0.31      2030
+weighted avg       0.51      0.56      0.45      2030
+
+cannot unpack non-iterable NoneType object
+Model: bag, PCA: False, Standard: True, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+         diravg  humidrel  ocurcause    ocurdo  ...  within_30km  within_30km_fact    height  scale_damage
+0     -0.187983  1.342604   0.082408 -1.173177  ...    -0.643098         -0.599769  0.461135           2.0
+1     -0.914905  0.679353  -1.972725 -0.822789  ...    -0.132639          0.371370  0.936631           1.0
+2     -0.624136  1.342604  -3.000291 -1.173177  ...    -0.541006         -0.599769  0.697774           2.0
+3      1.120477  0.679353   0.596191  1.104342  ...    -0.438914         -0.465398 -0.052076           0.0
+4     -0.914905  0.317580  -2.486508 -1.173177  ...    -0.541006         -0.593661  0.616429           1.0
+...         ...       ...        ...       ...  ...          ...               ...       ...           ...
+10145 -1.351059  1.885263   0.596191 -0.297208  ...     0.173637         -0.349350  0.777270           0.0
+10146 -0.914905 -1.008921  -1.972725 -0.822789  ...    -0.336823         -0.111146  1.155522           1.0
+10147 -0.769521  0.980831   0.596191 -0.822789  ...    -0.438914         -0.312703 -0.860716           0.0
+10148 -0.624136  1.161717  -0.431375 -0.822789  ...    -0.541006         -0.385996 -0.384111           0.0
+10149 -0.769521  1.161717  -1.972725 -0.822789  ...     0.071545          0.646221 -0.312010           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+BaggingClassifier(base_estimator=DecisionTreeClassifier(max_depth=1),
+                  random_state=32)
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.5576, Recall: 0.3678, Precision: 0.4047, F1 Score: 0.3083
+Confusion Matrix: 
+ [[0.13421829 0.         0.86578171]
+ [0.04676259 0.         0.95323741]
+ [0.03072626 0.         0.96927374]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.66      0.13      0.22       678
+         1.0       0.00      0.00      0.00       278
+         2.0       0.55      0.97      0.70      1074
+
+    accuracy                           0.56      2030
+   macro avg       0.40      0.37      0.31      2030
+weighted avg       0.51      0.56      0.45      2030
+
+cannot unpack non-iterable NoneType object
+Model: bag, PCA: True, Standard: True, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+         diravg  humidrel  ocurcause    ocurdo  ...  within_30km  within_30km_fact    height  scale_damage
+0     -0.187983  1.342604   0.082408 -1.173177  ...    -0.643098         -0.599769  0.461135           2.0
+1     -0.914905  0.679353  -1.972725 -0.822789  ...    -0.132639          0.371370  0.936631           1.0
+2     -0.624136  1.342604  -3.000291 -1.173177  ...    -0.541006         -0.599769  0.697774           2.0
+3      1.120477  0.679353   0.596191  1.104342  ...    -0.438914         -0.465398 -0.052076           0.0
+4     -0.914905  0.317580  -2.486508 -1.173177  ...    -0.541006         -0.593661  0.616429           1.0
+...         ...       ...        ...       ...  ...          ...               ...       ...           ...
+10145 -1.351059  1.885263   0.596191 -0.297208  ...     0.173637         -0.349350  0.777270           0.0
+10146 -0.914905 -1.008921  -1.972725 -0.822789  ...    -0.336823         -0.111146  1.155522           1.0
+10147 -0.769521  0.980831   0.596191 -0.822789  ...    -0.438914         -0.312703 -0.860716           0.0
+10148 -0.624136  1.161717  -0.431375 -0.822789  ...    -0.541006         -0.385996 -0.384111           0.0
+10149 -0.769521  1.161717  -1.972725 -0.822789  ...     0.071545          0.646221 -0.312010           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+BaggingClassifier(base_estimator=DecisionTreeClassifier(max_depth=1),
+                  random_state=32)
+------------------------------------------------------------
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.5581, Recall: 0.3683, Precision: 0.4041, F1 Score: 0.3091
+Confusion Matrix: 
+ [[0.13569322 0.         0.86430678]
+ [0.05035971 0.         0.94964029]
+ [0.03072626 0.         0.96927374]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.66      0.14      0.23       678
+         1.0       0.00      0.00      0.00       278
+         2.0       0.55      0.97      0.70      1074
+
+    accuracy                           0.56      2030
+   macro avg       0.40      0.37      0.31      2030
+weighted avg       0.51      0.56      0.45      2030
+
+cannot unpack non-iterable NoneType object
+Model: voting, PCA: False, Standard: False, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+       diravg  humidrel  ocurcause  ocurdo  rainamount  ...  windavg  within_30km  within_30km_fact  height  scale_damage
+0          13      57.0          6       0         0.5  ...      1.9          2.0                 0   493.5           2.0
+1           8      46.0          2       2         1.5  ...      2.4          7.0               159   622.1           1.0
+2          10      57.0          0       0         0.5  ...      1.3          3.0                 0   557.5           2.0
+3          22      46.0          7      13         1.5  ...      3.3          4.0                22   354.7           0.0
+4           8      40.0          1       0         0.5  ...      2.0          3.0                 1   535.5           1.0
+...       ...       ...        ...     ...         ...  ...      ...          ...               ...     ...           ...
+10145       5      66.0          7       5         1.1  ...      2.3         10.0                41   579.0           0.0
+10146       8      18.0          2       2         0.6  ...      1.0          5.0                80   681.3           1.0
+10147       9      51.0          7       2         0.5  ...      4.0          4.0                47   136.0           0.0
+10148      10      54.0          5       2         0.8  ...      6.7          3.0                35   264.9           0.0
+10149       9      54.0          2       2         0.7  ...      6.7          9.0               204   284.4           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+DecisionTreeClassifier(random_state=32)
+------------------------------------------------------------
+KNeighborsClassifier()
+------------------------------------------------------------
+RandomForestClassifier(random_state=32)
+------------------------------------------------------------
+AdaBoostClassifier(random_state=32)
+------------------------------------------------------------
+GradientBoostingClassifier(random_state=32)
+------------------------------------------------------------
+VotingClassifier(estimators=[('dt', DecisionTreeClassifier(random_state=32)),
+                             ('knn', KNeighborsClassifier()),
+                             ('rf', RandomForestClassifier(random_state=32)),
+                             ('ab', AdaBoostClassifier(random_state=32)),
+                             ('gb',
+                              GradientBoostingClassifier(random_state=32))])
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.5862, Recall: 0.4164, Precision: 0.5178, F1 Score: 0.3930
+Confusion Matrix: 
+ [[0.33923304 0.00589971 0.65486726]
+ [0.1618705  0.02158273 0.81654676]
+ [0.10614525 0.00558659 0.88826816]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.59      0.34      0.43       678
+         1.0       0.38      0.02      0.04       278
+         2.0       0.59      0.89      0.71      1074
+
+    accuracy                           0.59      2030
+   macro avg       0.52      0.42      0.39      2030
+weighted avg       0.56      0.59      0.52      2030
+
+cannot unpack non-iterable NoneType object
+Model: voting, PCA: False, Standard: True, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+         diravg  humidrel  ocurcause    ocurdo  ...  within_30km  within_30km_fact    height  scale_damage
+0     -0.187983  1.342604   0.082408 -1.173177  ...    -0.643098         -0.599769  0.461135           2.0
+1     -0.914905  0.679353  -1.972725 -0.822789  ...    -0.132639          0.371370  0.936631           1.0
+2     -0.624136  1.342604  -3.000291 -1.173177  ...    -0.541006         -0.599769  0.697774           2.0
+3      1.120477  0.679353   0.596191  1.104342  ...    -0.438914         -0.465398 -0.052076           0.0
+4     -0.914905  0.317580  -2.486508 -1.173177  ...    -0.541006         -0.593661  0.616429           1.0
+...         ...       ...        ...       ...  ...          ...               ...       ...           ...
+10145 -1.351059  1.885263   0.596191 -0.297208  ...     0.173637         -0.349350  0.777270           0.0
+10146 -0.914905 -1.008921  -1.972725 -0.822789  ...    -0.336823         -0.111146  1.155522           1.0
+10147 -0.769521  0.980831   0.596191 -0.822789  ...    -0.438914         -0.312703 -0.860716           0.0
+10148 -0.624136  1.161717  -0.431375 -0.822789  ...    -0.541006         -0.385996 -0.384111           0.0
+10149 -0.769521  1.161717  -1.972725 -0.822789  ...     0.071545          0.646221 -0.312010           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+DecisionTreeClassifier(random_state=32)
+------------------------------------------------------------
+KNeighborsClassifier()
+------------------------------------------------------------
+RandomForestClassifier(random_state=32)
+------------------------------------------------------------
+AdaBoostClassifier(random_state=32)
+------------------------------------------------------------
+GradientBoostingClassifier(random_state=32)
+------------------------------------------------------------
+VotingClassifier(estimators=[('dt', DecisionTreeClassifier(random_state=32)),
+                             ('knn', KNeighborsClassifier()),
+                             ('rf', RandomForestClassifier(random_state=32)),
+                             ('ab', AdaBoostClassifier(random_state=32)),
+                             ('gb',
+                              GradientBoostingClassifier(random_state=32))])
+------------------------------------------------------------
+Evaluation on test set, 
+ Accuracy: 0.5872, Recall: 0.4184, Precision: 0.5398, F1 Score: 0.3943
+Confusion Matrix: 
+ [[0.35840708 0.00589971 0.63569322]
+ [0.19064748 0.01798561 0.79136691]
+ [0.11918063 0.0018622  0.87895717]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.57      0.36      0.44       678
+         1.0       0.45      0.02      0.03       278
+         2.0       0.59      0.88      0.71      1074
+
+    accuracy                           0.59      2030
+   macro avg       0.54      0.42      0.39      2030
+weighted avg       0.57      0.59      0.53      2030
+
+cannot unpack non-iterable NoneType object
+Model: voting, PCA: True, Standard: True, SMOTE: False, Tune: None, Param_load: False
+['se' 'nne' 'nw' 'wnw' 'e' 'n' 'w' 'ssw' 'nnw' 'sse' 'sw' 's' 'ese' 'ene'
+ 'wsw' 'ne' nan 'ewe' 'enw' 'wnn' 'see' 'nww' 'sww' 'nee' 'wese']
+         diravg  humidrel  ocurcause    ocurdo  ...  within_30km  within_30km_fact    height  scale_damage
+0     -0.187983  1.342604   0.082408 -1.173177  ...    -0.643098         -0.599769  0.461135           2.0
+1     -0.914905  0.679353  -1.972725 -0.822789  ...    -0.132639          0.371370  0.936631           1.0
+2     -0.624136  1.342604  -3.000291 -1.173177  ...    -0.541006         -0.599769  0.697774           2.0
+3      1.120477  0.679353   0.596191  1.104342  ...    -0.438914         -0.465398 -0.052076           0.0
+4     -0.914905  0.317580  -2.486508 -1.173177  ...    -0.541006         -0.593661  0.616429           1.0
+...         ...       ...        ...       ...  ...          ...               ...       ...           ...
+10145 -1.351059  1.885263   0.596191 -0.297208  ...     0.173637         -0.349350  0.777270           0.0
+10146 -0.914905 -1.008921  -1.972725 -0.822789  ...    -0.336823         -0.111146  1.155522           1.0
+10147 -0.769521  0.980831   0.596191 -0.822789  ...    -0.438914         -0.312703 -0.860716           0.0
+10148 -0.624136  1.161717  -0.431375 -0.822789  ...    -0.541006         -0.385996 -0.384111           0.0
+10149 -0.769521  1.161717  -1.972725 -0.822789  ...     0.071545          0.646221 -0.312010           2.0
+
+[10150 rows x 12 columns]
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+DecisionTreeClassifier(random_state=32)
+------------------------------------------------------------
+KNeighborsClassifier()
+------------------------------------------------------------
+RandomForestClassifier(random_state=32)
+------------------------------------------------------------
+AdaBoostClassifier(random_state=32)
+------------------------------------------------------------
+GradientBoostingClassifier(random_state=32)
+------------------------------------------------------------
+VotingClassifier(estimators=[('dt', DecisionTreeClassifier(random_state=32)),
+                             ('knn', KNeighborsClassifier()),
+                             ('rf', RandomForestClassifier(random_state=32)),
+                             ('ab', AdaBoostClassifier(random_state=32)),
+                             ('gb',
+                              GradientBoostingClassifier(random_state=32))])
+------------------------------------------------------------
+<< PCA: 11 -> 10 >>
+Evaluation on test set, 
+ Accuracy: 0.5754, Recall: 0.4061, Precision: 0.5431, F1 Score: 0.3803
+Confusion Matrix: 
+ [[0.31120944 0.00442478 0.68436578]
+ [0.19784173 0.02158273 0.78057554]
+ [0.11173184 0.0027933  0.88547486]]
+Classification Report: 
+               precision    recall  f1-score   support
+
+         0.0       0.55      0.31      0.40       678
+         1.0       0.50      0.02      0.04       278
+         2.0       0.58      0.89      0.70      1074
+
+    accuracy                           0.58      2030
+   macro avg       0.54      0.41      0.38      2030
+weighted avg       0.56      0.58      0.51      2030
+
+cannot unpack non-iterable NoneType object

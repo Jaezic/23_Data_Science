@@ -12,11 +12,10 @@ def preprocessing(args, df):
     # Label Encoding
     le = LabelEncoder()
     df['diravg'] = le.fit_transform(df['diravg'])
-    #df['dirmax'] = le.fit_transform(df['dirmax'])
     df['ocurcause'] = le.fit_transform(df['ocurcause'])
     df['ocurdo'] = le.fit_transform(df['ocurdo'])
-    # df.drop(['diravg'], axis=1, inplace=True)
-    #df.drop(['ocurcause','ocurdo'], axis=1, inplace=True)
+
+
     df.drop(['within_5km', 'within_10km', 'within_5km_fact',
             'within_10km_fact'], axis=1, inplace=True)
 
@@ -60,3 +59,16 @@ def feature_Engineering(df):
             'riskmax', 'riskavg'], axis=1, inplace=True)
     df['ocurdo'] = df['ocurdo'].replace('출북', '충북')
     df['ocurdo'] = df['ocurdo'].replace('서부', '전북')
+    
+    # diravg lowercase
+    df['diravg'] = df['diravg'].str.lower()
+    # delete dirty data('정온') on diravg
+    df['diravg'] = df['diravg'].str.replace(pat=r'정온', repl=r'', regex=True)
+    # drop number on diravg
+    df['diravg'] = df['diravg'].str.replace(pat=r'[0-9]', repl=r'', regex=True)
+    # drop space on diravg
+    df['diravg'] = df['diravg'].str.replace(pat=r' ', repl=r'', regex=True)
+
+    # drop empty data on diravg
+    df['diravg'] = df['diravg'][df['diravg'] != '']
+

@@ -1,0 +1,96 @@
+OrderedDict([('data_path', './dataset/FireDataset.csv'),
+             ('param_path', './models/config'),
+             ('seed', 64),
+             ('redirector', True),
+             ('visual', False),
+             ('model', 'ab'),
+             ('param_load', False),
+             ('voting_list', ['dt', 'knn', 'rf', 'ab', 'gb']),
+             ('tune', 'grid'),
+             ('n_iter', 10),
+             ('cv', 5),
+             ('pca', False),
+             ('n_components', 0.95),
+             ('smote', True),
+             ('standard', False),
+             ('eval', 'kfold'),
+             ('n_split', 10),
+             ('num_class', 3)])
+------------------------------------------------------------
+Model: voting, PCA: False, Standard: False, SMOTE: True, Tune: grid, Param_load: False
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+DecisionTreeClassifier(random_state=64)
+------------------------------------------------------------
+KNeighborsClassifier()
+------------------------------------------------------------
+RandomForestClassifier(random_state=64)
+------------------------------------------------------------
+AdaBoostClassifier(random_state=64)
+------------------------------------------------------------
+GradientBoostingClassifier(random_state=64)
+------------------------------------------------------------
+VotingClassifier(estimators=[('dt', DecisionTreeClassifier(random_state=64)),
+                             ('knn', KNeighborsClassifier()),
+                             ('rf', RandomForestClassifier(random_state=64)),
+                             ('ab', AdaBoostClassifier(random_state=64)),
+                             ('gb',
+                              GradientBoostingClassifier(random_state=64))])
+------------------------------------------------------------
+Tunning - Loaded Hyperparameters Range
+{'voting': ['soft', 'hard']}
+------------------------------------------------------------
+GridSearchCV
+Best Parameter
+  {'voting': 'hard'}
+ Best Score : 0.5536945812807883
+Tunning - Saved Hyperparameters [./models/config]
+Model: voting, PCA: False, Standard: False, SMOTE: True, Tune: None, Param_load: True
+Dataset size: 10150
+Features name : ['diravg', 'humidrel', 'ocurcause', 'ocurdo', 'rainamount', 'raindays', 'tempavg', 'windavg', 'within_30km', 'within_30km_fact', 'height']
+Target name : ['scale_damage']
+------------------------------------------------------------
+Loaded Hyperparameters
+{'criterion': 'entropy', 'max_depth': 5, 'min_samples_leaf': 7, 'min_samples_split': 2}
+DecisionTreeClassifier(criterion='entropy', max_depth=5, min_samples_leaf=7,
+                       random_state=64)
+------------------------------------------------------------
+Loaded Hyperparameters
+{'n_neighbors': 30}
+KNeighborsClassifier(n_neighbors=30)
+------------------------------------------------------------
+Loaded Hyperparameters
+{'criterion': 'gini', 'max_depth': 8, 'max_features': 'auto', 'n_estimators': 500}
+RandomForestClassifier(max_depth=8, max_features='auto', n_estimators=500,
+                       random_state=64)
+------------------------------------------------------------
+Loaded Hyperparameters
+{'algorithm': 'SAMME.R', 'learning_rate': 1.04, 'n_estimators': 20}
+AdaBoostClassifier(learning_rate=1.04, n_estimators=20, random_state=64)
+------------------------------------------------------------
+Not Found Hyperparameters File
+GradientBoostingClassifier(random_state=64)
+------------------------------------------------------------
+Loaded Hyperparameters
+{'voting': 'hard'}
+VotingClassifier(estimators=[('dt',
+                              DecisionTreeClassifier(criterion='entropy',
+                                                     max_depth=5,
+                                                     min_samples_leaf=7,
+                                                     random_state=64)),
+                             ('knn', KNeighborsClassifier(n_neighbors=30)),
+                             ('rf',
+                              RandomForestClassifier(max_depth=8,
+                                                     max_features='auto',
+                                                     n_estimators=500,
+                                                     random_state=64)),
+                             ('ab',
+                              AdaBoostClassifier(learning_rate=1.04,
+                                                 n_estimators=20,
+                                                 random_state=64)),
+                             ('gb',
+                              GradientBoostingClassifier(random_state=64))])
+------------------------------------------------------------
+Fold 0
