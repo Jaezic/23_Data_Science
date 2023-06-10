@@ -21,6 +21,7 @@ def set_seed(rand_seed):
 
 def time_str(fmt=None):
     """
+    Source : https://docs.python.org/ko/3/library/datetime.html
     Get time string
         Args:
             fmt: format of the time string

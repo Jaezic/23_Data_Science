@@ -1,13 +1,18 @@
-import argparse
-
-import pandas as pd
 from sklearn.calibration import LabelEncoder
 from sklearn.discriminant_analysis import StandardScaler
 from sklearn.preprocessing import KBinsDiscretizer
 
 
 def preprocessing(args, df):
-    feature_Engineering(df)
+    """
+    Preprocessing function, including reflect feature engineering results, label encoding, binning, standardization
+        Args:
+            args: arguments from argument_parser()
+            df: dataframe, including features and target
+        Returns:
+            df: dataframe, including features and target after preprocessing
+    """
+    feature_Handling(df)
 
     # Label Encoding
     le = LabelEncoder()
@@ -16,6 +21,7 @@ def preprocessing(args, df):
     df['ocurdo'] = le.fit_transform(df['ocurdo'])
 
 
+    # Drop features that are less correlated with target
     df.drop(['within_5km', 'within_10km', 'within_5km_fact',
             'within_10km_fact'], axis=1, inplace=True)
 
@@ -36,7 +42,14 @@ def preprocessing(args, df):
     return df
 
 
-def feature_Engineering(df):
+def feature_Handling(df):
+    """
+        reflect Feature Handling results to dataframe, including occurcause handling, feature drop, feature rename
+        Args:
+            df: dataframe, including features and target
+        Returns:
+            None
+    """
     # Ocurcause Handling
     df['ocurcause'] = df['ocurcause'].apply(
         lambda x: x.replace('추정', '') if '추정' in x else x)
@@ -57,6 +70,8 @@ def feature_Engineering(df):
     # Feature Drop, [humidmin, humidcurr, windmax, dirmax, riskmax, riskavg]
     df.drop(['humidmin', 'humidcurr', 'windmax', 'dirmax',
             'riskmax', 'riskavg'], axis=1, inplace=True)
+    
+    # Feature Rename
     df['ocurdo'] = df['ocurdo'].replace('출북', '충북')
     df['ocurdo'] = df['ocurdo'].replace('서부', '전북')
     

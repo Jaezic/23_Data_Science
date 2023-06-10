@@ -13,7 +13,10 @@ def tune_pipeline(args, model, train_dataset):
         Returns:
             None
     """
+    # Load hyperparameters range
     params = load_param_range(args)
+    
+    # Search Initialize
     if args.tune == 'grid':
         search = GridSearchCV(model, params, cv=args.cv)
     elif args.tune == 'random':
@@ -22,6 +25,7 @@ def tune_pipeline(args, model, train_dataset):
     else:
         raise ValueError('Unknown hyperparameters tuning method.')
 
+    # if PCA is true, apply PCA
     if args.pca:
         train_dataset.PCA_pipeline(args, train_dataset, None)
     search.fit(train_dataset.x, train_dataset.y)

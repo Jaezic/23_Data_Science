@@ -2,6 +2,15 @@ import numpy as np
 
 
 def haversine_numpy(lat1, lon1, lat2, lon2):
+    """
+        Calculate the great circle distance between two points
+        on the earth (specified in decimal degrees)
+        
+        Args:
+            lat1, lon1, lat2, lon2: latitude and longitude of two points
+        Returns:
+            distance: distance between two points
+    """
     R = 6371.0  # radius of the Earth in kilometers
 
     # Convert latitudes and longitudes to radians
@@ -25,12 +34,22 @@ def haversine_numpy(lat1, lon1, lat2, lon2):
 
 
 def calculate_distance(df1, df2):
+    """
+        Calculate distance between Pandas dataframe 1 and Pandas dataframe 2
+        Args:
+            df1: dataframe 1
+            df2: dataframe 2
+        Returns:
+            distance: distance between two dataframes
+        """
+    # Convert pandas dataframe to numpy array
     df1_lat = df1['latitude'].to_numpy()
     df1_lon = df1['longitude'].to_numpy()
 
     df2_lat = df2['latitude'].to_numpy()
     df2_lon = df2['longitude'].to_numpy()
     
+    # Transform 1D array to 2D array for broadcasting
     df1_lat = df1_lat.reshape(-1, 1)
     df1_lon = df1_lon.reshape(-1, 1)
     df2_lat = df2_lat.reshape(1, -1)

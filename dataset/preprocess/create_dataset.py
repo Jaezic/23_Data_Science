@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 from functions.distance import calculate_distance
 
 from functions.scale_damage import scale_damage
-import math
 
 
 def main(args):

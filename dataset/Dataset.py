@@ -83,17 +83,24 @@ class FireDataset(Dataset):
                 None
             """
         self.args = args
+        # read csv file
         df = pd.read_csv(args.data_path, na_filter=True,
                          keep_default_na=False, na_values=[''])
+        
+        # preprocessing
         df = preprocessing(args, df)
         df.to_csv('./dataset/preprocessed.csv', index=False)
+        
+        # x: features, y: target
         y = df['scale_damage'].values
         x = df.drop(['scale_damage'], axis=1).values
         super().__init__(x, y)
-
+        
+        # name of features and target
         self.x_name = df.drop(['scale_damage'], axis=1).columns.to_list()
         self.y_name = ['scale_damage']
 
+        # Expecting 80% training data, 20% testing data (hold-out validation)
         self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(
             self.x, self.y, test_size=0.2, random_state=args.seed, stratify=self.y, shuffle=True)
         

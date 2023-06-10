@@ -22,7 +22,7 @@ if __name__ == '__main__':
     pprint.pprint(OrderedDict(args.__dict__))
     print('-' * 60)
     
-    # Main
+    # Main for Training, Evaluation
     acc, pre, rec, f1 = main(args)
     
     

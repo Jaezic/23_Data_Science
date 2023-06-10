@@ -1,11 +1,18 @@
 import pandas as pd
-import numpy as np
-
 from sklearn.preprocessing import RobustScaler
 from sklearn.preprocessing import Normalizer
 
 
 def scale_damage(df):
+    """
+        Scale damage, combine damage area, damage money, and time
+        
+        Args:
+            df: dataframe
+            
+        Return:
+            result: dataframe of scaled damage
+    """
     # covert object type to float type if convertable, otherwise NaN
     df['exintgtm'] = pd.to_numeric(df['exintgtm'], errors='coerce')
 
