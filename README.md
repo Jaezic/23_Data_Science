@@ -22,7 +22,7 @@ $ python .\dataset\preprocess\create_dataset.py
 ```
 The experiment will be customized to your configuration.
 ```
-$ python main.py
+$ python evaluate.py
 ```
 #### Parameters
 - `data_path`: str.  
@@ -66,7 +66,7 @@ The number you want to divide by in `kfold`.
 The number of classes
 #### If you want to experiment with all possible cases, run the below
 ```
-$ python main_all_eval.py
+$ python all_eval.py
 ```
 ## Project Structure
 ```

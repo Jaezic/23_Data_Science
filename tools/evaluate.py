@@ -2,10 +2,19 @@ from sklearn.metrics import classification_report, confusion_matrix, f1_score, m
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Classification Evaluation
-
-
 def evaluate(args, model, predict, y):
+    """
+    Evaluate the model and print the metrics, possibly with visualization
+        Args:
+            args: arguments from argument_parser()
+            model: model to train
+            predict: predicted labels   
+            y: true labels
+        
+        Returns:
+            metrics: metrics of the model
+    """
+    # Metrics of the result
     metrics = Metrics(predict, y)
     print(f'Evaluation on test set, \n',
           'Accuracy: {:.4f}, Recall: {:.4f}, Precision: {:.4f}, F1 Score: {:.4f}'.format(
@@ -41,7 +50,26 @@ def evaluate(args, model, predict, y):
 
 
 class Metrics:
+    """
+    Metrics of the model
+        Attributes:
+            predict: predicted labels
+            y: true labels
+            accuracy: accuracy
+            recall: recall
+            precision: precision
+            f1: f1 score
+    """
     def __init__(self, predict, y):
+        """
+        Initialize the metricss
+            Args:
+                predict: predicted labels
+                y: true labels
+            
+            Returns:
+                None
+        """
         self.predict = predict
         self.y = y
         self.accuracy = accuracy_score(predict, y)

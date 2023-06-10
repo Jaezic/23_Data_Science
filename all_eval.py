@@ -2,20 +2,13 @@ from collections import OrderedDict
 import os
 import pprint
 
-from sklearn.decomposition import PCA
-from sklearn.model_selection import GridSearchCV
 from config import argument_parser
-from dataset.Dataset import Dataset, FireDataset
-from models.model import build_model
-from tools.evaluate import evaluate
-from tools.smote import smote
-from tools.tune import tune_pipeline
-from tools.utils import ReDirectSTD, set_seed, time_str
-from tools.visualization import visual
+from tools.utils import ReDirectSTD, time_str
 import pandas as pd
 from main import main
 
 if __name__ == '__main__':
+    # Argument parsing
     parser = argument_parser()
     args = parser.parse_args()
     
@@ -30,13 +23,20 @@ if __name__ == '__main__':
     pprint.pprint(OrderedDict(args.__dict__))
     print('-' * 60) 
     
+    # All Evaluation of parameters
     args.eval = 'kfold_stratified'
-    df = pd.DataFrame(columns=['model', 'pca', 'standard', 'tune','accuracy', 'precision', 'recall', 'f1'])
+    df = pd.DataFrame(columns=['model', 'pca', 'standard','accuracy', 'precision', 'recall', 'f1'])
+
+    tune_lists = [([None], False), (['grid',None], True)]
+    
+    # if you want to tune hyperparameters, set tune_config = tune_lists[1]
+    # but, not want to tune hyperparameters, set tune_config = tune_lists[0]
+    tune_config = tune_lists[0]
 
     for model in ['dt', 'knn', 'rf', 'ab', 'gb', 'kmeans', 'bag', 'voting']:
         for pca in [False, True]:
             for standard in [False, True]:
-                for tune in [None]:
+                for tune in tune_config[0]:
                     args.model = model
                     args.pca = pca
                     args.standard = standard
@@ -46,7 +46,7 @@ if __name__ == '__main__':
                     if args.tune == 'grid':
                         args.param_load = False
                     else:
-                        args.param_load = False
+                        args.param_load = tune_config[1]
 
                     print('Model: {}, PCA: {}, Standard: {}, SMOTE: {}, Tune: {}, Param_load: {}'.format(args.model, args.pca, args.standard, args.smote, args.tune, args.param_load))
                     try:
@@ -54,8 +54,10 @@ if __name__ == '__main__':
                     except Exception as e:
                         print(e)
                         continue
+                    # save result
                     if args.tune == None:
                         df_row = pd.DataFrame({'model': [args.model], 'pca': [args.pca], 'standard': [args.standard], 'accuracy': [acc], 'precision': [pre], 'recall': [rec], 'f1': [f1]})
                         df = pd.concat([df, df_row], axis=0)
                         print(df)
+    # save result
     df.to_csv('result.csv', index=False)

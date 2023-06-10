@@ -1,22 +1,13 @@
-from collections import OrderedDict
-import os
-import pprint
-import numpy as np
-
-from sklearn.decomposition import PCA
-from sklearn.model_selection import GridSearchCV
-from config import argument_parser
 from dataset.Dataset import Dataset, FireDataset
 from models.model import build_model
 from tools.evaluate import evaluate
 from tools.smote import smote
 from tools.tune import tune_pipeline
-from tools.utils import ReDirectSTD, set_seed, time_str
-from tools.visualization import visual
+from tools.utils import set_seed
 import pandas as pd
 
 def main(args):
-    '''
+    """
     Main function
         Summary:  
             Set random seed, setup dataset and model, train and evaluate
@@ -26,8 +17,7 @@ def main(args):
         
         Returns:
             metrics: metrics of the model
-
-    '''
+    """
     set_seed(args.seed)  # Set random seed
 
     # Dataset setup
@@ -88,7 +78,7 @@ def main(args):
 
     
 def pipeline(args, model, train_dataset, test_dataset):
-    '''
+    """
     Pipeline of training and evaluating
         Summary:
             PCA, SMOTE, train and evaluate
@@ -101,7 +91,7 @@ def pipeline(args, model, train_dataset, test_dataset):
         
         Returns:
             metrics: metrics of the model
-    '''
+    """
     if args.pca and args.standard == False:
         raise ValueError('PCA must be used with standardization')
         

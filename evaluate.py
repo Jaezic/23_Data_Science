@@ -2,17 +2,8 @@ from collections import OrderedDict
 import os
 import pprint
 
-from sklearn.decomposition import PCA
-from sklearn.model_selection import GridSearchCV
 from config import argument_parser
-from dataset.Dataset import Dataset, FireDataset
-from models.model import build_model
-from tools.evaluate import evaluate
-from tools.smote import smote
-from tools.tune import tune_pipeline
-from tools.utils import ReDirectSTD, set_seed, time_str
-from tools.visualization import visual
-import pandas as pd
+from tools.utils import ReDirectSTD, time_str
 from main import main
 
 if __name__ == '__main__':
