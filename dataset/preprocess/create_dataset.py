@@ -15,6 +15,7 @@ def main(args):
     MH_df = pd.read_excel(args.MountainHeight_root)
 
     # Convert Address to Lat/Long
+    # But, This code is very long time to run, so I comment out.
     # FS_address = 지번to도로명주소(FS_df)
     # FS_latlong = 도로명주소to위도경도(FS_address)
 
